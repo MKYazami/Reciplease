@@ -21,8 +21,7 @@ class HomePageViewController: UIViewController {
     @IBAction func clearIngredients() {
         
     }
-    
-    
+        
     @IBAction func searchRecipes() {
         
     }

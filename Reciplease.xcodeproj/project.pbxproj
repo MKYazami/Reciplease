@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		913482CB210F512900C71BB2 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CA210F512900C71BB2 /* ResultsViewController.swift */; };
 		913482CD210F516400C71BB2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CC210F516400C71BB2 /* DetailViewController.swift */; };
+		913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */; };
+		913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */; };
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
 		91D372D3210E0355004BFECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D1210E0355004BFECA /* Main.storyboard */; };
 		91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		913482CA210F512900C71BB2 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		913482CC210F516400C71BB2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaforitesListViewController.swift; sourceTree = "<group>"; };
+		913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
 		91D372CA210E0355004BFECA /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D372CD210E0355004BFECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D372D2210E0355004BFECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		913482D2210FA13600C71BB2 /* FavoritesController */ = {
+			isa = PBXGroup;
+			children = (
+				913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */,
+				913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */,
+			);
+			path = FavoritesController;
+			sourceTree = "<group>";
+		};
 		91D372C1210E0355004BFECA = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 				91D372F7210E285F004BFECA /* HomePageViewController.swift */,
 				913482CA210F512900C71BB2 /* ResultsViewController.swift */,
 				913482CC210F516400C71BB2 /* DetailViewController.swift */,
+				913482D2210FA13600C71BB2 /* FavoritesController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +279,8 @@
 			files = (
 				91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */,
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,
+				913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */,
+				913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */,
 				91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */,
 				913482CD210F516400C71BB2 /* DetailViewController.swift in Sources */,
 				913482CB210F512900C71BB2 /* ResultsViewController.swift in Sources */,
