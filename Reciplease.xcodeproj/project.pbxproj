@@ -11,6 +11,8 @@
 		913482CD210F516400C71BB2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CC210F516400C71BB2 /* DetailViewController.swift */; };
 		913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */; };
 		913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */; };
+		913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482D921103E3400C71BB2 /* RecipeDetailView.swift */; };
+		913482DC21103E5700C71BB2 /* RecipeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913482DB21103E5700C71BB2 /* RecipeDetailView.xib */; };
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
 		91D372D3210E0355004BFECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D1210E0355004BFECA /* Main.storyboard */; };
 		91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */; };
@@ -37,6 +39,8 @@
 		913482CC210F516400C71BB2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaforitesListViewController.swift; sourceTree = "<group>"; };
 		913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
+		913482D921103E3400C71BB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		913482DB21103E5700C71BB2 /* RecipeDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailView.xib; sourceTree = "<group>"; };
 		91D372CA210E0355004BFECA /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D372CD210E0355004BFECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D372D2210E0355004BFECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				91D372D1210E0355004BFECA /* Main.storyboard */,
 				91D372D9210E0356004BFECA /* LaunchScreen.storyboard */,
 				91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */,
+				913482D921103E3400C71BB2 /* RecipeDetailView.swift */,
+				913482DB21103E5700C71BB2 /* RecipeDetailView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			files = (
 				91D372DB210E0356004BFECA /* LaunchScreen.storyboard in Resources */,
 				91D372F6210E149A004BFECA /* Default-568h@2x.png in Resources */,
+				913482DC21103E5700C71BB2 /* RecipeDetailView.xib in Resources */,
 				91D372D8210E0356004BFECA /* Assets.xcassets in Resources */,
 				91D372D3210E0355004BFECA /* Main.storyboard in Resources */,
 			);
@@ -278,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */,
+				913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */,
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,
 				913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */,
 				913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */,
