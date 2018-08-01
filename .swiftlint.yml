@@ -2,3 +2,6 @@ disabled_rules: # rule identifiers to exclude from running
   - line_length
   - identifier_name
   - trailing_whitespace
+  - force_cast
+  - todo
+  - weak_delegate

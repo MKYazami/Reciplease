@@ -9,24 +9,26 @@
 import UIKit
 
 class FavoriteDetailViewController: UIViewController {
-
+    
+    // MARK: Properties
+    @IBOutlet var recipeDetailView: RecipeDetailView!
+    
     // MARK: Outlets
-    @IBOutlet weak var preparationTimelabel: UILabel!
-    @IBOutlet weak var recipeImageView: UIImageView!
-    @IBOutlet weak var recipeTextView: UITextView!
-    
+ 
     // MARK: Actions
-    
     @IBAction func favoriteItem(_ sender: Any) {
-        
-    }
-    
-    @IBAction func getDirections() {
         
     }
     
     // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        recipeDetailView.actionDelegate = self
+    }
+}
+
+extension FavoriteDetailViewController: ListeningActionsProtocol {
+    func listingAction() {
+        // TODO: Actions to get directions
     }
 }

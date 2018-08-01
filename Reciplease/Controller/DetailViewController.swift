@@ -11,21 +11,24 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: Outlets
-    @IBOutlet weak var preparationTimeLabel: UILabel!
-    @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var recipeTextView: UITextView!
-    
+    @IBOutlet var recipeViewDetail: RecipeDetailView!
+   
     // MARK: Actions
     @IBAction func favoriteItem(_ sender: Any) {
         
     }
     
-    @IBAction func getDirections() {
-        
-    }
     // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        recipeViewDetail.actionDelegate = self
     }
 
+}
+
+// MARK: Actions delegates
+extension DetailViewController: ListeningActionsProtocol {
+    func listingAction() {
+        // TODO: Actions to get directions
+    }
 }

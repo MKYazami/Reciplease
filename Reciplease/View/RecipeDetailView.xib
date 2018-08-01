@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ae6-3w-5xx" customClass="RecipeDetailView" customModule="Reciplease" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ae6-3w-5xx">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vZs-Sz-mNT">
@@ -50,16 +50,15 @@
                                 <constraint firstItem="SwR-Cx-fyG" firstAttribute="top" secondItem="itB-Pd-f3V" secondAttribute="bottom" constant="2" id="USr-64-BFP"/>
                                 <constraint firstItem="itB-Pd-f3V" firstAttribute="centerX" secondItem="Rs4-NM-ZGZ" secondAttribute="centerX" id="bhs-KA-rYj"/>
                                 <constraint firstItem="SwR-Cx-fyG" firstAttribute="centerX" secondItem="Rs4-NM-ZGZ" secondAttribute="centerX" id="h7m-bg-Jj4"/>
+                                <constraint firstAttribute="width" secondItem="Rs4-NM-ZGZ" secondAttribute="height" multiplier="1:1" id="uTR-zX-hB5"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Rs4-NM-ZGZ" firstAttribute="leading" secondItem="Ae6-3w-5xx" secondAttribute="leading" constant="258" id="0ov-Gk-b7E"/>
                         <constraint firstAttribute="trailing" secondItem="vZs-Sz-mNT" secondAttribute="trailing" id="4YL-Ok-wqA"/>
                         <constraint firstAttribute="trailing" secondItem="Rs4-NM-ZGZ" secondAttribute="trailing" constant="8" id="CFz-ux-q8e"/>
                         <constraint firstAttribute="bottom" secondItem="Rs4-NM-ZGZ" secondAttribute="bottom" constant="138" id="CZG-js-CPN"/>
-                        <constraint firstItem="Rs4-NM-ZGZ" firstAttribute="width" secondItem="Rs4-NM-ZGZ" secondAttribute="height" multiplier="1:1" id="hlJ-kV-rqM"/>
                         <constraint firstItem="Rs4-NM-ZGZ" firstAttribute="top" secondItem="Ae6-3w-5xx" secondAttribute="top" constant="8" id="oWS-jQ-In6"/>
                         <constraint firstItem="vZs-Sz-mNT" firstAttribute="top" secondItem="Ae6-3w-5xx" secondAttribute="top" id="qgT-Ae-sqo"/>
                         <constraint firstItem="vZs-Sz-mNT" firstAttribute="leading" secondItem="Ae6-3w-5xx" secondAttribute="leading" id="wMd-Sg-rSb"/>
@@ -106,7 +105,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="1503" y="150"/>
+            <point key="canvasLocation" x="1181" y="165"/>
         </view>
     </objects>
     <resources>
