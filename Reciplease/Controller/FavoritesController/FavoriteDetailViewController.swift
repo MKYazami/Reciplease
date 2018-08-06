@@ -14,7 +14,7 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet var recipeDetailView: RecipeDetailView!
     
     // MARK: Outlets
- 
+    
     // MARK: Actions
     @IBAction func favoriteItem(_ sender: Any) {
         

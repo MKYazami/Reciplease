@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Used to conform to the controller that must listen to the actions from the custom views
 protocol ListeningActionsProtocol {
     func listingAction()
 }

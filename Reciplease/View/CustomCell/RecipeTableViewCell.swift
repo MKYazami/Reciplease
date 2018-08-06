@@ -10,7 +10,7 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
     
-    // MARK: Properties
+    // MARK: Outlets
     
     @IBOutlet weak var preparationTimeLabel: UILabel!
     
@@ -32,6 +32,13 @@ class RecipeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /// Allows to set labels & image inside the cell
+    ///
+    /// - Parameters:
+    ///   - preparationTime: Time of preparation
+    ///   - recipeTitle: Recipe title
+    ///   - recipeDescription: Recipe description
+    ///   - recipeImage: Recipe image
     func cellConfigurator(preparationTime: String, recipeTitle: String, recipeDescription: String, recipeImage: UIImage) {
         preparationTimeLabel.text = preparationTime
         recipeTitleLabel.text = recipeTitle

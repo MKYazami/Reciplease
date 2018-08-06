@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeTableViewCell" customModule="Reciplease" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="125" id="rl2-tc-Lky" customClass="RecipeTableViewCell" customModule="Reciplease" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rl2-tc-Lky" id="ddH-dI-3ug">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-pB-vdQ" userLabel="Main View">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GyQ-EA-wS0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="xFh-y0-RbW"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhd-kM-ngH" userLabel="Time View">
+                                <rect key="frame" x="258" y="8" width="54" height="54"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="clockCircular" translatesAutoresizingMaskIntoConstraints="NO" id="2GP-to-Was">
+                                        <rect key="frame" x="14" y="4" width="26" height="26"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-SO-XVl">
+                                        <rect key="frame" x="8" y="32" width="38" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.5072609186" green="0.50733727220000002" blue="0.5072443485" alpha="0.65611622430000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="OCf-SO-XVl" firstAttribute="top" secondItem="2GP-to-Was" secondAttribute="bottom" constant="2" id="1JV-tL-iQY"/>
+                                    <constraint firstItem="OCf-SO-XVl" firstAttribute="centerX" secondItem="Rhd-kM-ngH" secondAttribute="centerX" id="6Un-OH-2vi"/>
+                                    <constraint firstAttribute="width" secondItem="Rhd-kM-ngH" secondAttribute="height" multiplier="1:1" id="FV2-oK-fjw"/>
+                                    <constraint firstItem="2GP-to-Was" firstAttribute="centerX" secondItem="Rhd-kM-ngH" secondAttribute="centerX" id="N4q-J5-8Nn"/>
+                                    <constraint firstItem="2GP-to-Was" firstAttribute="top" secondItem="Rhd-kM-ngH" secondAttribute="top" constant="4" id="hrm-6o-fSU"/>
+                                    <constraint firstAttribute="bottom" secondItem="OCf-SO-XVl" secondAttribute="bottom" constant="1.5" id="l6S-mF-UEK"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-mn-ex6" userLabel="Labels Stack View">
+                                <rect key="frame" x="8" y="74" width="304" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdH-bf-Skp">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="22.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1C2-ZB-6Ae">
+                                        <rect key="frame" x="0.0" y="22.5" width="304" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rhd-kM-ngH" firstAttribute="width" secondItem="Rhd-kM-ngH" secondAttribute="height" multiplier="1:1" id="A5h-cC-avw"/>
+                            <constraint firstAttribute="trailing" secondItem="sZX-mn-ex6" secondAttribute="trailing" constant="8" id="EKf-yQ-QWM"/>
+                            <constraint firstItem="Rhd-kM-ngH" firstAttribute="top" secondItem="KyU-pB-vdQ" secondAttribute="top" constant="8" id="IeU-mY-0rr"/>
+                            <constraint firstItem="GyQ-EA-wS0" firstAttribute="leading" secondItem="KyU-pB-vdQ" secondAttribute="leading" id="NCH-A9-gsd"/>
+                            <constraint firstItem="sZX-mn-ex6" firstAttribute="leading" secondItem="KyU-pB-vdQ" secondAttribute="leading" constant="8" id="g7Q-Uh-9Ma"/>
+                            <constraint firstAttribute="height" constant="125" id="kZN-uK-UgL"/>
+                            <constraint firstAttribute="trailing" secondItem="GyQ-EA-wS0" secondAttribute="trailing" id="kaJ-dW-SVn"/>
+                            <constraint firstAttribute="trailing" secondItem="Rhd-kM-ngH" secondAttribute="trailing" constant="8" id="nHF-tm-umc"/>
+                            <constraint firstAttribute="bottom" secondItem="sZX-mn-ex6" secondAttribute="bottom" constant="6" id="o05-rp-oU8"/>
+                            <constraint firstAttribute="bottom" secondItem="GyQ-EA-wS0" secondAttribute="bottom" id="r6N-e3-1jr"/>
+                            <constraint firstItem="GyQ-EA-wS0" firstAttribute="top" secondItem="KyU-pB-vdQ" secondAttribute="top" id="vAz-LZ-flZ"/>
+                            <constraint firstItem="sZX-mn-ex6" firstAttribute="top" secondItem="Rhd-kM-ngH" secondAttribute="bottom" constant="12" id="xRZ-Dd-Mle"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KyU-pB-vdQ" firstAttribute="leading" secondItem="ddH-dI-3ug" secondAttribute="leading" id="I4x-20-HZO"/>
+                    <constraint firstAttribute="bottom" secondItem="KyU-pB-vdQ" secondAttribute="bottom" id="JKh-eJ-CKG"/>
+                    <constraint firstItem="KyU-pB-vdQ" firstAttribute="top" secondItem="ddH-dI-3ug" secondAttribute="top" id="w4l-OD-wXm"/>
+                    <constraint firstAttribute="trailing" secondItem="KyU-pB-vdQ" secondAttribute="trailing" id="x6x-jk-1Tj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="preparationTimeLabel" destination="OCf-SO-XVl" id="Es4-jw-v74"/>
+                <outlet property="recipeDescriptionLabel" destination="1C2-ZB-6Ae" id="iJg-yk-cCU"/>
+                <outlet property="recipeImageView" destination="GyQ-EA-wS0" id="YPo-ly-sfx"/>
+                <outlet property="recipeTitleLabel" destination="SdH-bf-Skp" id="JUW-j5-XjI"/>
+            </connections>
+            <point key="canvasLocation" x="-39" y="42.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="clockCircular" width="26" height="26"/>
+    </resources>
+</document>
