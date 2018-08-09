@@ -122,6 +122,15 @@
 			path = CustomTableView;
 			sourceTree = "<group>";
 		};
+		913BC9CE211CDDB2001504E6 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */,
+				913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */,
+			);
+			path = TableViews;
+			sourceTree = "<group>";
+		};
 		91D372C1210E0355004BFECA = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +156,7 @@
 				91D372F1210E13ED004BFECA /* Model */,
 				91D372F2210E13F8004BFECA /* View */,
 				91D372F3210E140E004BFECA /* Controller */,
+				91F681FC211217D80007D5B1 /* ListeningActionsProtocol.swift */,
 				91D372F4210E147A004BFECA /* SupportingFiles */,
 			);
 			path = Reciplease;
@@ -177,9 +187,6 @@
 				913BC9C721174027001504E6 /* CustomTableView */,
 				913BC9C121173DB5001504E6 /* CustomCell */,
 				913BC9C221173DE7001504E6 /* CustomDetailView */,
-				91F681FC211217D80007D5B1 /* ListeningActionsProtocol.swift */,
-				913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */,
-				913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 				913482CA210F512900C71BB2 /* ResultsViewController.swift */,
 				913482CC210F516400C71BB2 /* DetailViewController.swift */,
 				913482D2210FA13600C71BB2 /* FavoritesController */,
+				913BC9CE211CDDB2001504E6 /* TableViews */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
