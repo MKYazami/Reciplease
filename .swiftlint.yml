@@ -6,3 +6,11 @@ disabled_rules: # rule identifiers to exclude from running
   - todo
   - weak_delegate
   - nesting
+  - type_body_length
+  - opening_brace
+  - operator_whitespace
+  - file_length
+  - statement_position
+  - cyclomatic_complexity
+  - function_body_length
+  - for_where
