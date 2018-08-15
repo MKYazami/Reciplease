@@ -21,6 +21,7 @@
 		913BC9CB211748B8001504E6 /* RecipeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */; };
 		913BC9CD2117531A001504E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9CC2117531A001504E6 /* Constants.swift */; };
 		914827EF212419F100CB25B1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827EE212419F100CB25B1 /* Recipe.swift */; };
+		914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F021241B6D00CB25B1 /* RecipeService.swift */; };
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
 		91D372D3210E0355004BFECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D1210E0355004BFECA /* Main.storyboard */; };
 		91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */; };
@@ -60,6 +61,7 @@
 		913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewDataSource.swift; sourceTree = "<group>"; };
 		913BC9CC2117531A001504E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		914827EE212419F100CB25B1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		914827F021241B6D00CB25B1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		91D372CA210E0355004BFECA /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D372CD210E0355004BFECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D372D2210E0355004BFECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */,
 				914827EE212419F100CB25B1 /* Recipe.swift */,
+				914827F021241B6D00CB25B1 /* RecipeService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */,
 				913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */,
 				91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */,
+				914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */,
 				913482CD210F516400C71BB2 /* DetailViewController.swift in Sources */,
 				913BC9C9211746B1001504E6 /* TableViewConfigurator.swift in Sources */,
 				914827EF212419F100CB25B1 /* Recipe.swift in Sources */,
