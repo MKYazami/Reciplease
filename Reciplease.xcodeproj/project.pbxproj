@@ -172,8 +172,8 @@
 		914827F621242E9800CB25B1 /* URLStringTypes */ = {
 			isa = PBXGroup;
 			children = (
-				914827F2212420CC00CB25B1 /* URLStringType.swift */,
 				914827F42124213500CB25B1 /* YummlyURLString.swift */,
+				914827F2212420CC00CB25B1 /* URLStringType.swift */,
 			);
 			path = URLStringTypes;
 			sourceTree = "<group>";

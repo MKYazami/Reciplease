@@ -7,25 +7,43 @@
 //
 
 import Foundation
+import Alamofire
 
 class RecipeService {
+    
     private let urlStringType: URLStringType
     private let recipeSession: URLSession
     
-    init(urlStringType: URLStringType, recipeSession: URLSession) {
+    init(urlStringType: URLStringType, recipeSession: URLSession = URLSession(configuration: .default)) {
         self.urlStringType = urlStringType
         self.recipeSession = recipeSession
     }
     
-    func downloadRecipe(ingredients: [String], callback: @escaping (Bool, Recipe?) -> Void) {
-        
+    func downloadRecipe(callback: @escaping (Bool, Recipe?) -> Void) {
+        let urlString = urlStringType.urlString
+        Alamofire.request(urlString).response { (response) in
+            
+            // Check if data ≠ nil & no error
+            guard let data = response.data, response.error == nil else {
+                callback(false, nil)
+                return
+            }
+            
+            // Check correct response
+            guard let response = response.response, response.statusCode == 200 else {
+                callback(false, nil)
+                return
+            }
+            
+            // Decode JSON data
+            guard let recipe = try? JSONDecoder().decode(Recipe.self, from: data) else {
+                callback(false, nil)
+                return
+            }
+            
+            // If all verifications success return callback true & recipe
+            callback(true, recipe)
+        }
     }
     
-    /// Allows to extract an ingredients array to formated ingredients string to send them in url parameter
-    ///
-    /// - Parameter ingredients: Array of ingredients coming from user
-    /// - Returns: URL string for API query
-    private func extractIngredientsArrayToURLString(ingredients: [String]) -> String {
-        return ""
-    }
 }

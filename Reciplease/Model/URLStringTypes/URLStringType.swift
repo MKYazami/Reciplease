@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// This protocol force the types to adopt a minimum required properties to get url string for recipes results
 protocol URLStringType {
+    
+    var ingredients: [String] { get set }
+    
     var urlString: String { get }
 }
