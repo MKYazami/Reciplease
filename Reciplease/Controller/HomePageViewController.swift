@@ -86,12 +86,24 @@ class HomePageViewController: UIViewController {
 
 // MARK: Text Field
 extension HomePageViewController: UITextFieldDelegate {
+    // Dismiss Keyboard by touching anywhere in the screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
+    // Dismiss Keyboard by touching return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
     }
+    
+    // Allows to enter only letters & whitespaces in text field keyboard
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharatersForKeyboard = CharacterSet.letters
+        let allowedWhitespacesForKeyboard = CharacterSet.whitespaces
+        
+        let characterSetForKeyboard = CharacterSet(charactersIn: string)
+        return allowedCharatersForKeyboard.isSuperset(of: characterSetForKeyboard) || allowedWhitespacesForKeyboard.isSuperset(of: characterSetForKeyboard)
+    }
+    
 }
