@@ -32,6 +32,7 @@ class HomePageViewController: UIViewController {
     // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegatesSetup()
         resetTextsViews()
     }
     
@@ -76,5 +77,21 @@ class HomePageViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
+    
+    private func delegatesSetup() {
+        ingredientsTextField.delegate = self
+    }
 
+}
+
+// MARK: Text Field
+extension HomePageViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
 }
