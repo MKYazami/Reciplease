@@ -18,6 +18,7 @@ class HomePageViewController: UIViewController {
     // MARK: Actions
     @IBAction func addIngredients() {
         getIngredientsFromTextField(ingredients: ingredientsTextField.text)
+        resetIngredientsTextField()
     }
     
     @IBAction func clearIngredients() {
@@ -34,7 +35,7 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
-        resetTextsViews()
+        resetTexts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +70,11 @@ class HomePageViewController: UIViewController {
         
         // Fill ingredients from array to string with new line to present them as list format
         for ingredient in ingredients {
-            if ingredient.count > 2 && !ingredient.isEmpty  {
+            if ingredient.count > 2 && !ingredient.isEmpty {
+                // TODO: Check Doubles ingredients ?
+                // Check if ingredient already exists in ingredientsTextView.text
+                // 1 Transform ingredientsTextView.text to an array
+                // OR transform ingredientsTextView.text & ingredientsTextField.text to an array to check all
                 ingredientToList += "﹆ \(ingredient) \n"
             }
         }
@@ -88,7 +93,7 @@ class HomePageViewController: UIViewController {
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             self.view.endEditing(true)
-            self.ingredientsTextView.text = ""
+            self.resetIndredientsTextView()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
@@ -101,10 +106,20 @@ class HomePageViewController: UIViewController {
         present(alertMessage, animated: true, completion: nil)
     }
     
-    /// Reset text field & text view as empty texts
-    private func resetTextsViews() {
+    /// Reset ingredients text field as empty text
+    private func resetIngredientsTextField() {
         ingredientsTextField.text = ""
+    }
+    
+    /// Reset ingredients text view as empty text
+    private func resetIndredientsTextView() {
         ingredientsTextView.text = ""
+    }
+    
+    /// Reset text field & text view as empty texts
+    private func resetTexts() {
+        resetIngredientsTextField()
+        resetIndredientsTextView()
     }
     
     private func setupDelegates() {
