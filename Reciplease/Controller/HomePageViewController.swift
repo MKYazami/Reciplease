@@ -48,13 +48,12 @@ class HomePageViewController: UIViewController {
     /// - Parameter ingredients: String contained in the text field
     private func getIngredientsFromTextField(ingredients: String?) {
         
-        guard let ingredients = ingredients else {
-            return
-        }
+        guard let ingredients = ingredients else { return }
         
         if !ingredients.isEmpty {
+            
             // Transforming the ingredients in string separated by space to ingredients in array
-            let ingredientsInArray = ingredients.components(separatedBy: [" "])
+            let ingredientsInArray = ingredients.convertStringToStringArrayString(separator: [" "])
         
             addIngredientsToTextView(ingredients: ingredientsInArray)
         }
@@ -67,18 +66,21 @@ class HomePageViewController: UIViewController {
         
         // ingredientsTextView.text + "" => To avoid losing previously entered ingredients after erasing the text field
         var ingredientToList = ingredientsTextView.text + ""
+
+        let nonDuplicatedIngredients = [Any].removeDuplicatedStringArrayItem(stringArray: ingredients)
         
         // Fill ingredients from array to string with new line to present them as list format
-        for ingredient in ingredients {
+        for ingredient in nonDuplicatedIngredients {
             if ingredient.count > 2 && !ingredient.isEmpty {
                 // TODO: Check Doubles ingredients ?
                 // Check if ingredient already exists in ingredientsTextView.text
                 // 1 Transform ingredientsTextView.text to an array
                 // OR transform ingredientsTextView.text & ingredientsTextField.text to an array to check all
+                
                 ingredientToList += "﹆ \(ingredient) \n"
             }
         }
-        
+    
         ingredientsTextView.text = ingredientToList
         
         // Dismiss keyboard after add ingredient(s)
@@ -87,6 +89,38 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    private func removeDuplicatedIngrientsListFromTextView(ingredientsFromTextView: String?) -> [String] {
+        guard let ingredientsFromTextView = ingredientsFromTextView else { return [""] }
+        
+        let ingredientsInArray = ingredientsFromTextView.convertStringToStringArrayString(separator: [" ", "\n"])
+        
+        let uniqueIngredients = [Any].removeDuplicatedStringArrayItem(stringArray: ingredientsInArray)
+        
+        return uniqueIngredients
+    }
+    
+    // TODO: To Remove?
+//
+//    private func checkIfIngridientIsUniq(ingredientsFromTextField: [String], ingredientsFromTextView: String?) -> Bool {
+//        guard let ingredientsFromTextView = ingredientsFromTextView else { return false }
+//
+//        let ingredientInArray = ingredientsFromTextView.convertStringToStringArrayString(separator: ["\n"])
+//
+//        // TODO: Check Doubles ingredients ?
+//        for ingredientInTextView in ingredientInArray {
+//            for ingredientInTextField in ingredientsFromTextField {
+//
+//                let trimmedIngredientInTextView = ingredientInTextView.trimmingCharacters(in: .whitespaces)
+//                let trimmedIngredientInTextField = ingredientInTextField.trimmingCharacters(in: .whitespaces)
+//                if trimmedIngredientInTextView.lowercased() == trimmedIngredientInTextField.lowercased() {
+//                    return false
+//                }
+//            }
+//        }
+//
+//        return true
+//    }
+
     /// Present confirmation message to delete the ingredients from text view with the possibility to cancel the deletation
     private func clearIngredientsConfirmation() {
         let alertMessage = UIAlertController(title: "Delete all ingredients?", message: "If you erase the ingredients you will not be able to recover them!", preferredStyle: .alert)
@@ -105,6 +139,8 @@ class HomePageViewController: UIViewController {
         
         present(alertMessage, animated: true, completion: nil)
     }
+    
+    // MARK: Reset texts
     
     /// Reset ingredients text field as empty text
     private func resetIngredientsTextField() {
