@@ -24,6 +24,7 @@
 		914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F021241B6D00CB25B1 /* RecipeService.swift */; };
 		914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F2212420CC00CB25B1 /* URLStringType.swift */; };
 		914827F52124213500CB25B1 /* YummlyURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F42124213500CB25B1 /* YummlyURLString.swift */; };
+		9193E59321416ED90047950D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59221416ED90047950D /* Array.swift */; };
 		91C5DD422129C38F002D255F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5DD412129C38F002D255F /* String.swift */; };
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
 		91D372D3210E0355004BFECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D1210E0355004BFECA /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		914827F021241B6D00CB25B1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		914827F2212420CC00CB25B1 /* URLStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStringType.swift; sourceTree = "<group>"; };
 		914827F42124213500CB25B1 /* YummlyURLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyURLString.swift; sourceTree = "<group>"; };
+		9193E59221416ED90047950D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		91C5DD412129C38F002D255F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		91D372CA210E0355004BFECA /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D372CD210E0355004BFECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				91C5DD412129C38F002D255F /* String.swift */,
+				9193E59221416ED90047950D /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91C5DD422129C38F002D255F /* String.swift in Sources */,
+				9193E59321416ED90047950D /* Array.swift in Sources */,
 				91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */,
 				913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */,
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,

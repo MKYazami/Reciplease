@@ -22,21 +22,3 @@ extension String {
     }
     
 }
-
-extension Array {
-    
-    /// Allows to remove duplicated items in an array of string
-    ///
-    /// - Parameter stringArray: Array to be purged from duplications
-    /// - Returns: Array with unique items
-    static func removeDuplicatedStringArrayItem(stringArray: [String]) -> [String] {
-        // Removing duplicated items by converting to set string
-        let uniqueItems = Set<String>(stringArray)
-        
-        // Convert back to array
-        let uniqueItemsStringArray = [String](uniqueItems)
-        
-        return uniqueItemsStringArray
-    }
-    
-}

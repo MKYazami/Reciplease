@@ -66,21 +66,19 @@ class HomePageViewController: UIViewController {
         
         // ingredientsTextView.text + "" => To avoid losing previously entered ingredients after erasing the text field
         var ingredientToList = ingredientsTextView.text + ""
-
+        
+        // Removing duplicated ingredient entred by user in text field => ex : orange lemon orange❌
         let nonDuplicatedIngredients = [Any].removeDuplicatedStringArrayItem(stringArray: ingredients)
         
+        if checkIfIngridientIsUnique(ingredientsFromTextField: ingredients, ingredientsFromTextView: ingredientsTextView.text) {
         // Fill ingredients from array to string with new line to present them as list format
-        for ingredient in nonDuplicatedIngredients {
-            if ingredient.count > 2 && !ingredient.isEmpty {
-                // TODO: Check Doubles ingredients ?
-                // Check if ingredient already exists in ingredientsTextView.text
-                // 1 Transform ingredientsTextView.text to an array
-                // OR transform ingredientsTextView.text & ingredientsTextField.text to an array to check all
-                
-                ingredientToList += "﹆ \(ingredient) \n"
+            for ingredient in nonDuplicatedIngredients {
+                if ingredient.count > 2 && !ingredient.isEmpty {
+                    ingredientToList += "\(ingredient)\n"
+                }
             }
         }
-    
+        
         ingredientsTextView.text = ingredientToList
         
         // Dismiss keyboard after add ingredient(s)
@@ -88,38 +86,29 @@ class HomePageViewController: UIViewController {
             view.endEditing(true)
         }
     }
-    
-    private func removeDuplicatedIngrientsListFromTextView(ingredientsFromTextView: String?) -> [String] {
-        guard let ingredientsFromTextView = ingredientsFromTextView else { return [""] }
+
+    /// Check if an ingredient already exits in the ingredient list in the text view
+    ///
+    /// - Parameters:
+    ///   - ingredientsFromTextField: Ingredients coming from text field
+    ///   - ingredientsFromTextView: Ingredients already in the list (text view)
+    /// - Returns: true if ingredient is unique
+    private func checkIfIngridientIsUnique(ingredientsFromTextField: [String], ingredientsFromTextView: String?) -> Bool {
+        guard let ingredientsFromTextView = ingredientsFromTextView else { return false }
         
-        let ingredientsInArray = ingredientsFromTextView.convertStringToStringArrayString(separator: [" ", "\n"])
+        // Convert string ingredients to array to check them
+        let ingredientsFromTextViewInArray = ingredientsFromTextView.convertStringToStringArrayString(separator: ["\n"])
         
-        let uniqueIngredients = [Any].removeDuplicatedStringArrayItem(stringArray: ingredientsInArray)
-        
-        return uniqueIngredients
+        for ingredientInTextView in ingredientsFromTextViewInArray {
+            for ingredientInTextField in ingredientsFromTextField {
+                if ingredientInTextView.lowercased() == ingredientInTextField.lowercased() {
+                    return false
+                }
+            }
+        }
+
+        return true
     }
-    
-    // TODO: To Remove?
-//
-//    private func checkIfIngridientIsUniq(ingredientsFromTextField: [String], ingredientsFromTextView: String?) -> Bool {
-//        guard let ingredientsFromTextView = ingredientsFromTextView else { return false }
-//
-//        let ingredientInArray = ingredientsFromTextView.convertStringToStringArrayString(separator: ["\n"])
-//
-//        // TODO: Check Doubles ingredients ?
-//        for ingredientInTextView in ingredientInArray {
-//            for ingredientInTextField in ingredientsFromTextField {
-//
-//                let trimmedIngredientInTextView = ingredientInTextView.trimmingCharacters(in: .whitespaces)
-//                let trimmedIngredientInTextField = ingredientInTextField.trimmingCharacters(in: .whitespaces)
-//                if trimmedIngredientInTextView.lowercased() == trimmedIngredientInTextField.lowercased() {
-//                    return false
-//                }
-//            }
-//        }
-//
-//        return true
-//    }
 
     /// Present confirmation message to delete the ingredients from text view with the possibility to cancel the deletation
     private func clearIngredientsConfirmation() {
