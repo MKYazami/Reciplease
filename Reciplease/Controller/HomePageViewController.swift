@@ -14,6 +14,7 @@ class HomePageViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var ingredientsTextView: UITextView!
+    @IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
     
     // MARK: Actions
     @IBAction func addIngredients() {

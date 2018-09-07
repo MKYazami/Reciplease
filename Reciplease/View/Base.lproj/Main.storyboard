@@ -213,9 +213,9 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEK-P1-hEq">
                                         <rect key="frame" x="27" y="55" width="277" height="235"/>
                                         <color key="backgroundColor" red="0.95247513055801392" green="0.47096073627471924" blue="0.22007259726524353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">﹆Tomatoes 
-﹆Fish
-﹆Cheese</string>
+                                        <string key="text">Tomatoes 
+Fish
+Cheese</string>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -235,6 +235,9 @@
                                             <segue destination="7rK-pF-ygL" kind="show" id="68E-wH-xUA"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-dC-jrs">
+                                        <rect key="frame" x="150" y="326" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95247513055801392" green="0.47096073627471924" blue="0.22007259726524353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -242,11 +245,13 @@
                                     <constraint firstItem="Vez-G7-QcY" firstAttribute="top" secondItem="ADC-dF-9RF" secondAttribute="top" constant="17" id="6It-bU-eV0"/>
                                     <constraint firstItem="j5h-BN-VvV" firstAttribute="top" secondItem="ADC-dF-9RF" secondAttribute="top" constant="15" id="FUX-Ew-efi"/>
                                     <constraint firstItem="Vez-G7-QcY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j5h-BN-VvV" secondAttribute="trailing" constant="100" id="Huq-pg-Lzi"/>
+                                    <constraint firstItem="K5R-dC-jrs" firstAttribute="centerY" secondItem="HbF-EQ-iIq" secondAttribute="centerY" id="KXw-50-AGe"/>
                                     <constraint firstItem="kEK-P1-hEq" firstAttribute="leading" secondItem="ADC-dF-9RF" secondAttribute="leading" constant="27" id="PIH-5k-wgG"/>
-                                    <constraint firstAttribute="trailing" secondItem="HbF-EQ-iIq" secondAttribute="trailing" constant="16" id="THW-8A-n6f"/>
-                                    <constraint firstItem="HbF-EQ-iIq" firstAttribute="leading" secondItem="ADC-dF-9RF" secondAttribute="leading" constant="16" id="VPX-ER-aar"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="HbF-EQ-iIq" secondAttribute="trailing" constant="16" id="THW-8A-n6f"/>
+                                    <constraint firstItem="HbF-EQ-iIq" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ADC-dF-9RF" secondAttribute="leading" constant="16" id="VPX-ER-aar"/>
                                     <constraint firstItem="j5h-BN-VvV" firstAttribute="leading" secondItem="ADC-dF-9RF" secondAttribute="leading" constant="16" id="bLK-vY-j69"/>
                                     <constraint firstAttribute="trailing" secondItem="Vez-G7-QcY" secondAttribute="trailing" constant="16" id="gTr-7D-2fe"/>
+                                    <constraint firstItem="K5R-dC-jrs" firstAttribute="centerX" secondItem="HbF-EQ-iIq" secondAttribute="centerX" id="hPb-RA-ykD"/>
                                     <constraint firstItem="kEK-P1-hEq" firstAttribute="top" secondItem="Vez-G7-QcY" secondAttribute="bottom" constant="8" id="uHP-tP-qqh"/>
                                     <constraint firstItem="HbF-EQ-iIq" firstAttribute="top" secondItem="kEK-P1-hEq" secondAttribute="bottom" constant="22" id="v7l-wa-hGm"/>
                                     <constraint firstAttribute="bottom" secondItem="HbF-EQ-iIq" secondAttribute="bottom" constant="8" id="zOD-c4-pf0"/>
@@ -271,6 +276,7 @@
                     <connections>
                         <outlet property="ingredientsTextField" destination="ueH-BK-1Sj" id="aAN-6V-6LI"/>
                         <outlet property="ingredientsTextView" destination="kEK-P1-hEq" id="Z7r-qE-X6O"/>
+                        <outlet property="searchActivityIndicator" destination="K5R-dC-jrs" id="byt-ek-AWo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FY4-Sx-smu" userLabel="First Responder" sceneMemberID="firstResponder"/>
