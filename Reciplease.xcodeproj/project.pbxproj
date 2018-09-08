@@ -18,7 +18,6 @@
 		913BC9C421173E4F001504E6 /* RecipeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9C321173E4F001504E6 /* RecipeTableView.swift */; };
 		913BC9C621173E5C001504E6 /* RecipeTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913BC9C521173E5C001504E6 /* RecipeTableView.xib */; };
 		913BC9C9211746B1001504E6 /* TableViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */; };
-		913BC9CB211748B8001504E6 /* RecipeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */; };
 		913BC9CD2117531A001504E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9CC2117531A001504E6 /* Constants.swift */; };
 		914827EF212419F100CB25B1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827EE212419F100CB25B1 /* Recipe.swift */; };
 		914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F021241B6D00CB25B1 /* RecipeService.swift */; };
@@ -62,7 +61,6 @@
 		913BC9C321173E4F001504E6 /* RecipeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableView.swift; sourceTree = "<group>"; };
 		913BC9C521173E5C001504E6 /* RecipeTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableView.xib; sourceTree = "<group>"; };
 		913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewConfigurator.swift; sourceTree = "<group>"; };
-		913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewDataSource.swift; sourceTree = "<group>"; };
 		913BC9CC2117531A001504E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		914827EE212419F100CB25B1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		914827F021241B6D00CB25B1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */,
-				913BC9CA211748B8001504E6 /* RecipeTableViewDataSource.swift */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 				914827EF212419F100CB25B1 /* Recipe.swift in Sources */,
 				913482CB210F512900C71BB2 /* ResultsViewController.swift in Sources */,
 				914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */,
-				913BC9CB211748B8001504E6 /* RecipeTableViewDataSource.swift in Sources */,
 				913BC9CD2117531A001504E6 /* Constants.swift in Sources */,
 				91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */,
 				913BC9C421173E4F001504E6 /* RecipeTableView.swift in Sources */,

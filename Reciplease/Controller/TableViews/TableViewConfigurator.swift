@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// Contains methods useful for configuring Table View and Table View Cell
-struct TableViewConfigurator {
+/// Contains methods useful for configuring Table View Cell
+struct TableViewCellConfigurator {
     
     /// Allows to load cell from nib
     ///
