@@ -17,14 +17,7 @@ struct Match: Decodable {
     var imageUrlsBySize: ImageURLSize
     var recipeName: String
     var ingredients: [String]
-    var timePreparationInSeconds: Int
-    
-    private enum CondingKeys: String, CodingKey {
-        case imageUrlsBySize = "imageUrlsBySize"
-        case recipeName = "recipeName"
-        case ingredients = "ingredients"
-        case timePreparationInSeconds = "totalTimeInSeconds"
-    }
+    var totalTimeInSeconds: Int
     
 }
 

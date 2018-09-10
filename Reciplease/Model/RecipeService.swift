@@ -14,11 +14,19 @@ class RecipeService {
     private let urlStringType: URLStringType
     private let recipeSession: URLSession
     
+    /// Init the recipe service with urlStringType and recipeSession which by default is ".default" if we need a specific session we set it in the init in recipeSession
+    ///
+    /// - Parameters:
+    ///   - urlStringType: URL String Type
+    ///   - recipeSession: URLSession type
     init(urlStringType: URLStringType, recipeSession: URLSession = URLSession(configuration: .default)) {
         self.urlStringType = urlStringType
         self.recipeSession = recipeSession
     }
     
+    /// Download recipes from remote API
+    ///
+    /// - Parameter callback: Contains 2 parameters 1 Bool for to set success and the seconde Recipe to get recipes
     func downloadRecipe(callback: @escaping (Bool, Recipe?) -> Void) {
         let urlString = urlStringType.urlString
         Alamofire.request(urlString).response { (response) in
@@ -37,6 +45,7 @@ class RecipeService {
             
             // Decode JSON data
             guard let recipe = try? JSONDecoder().decode(Recipe.self, from: data) else {
+                print("Problem of decodage")
                 callback(false, nil)
                 return
             }

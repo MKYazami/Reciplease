@@ -37,12 +37,27 @@ class RecipeTableViewCell: UITableViewCell {
     /// - Parameters:
     ///   - preparationTime: Time of preparation
     ///   - recipeTitle: Recipe title
-    ///   - recipeDescription: Recipe description
+    ///   - recipeDescriptions: Recipe description
     ///   - recipeImage: Recipe image
-    func cellConfigurator(preparationTime: String, recipeTitle: String, recipeDescription: String, recipeImage: UIImage) {
+    func cellConfigurator(preparationTime: String, recipeTitle: String, recipeDescriptions: [String], recipeImage: UIImage) {
         preparationTimeLabel.text = preparationTime
         recipeTitleLabel.text = recipeTitle
-        recipeDescriptionLabel.text = recipeDescription
+        recipeDescriptionLabel.text = getStringRecipeDescriptionsFromArray(recipeDescriptions: recipeDescriptions)
         recipeImageView.image = recipeImage
     }
+    
+    /// Allows to get recipe desciptions from an array to string to display it
+    ///
+    /// - Parameter recipeDescriptions: the string array of recipe descriptions
+    /// - Returns: recipe descriptions in form of string
+    private func getStringRecipeDescriptionsFromArray(recipeDescriptions: [String]) -> String {
+        var descriptions = ""
+        
+        for recipeDescription in recipeDescriptions {
+            descriptions += recipeDescription + " "
+        }
+        
+        return descriptions
+    }
+    
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     // MARK: Properties
+    var recipes: Recipe!
     
     // MARK: Outlets
     @IBOutlet weak var ingredientsTextField: UITextField!
@@ -29,7 +30,8 @@ class HomePageViewController: UIViewController {
     }
         
     @IBAction func searchRecipes() {
-        
+        getRecipes()
+//        performSegue(withIdentifier: "segueToRecipesResults", sender: self)
     }
     
     // MARK: Methods
@@ -42,6 +44,29 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToRecipesResults" {
+            let resultesVC = segue.destination as! ResultsViewController
+            resultesVC.recipes = recipes
+        }
+    }
+    
+    private func getRecipes() {
+        guard let ingredients = ingredientsTextView.text else { return }
+        let ingredientsInArray = ingredients.convertStringToStringArrayString(separator: ["\n"])
+        
+        guard ingredientsInArray.count > 0 else { return }
+        
+        RecipeService(urlStringType: YummlyURLString(ingredients: ingredientsInArray)).downloadRecipe { (success, recipe) in
+            if success, let recipe = recipe {
+                self.recipes = recipe
+                self.performSegue(withIdentifier: "segueToRecipesResults", sender: self)
+            } else {
+                self.alertMessage(title: "Network Problem!", message: "Please check your connection or try again later")
+            }
+        }
     }
     
     /// Get ingredient from user entred in text field
@@ -150,6 +175,18 @@ class HomePageViewController: UIViewController {
     
     private func setupDelegates() {
         ingredientsTextField.delegate = self
+    }
+    
+    /// Display pop up to warn the user
+    ///
+    /// - Parameters:
+    ///   - title: Alert title
+    ///   - message: Message title
+    private func alertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
 
 }

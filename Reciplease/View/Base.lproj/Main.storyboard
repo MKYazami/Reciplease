@@ -232,7 +232,6 @@ Cheese</string>
                                         </state>
                                         <connections>
                                             <action selector="searchRecipes" destination="oTG-kQ-iXC" eventType="touchUpInside" id="KTl-64-YCu"/>
-                                            <segue destination="7rK-pF-ygL" kind="show" id="68E-wH-xUA"/>
                                         </connections>
                                     </button>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-dC-jrs">
@@ -277,6 +276,7 @@ Cheese</string>
                         <outlet property="ingredientsTextField" destination="ueH-BK-1Sj" id="aAN-6V-6LI"/>
                         <outlet property="ingredientsTextView" destination="kEK-P1-hEq" id="Z7r-qE-X6O"/>
                         <outlet property="searchActivityIndicator" destination="K5R-dC-jrs" id="byt-ek-AWo"/>
+                        <segue destination="7rK-pF-ygL" kind="show" identifier="segueToRecipesResults" id="hEH-Tb-Ddf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FY4-Sx-smu" userLabel="First Responder" sceneMemberID="firstResponder"/>

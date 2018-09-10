@@ -64,7 +64,7 @@ extension FaforitesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.cellConfigurator(preparationTime: "10", recipeTitle: cellTitles[indexPath.row], recipeDescription: cellDescriptions[indexPath.row], recipeImage: UIImage(imageLiteralResourceName: "AppIcon"))
+        cell.cellConfigurator(preparationTime: "10", recipeTitle: cellTitles[indexPath.row], recipeDescriptions: [cellDescriptions[indexPath.row]], recipeImage: UIImage(imageLiteralResourceName: "AppIcon"))
         
         return cell
     }
