@@ -38,12 +38,12 @@ class RecipeTableViewCell: UITableViewCell {
     ///   - preparationTime: Time of preparation
     ///   - recipeTitle: Recipe title
     ///   - recipeDescriptions: Recipe description
-    ///   - recipeImage: Recipe image
-    func cellConfigurator(preparationTime: String, recipeTitle: String, recipeDescriptions: [String], recipeImage: UIImage) {
+    ///   - recipeURLStringImage: URL string recipe image
+    func cellConfigurator(preparationTime: String, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?) {
         preparationTimeLabel.text = preparationTime
         recipeTitleLabel.text = recipeTitle
         recipeDescriptionLabel.text = getStringRecipeDescriptionsFromArray(recipeDescriptions: recipeDescriptions)
-        recipeImageView.image = recipeImage
+        recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
     }
     
     /// Allows to get recipe desciptions from an array to string to display it

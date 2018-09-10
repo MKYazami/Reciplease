@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-pB-vdQ" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GyQ-EA-wS0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="GyQ-EA-wS0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="xFh-y0-RbW"/>
@@ -108,5 +108,6 @@
     </objects>
     <resources>
         <image name="clockCircular" width="26" height="26"/>
+        <image name="defaultImage" width="600" height="150"/>
     </resources>
 </document>
