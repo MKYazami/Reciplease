@@ -66,7 +66,7 @@ extension ResultsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        cell.cellConfigurator(preparationTime: String(recipes.matches[indexPath.row].totalTimeInSeconds), recipeTitle: recipes.matches[indexPath.row].recipeName, recipeDescriptions: recipes.matches[indexPath.row].ingredients, recipeURLStringImage: recipes.matches[indexPath.row].imageUrlsBySize.imageSize90)
+        cell.cellConfigurator(preparationTime: recipes.matches[indexPath.row].totalTimeInSeconds, recipeTitle: recipes.matches[indexPath.row].recipeName, recipeDescriptions: recipes.matches[indexPath.row].ingredients, recipeURLStringImage: recipes.matches[indexPath.row].imageUrlsBySize.imageSize90)
 
         return cell
     }

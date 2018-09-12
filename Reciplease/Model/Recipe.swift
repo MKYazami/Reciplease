@@ -28,3 +28,30 @@ struct ImageURLSize: Decodable {
         case imageSize90 = "90"
     }
 }
+
+// MARK: Methods Recipe
+extension Recipe {
+    
+    /// Convert number of seconds in hours & mintes OR rounded minutes for time less than 1 hour
+    ///
+    /// - Parameter numberOfSeconds: number of seconds to convert
+    /// - Returns: number of minutes OR hours & minutes
+    static func convertSecondsToMinutesOrHours(numberOfSeconds: Int) -> String {
+        
+        let secondsInDouble = Double(numberOfSeconds)
+        
+        if numberOfSeconds > 3598 {
+            let hoursAndMinutes = UnitDuration.hours.converter.value(fromBaseUnitValue: secondsInDouble)
+            let minutesFromHours = Float(hoursAndMinutes).truncatingRemainder(dividingBy: 1)
+            let hours = Int(hoursAndMinutes)
+            
+            return String(hours) + "h" + String(format: "%.0f", minutesFromHours * 60)
+        } else {
+            let minutes = UnitDuration.minutes.converter.value(fromBaseUnitValue: secondsInDouble)
+            
+            return String(Int(round(minutes))) + "m"
+        }
+        
+    }
+    
+}

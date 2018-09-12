@@ -39,8 +39,8 @@ class RecipeTableViewCell: UITableViewCell {
     ///   - recipeTitle: Recipe title
     ///   - recipeDescriptions: Recipe description
     ///   - recipeURLStringImage: URL string recipe image
-    func cellConfigurator(preparationTime: String, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?) {
-        preparationTimeLabel.text = preparationTime
+    func cellConfigurator(preparationTime: Int, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?) {
+        preparationTimeLabel.text = Recipe.convertSecondsToMinutesOrHours(numberOfSeconds: preparationTime)
         recipeTitleLabel.text = recipeTitle
         recipeDescriptionLabel.text = getStringRecipeDescriptionsFromArray(recipeDescriptions: recipeDescriptions)
         recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
@@ -54,7 +54,11 @@ class RecipeTableViewCell: UITableViewCell {
         var descriptions = ""
         
         for recipeDescription in recipeDescriptions {
-            descriptions += recipeDescription + " "
+            if recipeDescription == recipeDescriptions.last {
+                descriptions += recipeDescription
+            } else {
+                descriptions += recipeDescription + ", "
+            }
         }
         
         return descriptions
