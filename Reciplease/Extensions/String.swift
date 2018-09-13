@@ -15,10 +15,17 @@ extension String {
     /// - Parameters:
     ///   - separator: separator caracterset in the form of string array as ["," , " ", "-"]
     /// - Returns: String array
-    func convertStringToStringArrayString(separator: CharacterSet) -> [String] {
+    func convertStringToStringArray(separator: CharacterSet) -> [String] {
         let convertedArray = self.components(separatedBy: separator)
         
         return convertedArray
+    }
+    
+    func convertStringToStringSet(separator: CharacterSet) -> Set<String> {
+        let convertedArray = self.components(separatedBy: separator)
+        let convertedSet = Set(convertedArray)
+        
+        return convertedSet
     }
     
 }

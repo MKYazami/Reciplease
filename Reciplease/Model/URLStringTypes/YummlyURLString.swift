@@ -30,12 +30,14 @@ struct YummlyURLString: URLStringType {
         var ingredientsStr = ""
         
         for ingredient in ingredients {
+            // Removing ”﹆ ” to perform a clean request to the API
+            let cleanStringIngredient = ingredient.replacingOccurrences(of: "﹆ ", with: "")
             
             if ingredient == ingredients.last {
-                ingredientsStr += "\(ingredient)"
+                ingredientsStr += "\(cleanStringIngredient)"
             } else {
                 // Add + after each ingredient if ≠ to last item
-                ingredientsStr += "\(ingredient)+"
+                ingredientsStr += "\(cleanStringIngredient)+"
             }
         }
         

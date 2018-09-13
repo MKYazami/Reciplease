@@ -11,6 +11,9 @@ import UIKit
 class HomePageViewController: UIViewController {
     // MARK: Properties
     var recipes: Recipe!
+    /// String set to remove duplicated ingredients in text view.
+    /// All ingredients are strored in this set untill the user decides to clear all ingredients.
+    var ingredientsSetInTextView = Set<String>()
     
     // MARK: Outlets
     @IBOutlet weak var ingredientsTextField: UITextField!
@@ -30,8 +33,11 @@ class HomePageViewController: UIViewController {
     }
         
     @IBAction func searchRecipes() {
-        getRecipes()
-//        performSegue(withIdentifier: "segueToRecipesResults", sender: self)
+        if !ingredientsSetInTextView.isEmpty {
+            getRecipes()
+        } else {
+            alertMessage(title: "No ingredients!", message: "Thank you to enter at least one ingredient to get recipe")
+        }
     }
     
     // MARK: Methods
@@ -55,7 +61,7 @@ class HomePageViewController: UIViewController {
     
     private func getRecipes() {
         guard let ingredients = ingredientsTextView.text else { return }
-        let ingredientsInArray = ingredients.convertStringToStringArrayString(separator: ["\n"])
+        let ingredientsInArray = ingredients.convertStringToStringArray(separator: ["\n"])
         
         guard ingredientsInArray.count > 0 else { return }
         
@@ -77,9 +83,11 @@ class HomePageViewController: UIViewController {
         guard let ingredients = ingredients else { return }
         
         if !ingredients.isEmpty {
+            // Remove spaces at the beginning and end of the string to avoid bugs when adding ingredients in the text view
+            let trimmedIngredients = ingredients.trimmingCharacters(in: .whitespaces)
             
             // Transforming the ingredients in string separated by space to ingredients in array
-            let ingredientsInArray = ingredients.convertStringToStringArrayString(separator: [" "])
+            let ingredientsInArray = trimmedIngredients.convertStringToStringArray(separator: [" "])
         
             addIngredientsToTextView(ingredients: ingredientsInArray)
         }
@@ -91,18 +99,22 @@ class HomePageViewController: UIViewController {
     private func addIngredientsToTextView(ingredients: [String]) {
         
         // ingredientsTextView.text + "" => To avoid losing previously entered ingredients after erasing the text field
-        var ingredientToList = ingredientsTextView.text + ""
+        var ingredientToList = ""
         
-        // Removing duplicated ingredient entred by user in text field => ex : orange lemon orange❌
-        let nonDuplicatedIngredients = [Any].removeDuplicatedStringArrayItem(stringArray: ingredients)
+        // Removing duplicated ingredient entred by user in text field => ex : orange lemon ❌orange❌
+        let nonDuplicatedIngredientsFromTextField = [Any].removeDuplicatedStringArrayItem(stringArray: ingredients)
         
-        if checkIfIngridientIsUnique(ingredientsFromTextField: ingredients, ingredientsFromTextView: ingredientsTextView.text) {
-        // Fill ingredients from array to string with new line to present them as list format
-            for ingredient in nonDuplicatedIngredients {
+        // Insert ingredients from Array which contains ingredients from text field to the Set<String> which contains ingredients in text view to remove duplicated ingredient
+            for ingredient in nonDuplicatedIngredientsFromTextField {
                 if ingredient.count > 2 && !ingredient.isEmpty {
-                    ingredientToList += "\(ingredient)\n"
+                    // Set<String> which contains all ingredients in text view
+                    ingredientsSetInTextView.insert(ingredient)
                 }
             }
+
+        // Fill ingredients from Set<String> to string with new line to present them as list
+        for ingredient in ingredientsSetInTextView {
+            ingredientToList += "﹆ \(ingredient)\n"
         }
         
         ingredientsTextView.text = ingredientToList
@@ -111,29 +123,6 @@ class HomePageViewController: UIViewController {
         if !ingredientToList.isEmpty {
             view.endEditing(true)
         }
-    }
-
-    /// Check if an ingredient already exits in the ingredient list in the text view
-    ///
-    /// - Parameters:
-    ///   - ingredientsFromTextField: Ingredients coming from text field
-    ///   - ingredientsFromTextView: Ingredients already in the list (text view)
-    /// - Returns: true if ingredient is unique
-    private func checkIfIngridientIsUnique(ingredientsFromTextField: [String], ingredientsFromTextView: String?) -> Bool {
-        guard let ingredientsFromTextView = ingredientsFromTextView else { return false }
-        
-        // Convert string ingredients to array to check them
-        let ingredientsFromTextViewInArray = ingredientsFromTextView.convertStringToStringArrayString(separator: ["\n"])
-        
-        for ingredientInTextView in ingredientsFromTextViewInArray {
-            for ingredientInTextField in ingredientsFromTextField {
-                if ingredientInTextView.lowercased() == ingredientInTextField.lowercased() {
-                    return false
-                }
-            }
-        }
-
-        return true
     }
 
     /// Present confirmation message to delete the ingredients from text view with the possibility to cancel the deletation
@@ -165,6 +154,7 @@ class HomePageViewController: UIViewController {
     /// Reset ingredients text view as empty text
     private func resetIndredientsTextView() {
         ingredientsTextView.text = ""
+        ingredientsSetInTextView = Set<String>()
     }
     
     /// Reset text field & text view as empty texts
