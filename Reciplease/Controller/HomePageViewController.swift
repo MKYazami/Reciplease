@@ -19,6 +19,7 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var ingredientsTextView: UITextView!
     @IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchBoutton: UIButton!
     
     // MARK: Actions
     @IBAction func addIngredients() {
@@ -34,6 +35,7 @@ class HomePageViewController: UIViewController {
         
     @IBAction func searchRecipes() {
         if !ingredientsSetInTextView.isEmpty {
+            self.toogleActivityIndicator(shown: true)
             getRecipes()
         } else {
             alertMessage(title: "No ingredients!", message: "Thank you to enter at least one ingredient to get recipe")
@@ -49,7 +51,7 @@ class HomePageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.toogleActivityIndicator(shown: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,6 +73,7 @@ class HomePageViewController: UIViewController {
                 self.performSegue(withIdentifier: "segueToRecipesResults", sender: self)
             } else {
                 self.alertMessage(title: "Network Problem!", message: "Please check your connection or try again later")
+                self.toogleActivityIndicator(shown: false)
             }
         }
     }
@@ -142,6 +145,11 @@ class HomePageViewController: UIViewController {
         alertMessage.addAction(cancelAction)
         
         present(alertMessage, animated: true, completion: nil)
+    }
+    
+    private func toogleActivityIndicator(shown: Bool) {
+        searchActivityIndicator.isHidden = !shown
+        searchBoutton.isHidden = shown
     }
     
     // MARK: Reset texts
