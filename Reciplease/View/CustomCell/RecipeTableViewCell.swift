@@ -12,6 +12,7 @@ class RecipeTableViewCell: UITableViewCell {
     
     // MARK: Outlets
     
+    @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var preparationTimeLabel: UILabel!
     
     @IBOutlet weak var recipeTitleLabel: UILabel!
@@ -39,7 +40,8 @@ class RecipeTableViewCell: UITableViewCell {
     ///   - recipeTitle: Recipe title
     ///   - recipeDescriptions: Recipe description
     ///   - recipeURLStringImage: URL string recipe image
-    func cellConfigurator(preparationTime: Int, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?) {
+    func cellConfigurator(rating: Int?, preparationTime: Int, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?) {
+        ratingImageView.image = UIImage(imageLiteralResourceName: Recipe.defineRatingStars(rating: rating))
         preparationTimeLabel.text = Recipe.convertSecondsToMinutesOrHours(numberOfSeconds: preparationTime)
         recipeTitleLabel.text = recipeTitle
         recipeDescriptionLabel.text = getStringRecipeDescriptionsFromArray(recipeDescriptions: recipeDescriptions)

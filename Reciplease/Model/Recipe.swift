@@ -13,12 +13,11 @@ struct Recipe: Decodable {
 }
 
 struct Match: Decodable {
-    
+    var rating: Int?
     var imageUrlsBySize: ImageURLSize
     var recipeName: String
     var ingredients: [String]
     var totalTimeInSeconds: Int
-    
 }
 
 struct ImageURLSize: Decodable {
@@ -50,6 +49,31 @@ extension Recipe {
             let minutes = UnitDuration.minutes.converter.value(fromBaseUnitValue: secondsInDouble)
             
             return String(Int(round(minutes))) + "m"
+        }
+        
+    }
+    
+    /// Allows to get the image name depending on received rating
+    ///
+    /// - Parameter rating: rating of recipe normaly between 1 and 5 coming from remote API
+    /// - Returns: name of image to define the rating level
+    static func defineRatingStars(rating: Int?) -> String {
+        
+        guard let rating = rating else { return RatingStarsImagesNames.noRating.rawValue }
+        
+        switch rating {
+        case 1:
+            return RatingStarsImagesNames.rating1Of5.rawValue
+        case 2:
+            return RatingStarsImagesNames.rating2Of5.rawValue
+        case 3:
+            return RatingStarsImagesNames.rating3Of5.rawValue
+        case 4:
+            return RatingStarsImagesNames.rating4Of5.rawValue
+        case 5:
+            return RatingStarsImagesNames.rating5Of5.rawValue
+        default:
+            return RatingStarsImagesNames.noRating.rawValue
         }
         
     }

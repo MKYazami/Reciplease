@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,29 +27,6 @@
                                     <constraint firstAttribute="height" constant="125" id="xFh-y0-RbW"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhd-kM-ngH" userLabel="Time View">
-                                <rect key="frame" x="258" y="8" width="54" height="54"/>
-                                <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="clockCircular" translatesAutoresizingMaskIntoConstraints="NO" id="2GP-to-Was">
-                                        <rect key="frame" x="14" y="4" width="26" height="26"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-SO-XVl">
-                                        <rect key="frame" x="8" y="32" width="38" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.5072609186" green="0.50733727220000002" blue="0.5072443485" alpha="0.65611622430000005" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="OCf-SO-XVl" firstAttribute="top" secondItem="2GP-to-Was" secondAttribute="bottom" constant="2" id="1JV-tL-iQY"/>
-                                    <constraint firstItem="OCf-SO-XVl" firstAttribute="centerX" secondItem="Rhd-kM-ngH" secondAttribute="centerX" id="6Un-OH-2vi"/>
-                                    <constraint firstAttribute="width" secondItem="Rhd-kM-ngH" secondAttribute="height" multiplier="1:1" id="FV2-oK-fjw"/>
-                                    <constraint firstItem="2GP-to-Was" firstAttribute="centerX" secondItem="Rhd-kM-ngH" secondAttribute="centerX" id="N4q-J5-8Nn"/>
-                                    <constraint firstItem="2GP-to-Was" firstAttribute="top" secondItem="Rhd-kM-ngH" secondAttribute="top" constant="4" id="hrm-6o-fSU"/>
-                                    <constraint firstAttribute="bottom" secondItem="OCf-SO-XVl" secondAttribute="bottom" constant="1.5" id="l6S-mF-UEK"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-mn-ex6" userLabel="Labels Stack View">
                                 <rect key="frame" x="8" y="74" width="304" height="44"/>
                                 <subviews>
@@ -72,21 +48,50 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhd-kM-ngH" userLabel="Time View">
+                                <rect key="frame" x="231" y="4" width="85" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-SO-XVl">
+                                        <rect key="frame" x="6" y="35" width="38" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2a-ln-ixZ">
+                                        <rect key="frame" x="3" y="2" width="80" height="22"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="clockCircular" translatesAutoresizingMaskIntoConstraints="NO" id="2GP-to-Was">
+                                        <rect key="frame" x="61" y="36" width="18" height="18"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.5072609186" green="0.50733727220000002" blue="0.5072443485" alpha="0.65611622430000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="p2a-ln-ixZ" firstAttribute="leading" secondItem="Rhd-kM-ngH" secondAttribute="leading" constant="3" id="4BC-ZK-na1"/>
+                                    <constraint firstItem="OCf-SO-XVl" firstAttribute="top" secondItem="p2a-ln-ixZ" secondAttribute="bottom" constant="11" id="NZG-GR-jJq"/>
+                                    <constraint firstAttribute="bottom" secondItem="2GP-to-Was" secondAttribute="bottom" constant="4" id="PPQ-tB-c8C"/>
+                                    <constraint firstItem="p2a-ln-ixZ" firstAttribute="top" secondItem="Rhd-kM-ngH" secondAttribute="top" constant="2" id="RwY-Cy-CMI"/>
+                                    <constraint firstItem="2GP-to-Was" firstAttribute="leading" secondItem="OCf-SO-XVl" secondAttribute="trailing" constant="17" id="cFb-nK-MOO"/>
+                                    <constraint firstAttribute="trailing" secondItem="p2a-ln-ixZ" secondAttribute="trailing" constant="2" id="kbW-f4-dBc"/>
+                                    <constraint firstItem="OCf-SO-XVl" firstAttribute="leading" secondItem="Rhd-kM-ngH" secondAttribute="leading" constant="6" id="pAG-Gt-p6l"/>
+                                    <constraint firstAttribute="trailing" secondItem="2GP-to-Was" secondAttribute="trailing" constant="6" id="rxy-Wm-ydT"/>
+                                    <constraint firstAttribute="bottom" secondItem="OCf-SO-XVl" secondAttribute="bottom" constant="2" id="vGK-OV-r3N"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Rhd-kM-ngH" firstAttribute="width" secondItem="Rhd-kM-ngH" secondAttribute="height" multiplier="1:1" id="A5h-cC-avw"/>
+                            <constraint firstItem="Rhd-kM-ngH" firstAttribute="top" secondItem="KyU-pB-vdQ" secondAttribute="top" constant="4" id="9lA-oO-l43"/>
+                            <constraint firstAttribute="trailing" secondItem="Rhd-kM-ngH" secondAttribute="trailing" constant="4" id="D68-Kc-xJE"/>
                             <constraint firstAttribute="trailing" secondItem="sZX-mn-ex6" secondAttribute="trailing" constant="8" id="EKf-yQ-QWM"/>
-                            <constraint firstItem="Rhd-kM-ngH" firstAttribute="top" secondItem="KyU-pB-vdQ" secondAttribute="top" constant="8" id="IeU-mY-0rr"/>
                             <constraint firstItem="GyQ-EA-wS0" firstAttribute="leading" secondItem="KyU-pB-vdQ" secondAttribute="leading" id="NCH-A9-gsd"/>
+                            <constraint firstItem="Rhd-kM-ngH" firstAttribute="leading" secondItem="KyU-pB-vdQ" secondAttribute="leading" constant="231" id="O75-tr-i3S"/>
                             <constraint firstItem="sZX-mn-ex6" firstAttribute="leading" secondItem="KyU-pB-vdQ" secondAttribute="leading" constant="8" id="g7Q-Uh-9Ma"/>
+                            <constraint firstItem="sZX-mn-ex6" firstAttribute="top" secondItem="Rhd-kM-ngH" secondAttribute="bottom" constant="12" id="k3V-cW-K9e"/>
                             <constraint firstAttribute="height" constant="125" id="kZN-uK-UgL"/>
                             <constraint firstAttribute="trailing" secondItem="GyQ-EA-wS0" secondAttribute="trailing" id="kaJ-dW-SVn"/>
-                            <constraint firstAttribute="trailing" secondItem="Rhd-kM-ngH" secondAttribute="trailing" constant="8" id="nHF-tm-umc"/>
                             <constraint firstAttribute="bottom" secondItem="sZX-mn-ex6" secondAttribute="bottom" constant="6" id="o05-rp-oU8"/>
                             <constraint firstAttribute="bottom" secondItem="GyQ-EA-wS0" secondAttribute="bottom" id="r6N-e3-1jr"/>
                             <constraint firstItem="GyQ-EA-wS0" firstAttribute="top" secondItem="KyU-pB-vdQ" secondAttribute="top" id="vAz-LZ-flZ"/>
-                            <constraint firstItem="sZX-mn-ex6" firstAttribute="top" secondItem="Rhd-kM-ngH" secondAttribute="bottom" constant="12" id="xRZ-Dd-Mle"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -99,6 +104,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="preparationTimeLabel" destination="OCf-SO-XVl" id="Es4-jw-v74"/>
+                <outlet property="ratingImageView" destination="p2a-ln-ixZ" id="PZb-ia-NlG"/>
                 <outlet property="recipeDescriptionLabel" destination="1C2-ZB-6Ae" id="iJg-yk-cCU"/>
                 <outlet property="recipeImageView" destination="GyQ-EA-wS0" id="YPo-ly-sfx"/>
                 <outlet property="recipeTitleLabel" destination="SdH-bf-Skp" id="JUW-j5-XjI"/>
@@ -107,7 +113,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="clockCircular" width="26" height="26"/>
+        <image name="clockCircular" width="18" height="18"/>
         <image name="defaultImage" width="600" height="150"/>
     </resources>
 </document>
