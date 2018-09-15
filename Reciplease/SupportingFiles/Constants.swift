@@ -46,4 +46,25 @@ struct Constants {
         
     }
     
+    struct YummlyDetailedAPI {
+        
+        // MARK: Base URL & URL parameters keys
+        private static let baseURL = "https://api.yummly.com/v1/api/recipe/"
+        static let appId = "?_app_id="
+        static let appKey = "&_app_key="
+        
+        // MARK: URL parameters values
+        static let appIdValue = "23631517"
+        static let appKeyValue = "a05732d6cc8f8bf91dc608a2691dc2f8"
+        
+        // Exemple of Full URL
+        // https://api.yummly.com/v1/api/recipe/Yogurts-2055931?_app_id=23631517&_app_key=a05732d6cc8f8bf91dc608a2691dc2f8
+        
+        /// URL string constructed without recipe id
+        static var baseURLString: String {
+            return baseURL
+        }
+        
+    }
+    
 }

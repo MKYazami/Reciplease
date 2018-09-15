@@ -13,19 +13,23 @@ struct Recipe: Decodable {
 }
 
 struct Match: Decodable {
-    var rating: Int?
-    var imageUrlsBySize: ImageURLSize
-    var recipeName: String
-    var ingredients: [String]
-    var totalTimeInSeconds: Int
+    let rating: Int?
+    let imageUrlsBySize: ImageURLSize
+    let recipeName: String
+    let ingredients: [String]
+    let totalTimeInSeconds: Int
 }
 
 struct ImageURLSize: Decodable {
-    var imageSize90: String?
+    let imageSize90: String?
     
     private enum CodingKeys: String, CodingKey {
         case imageSize90 = "90"
     }
+}
+
+struct DetailedRecipe: Decodable {
+    let ingredientLines: [String]
 }
 
 // MARK: Methods Recipe

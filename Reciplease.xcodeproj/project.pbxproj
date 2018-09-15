@@ -26,6 +26,7 @@
 		9193E59321416ED90047950D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59221416ED90047950D /* Array.swift */; };
 		9193E59521469F710047950D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59421469F710047950D /* UIImageView.swift */; };
 		919ADC92214CED0100436AFE /* RatingStarsImagesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC91214CED0100436AFE /* RatingStarsImagesNames.swift */; };
+		919ADC94214D60B800436AFE /* YummlyDetailedURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC93214D60B800436AFE /* YummlyDetailedURLString.swift */; };
 		91C5DD422129C38F002D255F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5DD412129C38F002D255F /* String.swift */; };
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
 		91D372D3210E0355004BFECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D1210E0355004BFECA /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		9193E59221416ED90047950D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9193E59421469F710047950D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		919ADC91214CED0100436AFE /* RatingStarsImagesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarsImagesNames.swift; sourceTree = "<group>"; };
+		919ADC93214D60B800436AFE /* YummlyDetailedURLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedURLString.swift; sourceTree = "<group>"; };
 		91C5DD412129C38F002D255F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		91D372CA210E0355004BFECA /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D372CD210E0355004BFECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				914827F42124213500CB25B1 /* YummlyURLString.swift */,
+				919ADC93214D60B800436AFE /* YummlyDetailedURLString.swift */,
 				914827F2212420CC00CB25B1 /* URLStringType.swift */,
 			);
 			path = URLStringTypes;
@@ -464,6 +467,7 @@
 				91C5DD422129C38F002D255F /* String.swift in Sources */,
 				9193E59321416ED90047950D /* Array.swift in Sources */,
 				91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */,
+				919ADC94214D60B800436AFE /* YummlyDetailedURLString.swift in Sources */,
 				913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */,
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,
 				919ADC92214CED0100436AFE /* RatingStarsImagesNames.swift in Sources */,

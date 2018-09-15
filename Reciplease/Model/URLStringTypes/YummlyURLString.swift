@@ -10,7 +10,7 @@ import Foundation
 
 struct YummlyURLString: URLStringType {
     
-    var ingredients: [String]
+    private var ingredients: [String]
     
     var urlString: String {
         return Constants.YummlyAPI.urlString + extractIngredientsArrayToIngredientsString()
