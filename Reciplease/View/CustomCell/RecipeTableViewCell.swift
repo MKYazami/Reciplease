@@ -10,8 +10,10 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
     
-    // MARK: Outlets
+    // MARK: Properties
+    var cellSelectionDelegate: ListenToSelectedCell?
     
+    // MARK: Outlets
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var preparationTimeLabel: UILabel!
     
@@ -21,7 +23,6 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeImageView: UIImageView!
     
     // MARK: Methods
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,8 +30,10 @@ class RecipeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
+        if selected == true {
+            cellSelectionDelegate?.listingSelection()
+        }
     }
     
     /// Allows to set labels & image inside the cell

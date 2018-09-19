@@ -26,7 +26,7 @@ class RecipeService {
     
     /// Download recipes from remote API
     ///
-    /// - Parameter callback: Contains 2 parameters 1 Bool for to set success and the seconde Recipe to get recipes
+    /// - Parameter callback: Contains 2 parameters 1 Bool for to set success and the second Recipe to get recipes
     func downloadRecipe(callback: @escaping (Bool, Recipe?) -> Void) {
         let urlString = urlStringType.urlString
         Alamofire.request(urlString).response { (response) in
@@ -52,6 +52,37 @@ class RecipeService {
             
             // If all verifications success return callback true & recipe
             callback(true, recipe)
+        }
+    }
+    
+    /// Download detailed recipes from remote API
+    ///
+    /// - Parameter callback: Contains 2 parameters 1 Bool for set success and the second DetailedRecipe to get the detail of recipes
+    func downloadDetailedRecipe(callback: @escaping (Bool, DetailedRecipe?) -> Void) {
+        let urlString = urlStringType.urlString
+        
+        Alamofire.request(urlString).response { (response) in
+            // Check if data ≠ nil & no error
+            guard let data = response.data, response.error == nil else {
+                callback(false, nil)
+                return
+            }
+            
+            // Check correct response
+            guard let response = response.response, response.statusCode == 200 else {
+                callback(false, nil)
+                return
+            }
+            
+            // Decode JSON data
+            guard let detailedRecipe = try? JSONDecoder().decode(DetailedRecipe.self, from: data) else {
+                print("Problem of decodage")
+                callback(false, nil)
+                return
+            }
+            
+            // If all verifications success return callback true & detailedRecipe
+            callback(true, detailedRecipe)
         }
     }
     

@@ -36,7 +36,7 @@
 		91D372E6210E0357004BFECA /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372E5210E0357004BFECA /* RecipleaseTests.swift */; };
 		91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F7210E285F004BFECA /* HomePageViewController.swift */; };
 		91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */; };
-		91F681FD211217D80007D5B1 /* ListeningActionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F681FC211217D80007D5B1 /* ListeningActionsProtocol.swift */; };
+		91F681FD211217D80007D5B1 /* ListeningActionsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F681FC211217D80007D5B1 /* ListeningActionsProtocols.swift */; };
 		CFE5D19D103CF3F8547B7067 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B17768C5C3AE975E58F62DB /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,7 @@
 		91D372E7210E0357004BFECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91D372F7210E285F004BFECA /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
-		91F681FC211217D80007D5B1 /* ListeningActionsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningActionsProtocol.swift; sourceTree = "<group>"; };
+		91F681FC211217D80007D5B1 /* ListeningActionsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningActionsProtocols.swift; sourceTree = "<group>"; };
 		C46222CA63FDDFF2890481DB /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		CEC653337184FDECDD1C9739 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		F2EE25028D632B80B73FBAE8 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				91D372F1210E13ED004BFECA /* Model */,
 				91D372F2210E13F8004BFECA /* View */,
 				91D372F3210E140E004BFECA /* Controller */,
-				91F681FC211217D80007D5B1 /* ListeningActionsProtocol.swift */,
+				91F681FC211217D80007D5B1 /* ListeningActionsProtocols.swift */,
 				91C5DD402129C368002D255F /* Extensions */,
 				91D372F4210E147A004BFECA /* SupportingFiles */,
 			);
@@ -471,7 +471,7 @@
 				913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */,
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,
 				919ADC92214CED0100436AFE /* RatingStarsImagesNames.swift in Sources */,
-				91F681FD211217D80007D5B1 /* ListeningActionsProtocol.swift in Sources */,
+				91F681FD211217D80007D5B1 /* ListeningActionsProtocols.swift in Sources */,
 				913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */,
 				913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */,
 				91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */,

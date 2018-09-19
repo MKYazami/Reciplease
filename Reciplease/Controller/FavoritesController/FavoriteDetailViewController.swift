@@ -27,7 +27,7 @@ class FavoriteDetailViewController: UIViewController {
     }
 }
 
-extension FavoriteDetailViewController: ListeningActionsProtocol {
+extension FavoriteDetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
         // TODO: Actions to get directions
     }

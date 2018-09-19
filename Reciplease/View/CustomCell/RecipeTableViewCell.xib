@@ -79,6 +79,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Rhd-kM-ngH" firstAttribute="top" secondItem="KyU-pB-vdQ" secondAttribute="top" constant="4" id="9lA-oO-l43"/>
                             <constraint firstAttribute="trailing" secondItem="Rhd-kM-ngH" secondAttribute="trailing" constant="4" id="D68-Kc-xJE"/>
@@ -95,6 +96,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <gestureRecognizers/>
                 <constraints>
                     <constraint firstItem="KyU-pB-vdQ" firstAttribute="leading" secondItem="ddH-dI-3ug" secondAttribute="leading" id="I4x-20-HZO"/>
                     <constraint firstAttribute="bottom" secondItem="KyU-pB-vdQ" secondAttribute="bottom" id="JKh-eJ-CKG"/>
@@ -102,6 +104,7 @@
                     <constraint firstAttribute="trailing" secondItem="KyU-pB-vdQ" secondAttribute="trailing" id="x6x-jk-1Tj"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="preparationTimeLabel" destination="OCf-SO-XVl" id="Es4-jw-v74"/>
                 <outlet property="ratingImageView" destination="p2a-ln-ixZ" id="PZb-ia-NlG"/>

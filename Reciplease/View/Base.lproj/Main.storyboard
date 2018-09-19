@@ -299,7 +299,7 @@ Cheese</string>
                     </navigationItem>
                     <connections>
                         <outlet property="mainView" destination="utl-Cv-ilT" id="Jl1-PS-6w2"/>
-                        <segue destination="8e8-RZ-fzs" kind="show" identifier="fromResultsToDetails" id="cb4-aV-vRC"/>
+                        <segue destination="8e8-RZ-fzs" kind="show" identifier="segueToDetailedRecipe" id="uiM-G2-Wno"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Wk-ea-pL8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: Properties
+    var detailedRecipe: DetailedRecipe!    
+    
     // MARK: Outlets
     @IBOutlet var recipeViewDetail: RecipeDetailView!
    
@@ -22,12 +25,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeViewDetail.actionDelegate = self
+        recipeViewDetail.detailConfigurator(rating: detailedRecipe.rating, preparationTime: detailedRecipe.totalTimeInSeconds, recipeTitle: detailedRecipe.name, detailedRecipe: detailedRecipe.ingredientLines, recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
     }
 
 }
 
 // MARK: Actions delegates
-extension DetailViewController: ListeningActionsProtocol {
+extension DetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
         // TODO: Actions to get directions
     }

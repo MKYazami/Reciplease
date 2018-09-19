@@ -12,14 +12,16 @@ class RecipeDetailView: UIView {
     
     // MARK: Properties
     
-    /// Allows to delegete the getDirections action to controllers
-    var actionDelegate: ListeningActionsProtocol?
+    /// Allows to delegete the getDirections action to controller
+    var actionDelegate: ListeningGetDirectionsAction?
     
     // MARK: Outlets
     @IBOutlet var detailViewContent: UIView!
     
+    @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var preparationTimeLabel: UILabel!
-    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeTextView: UITextView!
     
     // MARK: Actions
@@ -43,6 +45,8 @@ class RecipeDetailView: UIView {
         
     }
     
+    // MARK: Methods
+    
     /// Setup the xib view
     private func xibSetup() {
         // Load nib from bundle
@@ -52,6 +56,29 @@ class RecipeDetailView: UIView {
         
         detailViewContent.frame = bounds
         detailViewContent.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    // TODO: Methdo Comment!
+    func detailConfigurator(rating: Int?, preparationTime: Int, recipeTitle: String, detailedRecipe: [String], recipeURLStringImage: String?) {
+        ratingImageView.image = UIImage(imageLiteralResourceName: Recipe.defineRatingStars(rating: rating))
+        preparationTimeLabel.text = Recipe.convertSecondsToMinutesOrHours(numberOfSeconds: preparationTime)
+        recipeNameLabel.text = recipeTitle
+        recipeTextView.text = getStringDetailedRecipeFromArray(detailedRecipe: detailedRecipe)
+        recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
+    }
+    
+    /// Allows to get detailed recipe from an array to string to display it
+    ///
+    /// - Parameter detailedRecipe: the string array of detailed recipe
+    /// - Returns: detailed recipe in form of string
+    private func getStringDetailedRecipeFromArray(detailedRecipe: [String]) -> String {
+        var descriptions = ""
+        
+        for recipeDescription in detailedRecipe {
+            descriptions += "﹆ " + recipeDescription + "\n"
+        }
+        
+        return descriptions
     }
 
 }

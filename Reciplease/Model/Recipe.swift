@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: Recipe structs
 struct Recipe: Decodable {
     var matches: [Match] = []
 }
@@ -18,6 +19,12 @@ struct Match: Decodable {
     let recipeName: String
     let ingredients: [String]
     let totalTimeInSeconds: Int
+    let recipeID: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case recipeID = "id"
+        case rating, imageUrlsBySize, recipeName, ingredients, totalTimeInSeconds
+    }
 }
 
 struct ImageURLSize: Decodable {
@@ -28,8 +35,22 @@ struct ImageURLSize: Decodable {
     }
 }
 
+// MARK: Detailed recipe structs
 struct DetailedRecipe: Decodable {
+    let name: String
     let ingredientLines: [String]
+    let source: Source
+    let images: [URLImages]
+    let rating: Int
+    let totalTimeInSeconds: Int
+}
+
+struct Source: Decodable {
+    let sourceRecipeUrl: String
+}
+
+struct URLImages: Decodable {
+    let hostedLargeUrl: String
 }
 
 // MARK: Methods Recipe

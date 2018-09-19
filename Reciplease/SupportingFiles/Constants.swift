@@ -24,6 +24,16 @@ struct Constants {
         }
     }
     
+    struct AlertMessage {
+        static var networkErrorTitle: String {
+            return "Network Problem!"
+        }
+        
+        static var networkErrorDescription: String {
+            return "Please check your connection or try again later"
+        }
+    }
+    
     struct YummlyAPI {
         
         // MARK: Base URL & URL parameters keys
