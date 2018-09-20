@@ -27,12 +27,33 @@ class DetailViewController: UIViewController {
         recipeViewDetail.actionDelegate = self
         recipeViewDetail.detailConfigurator(rating: detailedRecipe.rating, preparationTime: detailedRecipe.totalTimeInSeconds, recipeTitle: detailedRecipe.name, detailedRecipe: detailedRecipe.ingredientLines, recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
     }
-
+    
+    private func getDirections(urlString: String) {
+        guard let url = URL(string: urlString) else {
+            alertMessage(title: "Impossible to get directions!", message: "Try later or with another recipe.")
+            return
+        }
+        
+        Helper.openURLInWebBrowser(url: url)
+    }
+    
+    /// Display pop up to warn the user
+    ///
+    /// - Parameters:
+    ///   - title: Alert title
+    ///   - message: Message title
+    private func alertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
 }
 
 // MARK: Actions delegates
 extension DetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
-        // TODO: Actions to get directions
+        getDirections(urlString: detailedRecipe.source.sourceRecipeUrl)
     }
 }
