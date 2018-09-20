@@ -28,6 +28,12 @@ class DetailViewController: UIViewController {
         recipeViewDetail.detailConfigurator(rating: detailedRecipe.rating, preparationTime: detailedRecipe.totalTimeInSeconds, recipeTitle: detailedRecipe.name, detailedRecipe: detailedRecipe.ingredientLines, recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Set text view scroll to the top
+        recipeViewDetail.recipeTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
+    }
+    
     private func getDirections(urlString: String) {
         guard let url = URL(string: urlString) else {
             alertMessage(title: "Impossible to get directions!", message: "Try later or with another recipe.")
