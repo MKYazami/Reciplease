@@ -23,6 +23,7 @@
 		914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F021241B6D00CB25B1 /* RecipeService.swift */; };
 		914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F2212420CC00CB25B1 /* URLStringType.swift */; };
 		914827F52124213500CB25B1 /* YummlyURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F42124213500CB25B1 /* YummlyURLString.swift */; };
+		915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D296621550A170077E4FA /* ReicpeTestCase.swift */; };
 		9193E59321416ED90047950D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59221416ED90047950D /* Array.swift */; };
 		9193E59521469F710047950D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59421469F710047950D /* UIImageView.swift */; };
 		919ADC92214CED0100436AFE /* RatingStarsImagesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC91214CED0100436AFE /* RatingStarsImagesNames.swift */; };
@@ -34,7 +35,6 @@
 		91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */; };
 		91D372D8210E0356004BFECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D7210E0356004BFECA /* Assets.xcassets */; };
 		91D372DB210E0356004BFECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D9210E0356004BFECA /* LaunchScreen.storyboard */; };
-		91D372E6210E0357004BFECA /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372E5210E0357004BFECA /* RecipleaseTests.swift */; };
 		91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F7210E285F004BFECA /* HomePageViewController.swift */; };
 		91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */; };
 		91F681FD211217D80007D5B1 /* ListeningActionsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F681FC211217D80007D5B1 /* ListeningActionsProtocols.swift */; };
@@ -70,6 +70,7 @@
 		914827F021241B6D00CB25B1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		914827F2212420CC00CB25B1 /* URLStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStringType.swift; sourceTree = "<group>"; };
 		914827F42124213500CB25B1 /* YummlyURLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyURLString.swift; sourceTree = "<group>"; };
+		915D296621550A170077E4FA /* ReicpeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReicpeTestCase.swift; sourceTree = "<group>"; };
 		9193E59221416ED90047950D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9193E59421469F710047950D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		919ADC91214CED0100436AFE /* RatingStarsImagesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarsImagesNames.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		91D372DA210E0356004BFECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91D372DC210E0356004BFECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91D372E1210E0357004BFECA /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91D372E5210E0357004BFECA /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		91D372E7210E0357004BFECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91D372F7210E285F004BFECA /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,8 +235,8 @@
 		91D372E4210E0357004BFECA /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				91D372E5210E0357004BFECA /* RecipleaseTests.swift */,
 				91D372E7210E0357004BFECA /* Info.plist */,
+				915D296621550A170077E4FA /* ReicpeTestCase.swift */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -499,7 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91D372E6210E0357004BFECA /* RecipleaseTests.swift in Sources */,
+				915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +691,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GVF548G9W6;
 				INFOPLIST_FILE = RecipleaseTests/Info.plist;
@@ -701,6 +702,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.medev.RecipleaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
@@ -713,6 +715,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GVF548G9W6;
 				INFOPLIST_FILE = RecipleaseTests/Info.plist;
