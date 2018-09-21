@@ -50,8 +50,16 @@ class RecipeService {
                 return
             }
             
+            // The purpose of this check is to verify that Recipe's array matches is not empty due to a wrong response from the API when the user enters certain couple of ingredients
+            guard recipe.matches.count > 0 else {
+                print("matches is empty")
+                callback(false, nil)
+                return
+            }
+            
             // If all verifications success return callback true & recipe
             callback(true, recipe)
+            
         }
     }
     
