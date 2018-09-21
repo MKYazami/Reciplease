@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Recipe structs
 struct Recipe: Decodable {
-    var matches: [Match] = []
+    let matches: [Match]
 }
 
 struct Match: Decodable {

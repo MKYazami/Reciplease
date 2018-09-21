@@ -27,6 +27,8 @@ class ResultsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         mainView.tableView.reloadData()
+        toogleTableViewUserInteractions(enable: true)
+        toogleActivityIndicator(shown: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,15 +52,31 @@ class ResultsViewController: UIViewController {
     ///
     /// - Parameter recipeID: recipe id that allows to get detailed recipe
     private func getDetailedRecipe(recipeID: String) {
+        
         RecipeService(urlStringType: YummlyDetailedURLString(recipeID: recipeID)).downloadDetailedRecipe { (success, detailedRecipe) in
             if success, let detailedRecipe = detailedRecipe {
                 self.detailedRecipe = detailedRecipe
                 self.performSegue(withIdentifier: "segueToDetailedRecipe", sender: self)
             } else {
                 self.alertMessage(title: Constants.AlertMessage.networkErrorTitle, message: Constants.AlertMessage.networkErrorDescription)
+                self.toogleTableViewUserInteractions(enable: true)
+                self.toogleActivityIndicator(shown: false)
             }
         }
-        
+    }
+    
+    /// Allows to show or hide the acitity indicator
+    ///
+    /// - Parameter shown: true to show & false to hide
+    private func toogleActivityIndicator(shown: Bool) {
+        mainView.activityIndicator.isHidden = !shown
+    }
+    
+    /// Allows to enable OR desable the interactions between the user & the table view selection
+    ///
+    /// - Parameter enable: true interaction is enable & false interaction is disable
+    private func toogleTableViewUserInteractions(enable: Bool) {
+        mainView.tableView.isUserInteractionEnabled = enable
     }
     
     /// Display pop up to warn the user
@@ -104,6 +122,9 @@ extension ResultsViewController: ListenToSelectedCell {
 
     /// Listing when user select action from custom table view cell
     func listingSelection() {
+        toogleTableViewUserInteractions(enable: false)
+        toogleActivityIndicator(shown: true)
+        
         // Get cell index selected by user to get detailed recipe
         guard let cellIndex = mainView.tableView.indexPathForSelectedRow?.row else { return }
         
