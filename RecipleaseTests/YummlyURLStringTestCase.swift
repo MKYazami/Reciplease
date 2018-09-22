@@ -21,7 +21,7 @@ class YummlyURLStringTestCase: XCTestCase {
         
         let yummlyURLString = YummlyURLString(ingredients: ingredients)
         
-        XCTAssertEqual(yummlyURLString.urlString, "https://api.yummly.com/v1/api/recipes?_app_id=23631517&_app_key=a05732d6cc8f8bf91dc608a2691dc2f8&q=kiwi+lemon")
+        XCTAssertEqual(yummlyURLString.urlString, Constants.YummlyAPI.urlString + "kiwi+lemon")
     }
 
 }

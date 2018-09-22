@@ -38,7 +38,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "rating1Of5")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.rating1Of5.rawValue)
     }
     
     func testGivenRating2_WhenDefineRatingStars_ThenShouldReturns_rating2Of5() {
@@ -46,7 +46,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "rating2Of5")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.rating2Of5.rawValue)
     }
     
     func testGivenRating3_WhenDefineRatingStars_ThenShouldReturns_rating3Of5() {
@@ -54,7 +54,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "rating3Of5")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.rating3Of5.rawValue)
     }
     
     func testGivenRating4_WhenDefineRatingStars_ThenShouldReturns_rating4Of5() {
@@ -62,7 +62,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "rating4Of5")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.rating4Of5.rawValue)
     }
     
     func testGivenRating5_WhenDefineRatingStars_ThenShouldReturns_rating5Of5() {
@@ -70,7 +70,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "rating5Of5")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.rating5Of5.rawValue)
     }
     
     func testGivenRating6_WhenDefineRatingStars_ThenShouldReturns_noRating() {
@@ -78,7 +78,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "noRating")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.noRating.rawValue)
     }
     
     func testGivenRatingIsNil_WhenDefineRatingStars_ThenShouldReturns_noRating() {
@@ -86,7 +86,7 @@ class RecipeTestCase: XCTestCase {
         
         let imageName = Recipe.defineRatingStars(rating: rating)
         
-        XCTAssertEqual(imageName, "noRating")
+        XCTAssertEqual(imageName, RatingStarsImagesNames.noRating.rawValue)
     }
     
 }
