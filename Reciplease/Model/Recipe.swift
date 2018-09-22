@@ -70,12 +70,12 @@ extension Recipe {
             let hours = Int(hoursAndMinutes)
             
             return String(hours) + "h" + String(format: "%.0f", minutesFromHours * 60)
-        } else {
-            let minutes = UnitDuration.minutes.converter.value(fromBaseUnitValue: secondsInDouble)
-            
-            return String(Int(round(minutes))) + "m"
         }
         
+        let minutes = UnitDuration.minutes.converter.value(fromBaseUnitValue: secondsInDouble)
+        
+        return String(Int(round(minutes))) + "m"
+
     }
     
     /// Allows to get the image name depending on received rating
