@@ -10,10 +10,6 @@ import XCTest
 @testable import Reciplease
 
 class YummlyURLStringTestCase: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
     
     // Query (q=kiwi+lemon) should be kiwi+lemon, the rest of the URL are constants
     func testGivenKiwiLemon_WhenInitYummlyURLString_ThenQueryParameterShouldBe_kiwi_lemon() {

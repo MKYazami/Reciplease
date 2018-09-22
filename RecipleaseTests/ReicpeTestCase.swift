@@ -10,10 +10,6 @@ import XCTest
 @testable import Reciplease
 
 class RecipeTestCase: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
     
     // MARK: convertSecondsToMinutesOrHours Tests
     func testGivenTimeInSecondsIs60_WhenConvertToMinutes_ThenShouldReturns_1m() {
