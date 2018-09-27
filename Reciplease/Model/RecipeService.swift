@@ -69,7 +69,7 @@ class RecipeService {
     func downloadDetailedRecipe(callback: @escaping (Bool, DetailedRecipe?) -> Void) {
         let urlString = urlStringType.urlString
         
-        Alamofire.request(urlString).response { (response) in
+        alamoSessionManager.request(urlString).response { (response) in
             // Check if data ≠ nil & no error
             guard let data = response.data, response.error == nil else {
                 callback(false, nil)
