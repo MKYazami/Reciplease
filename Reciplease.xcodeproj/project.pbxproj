@@ -20,6 +20,7 @@
 		913BC9C9211746B1001504E6 /* TableViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */; };
 		913BC9CD2117531A001504E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9CC2117531A001504E6 /* Constants.swift */; };
 		913F07D7215CC433006AE53E /* Recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 913F07D6215CC433006AE53E /* Recipe.json */; };
+		913F07D9215CC4F2006AE53E /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913F07D8215CC4F2006AE53E /* FakeResponseData.swift */; };
 		914827EF212419F100CB25B1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827EE212419F100CB25B1 /* Recipe.swift */; };
 		914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F021241B6D00CB25B1 /* RecipeService.swift */; };
 		914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F2212420CC00CB25B1 /* URLStringType.swift */; };
@@ -70,6 +71,7 @@
 		913BC9C8211746B1001504E6 /* TableViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewConfigurator.swift; sourceTree = "<group>"; };
 		913BC9CC2117531A001504E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		913F07D6215CC433006AE53E /* Recipe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipe.json; sourceTree = "<group>"; };
+		913F07D8215CC4F2006AE53E /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		914827EE212419F100CB25B1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		914827F021241B6D00CB25B1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		914827F2212420CC00CB25B1 /* URLStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStringType.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				915D296621550A170077E4FA /* ReicpeTestCase.swift */,
 				915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */,
 				915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */,
+				913F07D8215CC4F2006AE53E /* FakeResponseData.swift */,
 				913F07D6215CC433006AE53E /* Recipe.json */,
 			);
 			path = RecipleaseTests;
@@ -510,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */,
+				913F07D9215CC4F2006AE53E /* FakeResponseData.swift in Sources */,
 				915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */,
 				915D29692155265F0077E4FA /* YummlyURLStringTestCase.swift in Sources */,
 			);
