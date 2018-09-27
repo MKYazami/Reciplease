@@ -14,3 +14,4 @@ disabled_rules: # rule identifiers to exclude from running
   - cyclomatic_complexity
   - function_body_length
   - for_where
+  - force_try

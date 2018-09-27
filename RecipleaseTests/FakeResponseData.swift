@@ -28,6 +28,6 @@ class FakeResponseData {
     static let reponseKO = HTTPURLResponse(url: URL(string: "https://developer.apple.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)!
     
     // MARK: Recipe Error
-    class recipeError: Error {}
-    static let error = recipeError()
+    class RecipeError: Error {}
+    static let error = RecipeError()
 }
