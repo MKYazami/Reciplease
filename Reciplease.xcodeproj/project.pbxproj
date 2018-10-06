@@ -29,6 +29,7 @@
 		915D29692155265F0077E4FA /* YummlyURLStringTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */; };
 		915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */; };
 		9162571D21675CC0009F63B9 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162571C21675CC0009F63B9 /* RecipeData.swift */; };
+		9162571F21690107009F63B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9162571E21690107009F63B9 /* Assets.xcassets */; };
 		9193E59321416ED90047950D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59221416ED90047950D /* Array.swift */; };
 		9193E59521469F710047950D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59421469F710047950D /* UIImageView.swift */; };
 		919ADC92214CED0100436AFE /* RatingStarsImagesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC91214CED0100436AFE /* RatingStarsImagesNames.swift */; };
@@ -38,7 +39,6 @@
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
 		91D372D3210E0355004BFECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D1210E0355004BFECA /* Main.storyboard */; };
 		91D372D6210E0355004BFECA /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */; };
-		91D372D8210E0356004BFECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D7210E0356004BFECA /* Assets.xcassets */; };
 		91D372DB210E0356004BFECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D372D9210E0356004BFECA /* LaunchScreen.storyboard */; };
 		91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F7210E285F004BFECA /* HomePageViewController.swift */; };
 		91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */; };
@@ -81,6 +81,7 @@
 		915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyURLStringTestCase.swift; sourceTree = "<group>"; };
 		915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedURLStringTestCase.swift; sourceTree = "<group>"; };
 		9162571C21675CC0009F63B9 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
+		9162571E21690107009F63B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9193E59221416ED90047950D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9193E59421469F710047950D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		919ADC91214CED0100436AFE /* RatingStarsImagesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarsImagesNames.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		91D372CD210E0355004BFECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D372D2210E0355004BFECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91D372D5210E0355004BFECA /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
-		91D372D7210E0356004BFECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91D372DA210E0356004BFECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91D372DC210E0356004BFECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91D372E1210E0357004BFECA /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,7 +305,7 @@
 			children = (
 				913BC9CC2117531A001504E6 /* Constants.swift */,
 				91A60027215389DD004E78B8 /* Helper.swift */,
-				91D372D7210E0356004BFECA /* Assets.xcassets */,
+				9162571E21690107009F63B9 /* Assets.xcassets */,
 				91D372DC210E0356004BFECA /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -400,9 +400,9 @@
 			files = (
 				91D372DB210E0356004BFECA /* LaunchScreen.storyboard in Resources */,
 				913482DC21103E5700C71BB2 /* RecipeDetailView.xib in Resources */,
-				91D372D8210E0356004BFECA /* Assets.xcassets in Resources */,
 				91D372D3210E0355004BFECA /* Main.storyboard in Resources */,
 				913BC9C621173E5C001504E6 /* RecipeTableView.xib in Resources */,
+				9162571F21690107009F63B9 /* Assets.xcassets in Resources */,
 				913BC9C0211730B3001504E6 /* RecipeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

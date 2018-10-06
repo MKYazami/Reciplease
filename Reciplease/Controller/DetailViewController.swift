@@ -15,10 +15,12 @@ class DetailViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet var recipeViewDetail: RecipeDetailView!
-   
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
+    
     // MARK: Actions
     @IBAction func favoriteItem(_ sender: Any) {
-        
+        guard let favoriteButton = sender as? UIBarButtonItem else { return }
+        switchFavoriteButton(favoriteButton: favoriteButton)
     }
     
     // MARK: Methods
@@ -41,6 +43,17 @@ class DetailViewController: UIViewController {
         }
         
         Helper.openURLInWebBrowser(url: url)
+    }
+    
+    /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
+    ///
+    /// - Parameter favoriteButton: BarButtonItem
+    private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
+        if favoriteButton.image == UIImage(named: "Favorite") {
+            favoriteButton.image = UIImage(named: "FavoriteSelected")
+        } else if favoriteButton.image == UIImage(named: "FavoriteSelected") {
+            favoriteButton.image = UIImage(named: "Favorite")
+        }
     }
     
     /// Display pop up to warn the user

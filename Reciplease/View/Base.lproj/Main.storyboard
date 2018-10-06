@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wBo-t1-1E3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wBo-t1-1E3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -235,7 +235,7 @@ Cheese</string>
                                         </connections>
                                     </button>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-dC-jrs">
-                                        <rect key="frame" x="142" y="318" width="37" height="37"/>
+                                        <rect key="frame" x="141.5" y="317.5" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95247513055801392" green="0.47096073627471924" blue="0.22007259726524353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -325,6 +325,7 @@ Cheese</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="favoriteButton" destination="HMW-z3-h9s" id="bku-3h-zPZ"/>
                         <outlet property="recipeViewDetail" destination="KZv-FS-xte" id="4hY-Zj-9TI"/>
                     </connections>
                 </viewController>
