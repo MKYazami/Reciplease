@@ -32,6 +32,14 @@ struct Constants {
         static var networkErrorDescription: String {
             return "Please check your connection or try again later"
         }
+        
+        static var saveRecipeErrorTitle: String {
+            return "Recipe not saved!"
+        }
+        
+        static var saveRecipeErrorDescription: String {
+            return "Impossible to save recipe, try later"
+        }
     }
     
     struct YummlyAPI {

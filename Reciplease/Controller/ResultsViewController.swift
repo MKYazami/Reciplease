@@ -12,6 +12,10 @@ class ResultsViewController: UIViewController {
     
     // MARK: Properties
     var recipes: Recipe!
+    
+    // This object contains the elements to be saved in Core Data in DetailViewController
+    var recipeInList: Match!
+    
     var detailedRecipe: DetailedRecipe!
     
     // MARK: Outlets
@@ -35,6 +39,7 @@ class ResultsViewController: UIViewController {
         if segue.identifier == "segueToDetailedRecipe" {
             let detailVC = segue.destination as! DetailViewController
             detailVC.detailedRecipe = detailedRecipe
+            
         }
     }
     
@@ -111,6 +116,9 @@ extension ResultsViewController: UITableViewDataSource {
         }
         
         cell.cellConfigurator(rating: recipes.matches[indexPath.row].rating, preparationTime: recipes.matches[indexPath.row].totalTimeInSeconds, recipeTitle: recipes.matches[indexPath.row].recipeName, recipeDescriptions: recipes.matches[indexPath.row].ingredients, recipeURLStringImage: recipes.matches[indexPath.row].imageUrlsBySize.imageSize90)
+        
+        // The elements are assigned in case we want to save in Core Data
+        recipeInList = recipes.matches[indexPath.row]
         
         // Set cell delegate to self
         cell.cellSelectionDelegate = self
