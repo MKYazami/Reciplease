@@ -39,7 +39,7 @@ class ResultsViewController: UIViewController {
         if segue.identifier == "segueToDetailedRecipe" {
             let detailVC = segue.destination as! DetailViewController
             detailVC.detailedRecipe = detailedRecipe
-            
+            detailVC.recipeInList = recipeInList
         }
     }
     
@@ -95,7 +95,6 @@ class ResultsViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
-
 }
 
 extension ResultsViewController: UITableViewDataSource {
@@ -115,10 +114,7 @@ extension ResultsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.cellConfigurator(rating: recipes.matches[indexPath.row].rating, preparationTime: recipes.matches[indexPath.row].totalTimeInSeconds, recipeTitle: recipes.matches[indexPath.row].recipeName, recipeDescriptions: recipes.matches[indexPath.row].ingredients, recipeURLStringImage: recipes.matches[indexPath.row].imageUrlsBySize.imageSize90)
-        
-        // The elements are assigned in case we want to save in Core Data
-        recipeInList = recipes.matches[indexPath.row]
+        cell.cellConfigurator(rating: recipes.matches[indexPath.row].rating, preparationTime: recipes.matches[indexPath.row].totalTimeInSeconds, recipeTitle: recipes.matches[indexPath.row].recipeName, recipeDescriptions: recipes.matches[indexPath.row].ingredients, recipeURLStringImage: recipes.matches[indexPath.row].imageUrlsBySize.imageSize90, imageData: nil)
         
         // Set cell delegate to self
         cell.cellSelectionDelegate = self
@@ -135,6 +131,9 @@ extension ResultsViewController: ListenToSelectedCell {
         
         // Get cell index selected by user to get detailed recipe
         guard let cellIndex = mainView.tableView.indexPathForSelectedRow?.row else { return }
+        
+        // The elements are assigned in case we want to save in Core Data
+        recipeInList = recipes.matches[cellIndex]
         
         getDetailedRecipe(recipeID: recipes.matches[cellIndex].recipeID)
     }

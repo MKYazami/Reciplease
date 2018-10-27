@@ -2,23 +2,25 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DetailedRecipeData" representedClassName=".DetailedRecipeData" syncable="YES" codeGenerationType="category">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="ingredients" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
-        <attribute name="preparationTime" attributeType="String" syncable="YES"/>
+        <attribute name="ingredients" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <attribute name="preparationTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="recipeName" attributeType="String" syncable="YES"/>
-        <attribute name="sourceRecipeURL" attributeType="String" syncable="YES"/>
-        <relationship name="recipeInList" maxCount="1" deletionRule="Cascade" destinationEntity="RecipeData" inverseName="detailedRecipe" inverseEntity="RecipeData" syncable="YES"/>
+        <attribute name="recipeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recipeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceRecipeURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipeData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RecipeData" inverseName="detailedRecipe" inverseEntity="RecipeData" syncable="YES"/>
     </entity>
     <entity name="RecipeData" representedClassName=".RecipeData" syncable="YES" codeGenerationType="category">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="ingredients" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <attribute name="ingredients" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="recipeName" attributeType="String" syncable="YES"/>
-        <attribute name="totalTimeInSeconds" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="detailedRecipe" maxCount="1" deletionRule="Cascade" destinationEntity="DetailedRecipeData" inverseName="recipeInList" inverseEntity="DetailedRecipeData" syncable="YES"/>
+        <attribute name="recipeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recipeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalTimeInSeconds" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="detailedRecipe" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DetailedRecipeData" inverseName="recipeData" inverseEntity="DetailedRecipeData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DetailedRecipeData" positionX="-271.94921875" positionY="-36.4921875" width="128" height="150"/>
-        <element name="RecipeData" positionX="126.3984375" positionY="-21.4140625" width="128" height="135"/>
+        <element name="DetailedRecipeData" positionX="-271.94921875" positionY="-36.4921875" width="128" height="165"/>
+        <element name="RecipeData" positionX="341.2421875" positionY="-21.40234375" width="128" height="150"/>
     </elements>
 </model>

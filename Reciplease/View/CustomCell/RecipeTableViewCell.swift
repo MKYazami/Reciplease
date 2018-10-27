@@ -39,16 +39,33 @@ class RecipeTableViewCell: UITableViewCell {
     /// Allows to set labels & image inside the cell
     ///
     /// - Parameters:
-    ///   - preparationTime: Time of preparation
-    ///   - recipeTitle: Recipe title
-    ///   - recipeDescriptions: Recipe description
+    ///   - rating: recipe rating
+    ///   - preparationTime: time of preparation
+    ///   - recipeTitle: recipe title/name
+    ///   - recipeDescriptions: ingredients
     ///   - recipeURLStringImage: URL string recipe image
-    func cellConfigurator(rating: Int?, preparationTime: Int, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?) {
+    ///   - imageData: image under form of data
+    func cellConfigurator(rating: Int?, preparationTime: Int, recipeTitle: String, recipeDescriptions: [String], recipeURLStringImage: String?, imageData: Data?) {
         ratingImageView.image = UIImage(imageLiteralResourceName: Recipe.defineRatingStars(rating: rating))
         preparationTimeLabel.text = Recipe.convertSecondsToMinutesOrHours(numberOfSeconds: preparationTime)
         recipeTitleLabel.text = recipeTitle
         recipeDescriptionLabel.text = getStringRecipeDescriptionsFromArray(recipeDescriptions: recipeDescriptions)
-        recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
+        setRecipeImage(recipeURLStringImage: recipeURLStringImage, imageData: imageData)
+    }
+    
+    /// Allows to set image depending on the source of the image, if no source is available then the default image will be displayed.
+    ///
+    /// - Parameters:
+    ///   - recipeURLStringImage: URL which contains the image
+    ///   - imageData: image under form of data
+    private func setRecipeImage(recipeURLStringImage: String?, imageData: Data?) {
+        if let imageData = imageData {
+            recipeImageView.image = UIImage(data: imageData)
+        } else if let recipeURLStringImage = recipeURLStringImage {
+            recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
+        } else {
+            recipeImageView.image = UIImage(imageLiteralResourceName: "defaultImage")
+        }
     }
     
     /// Allows to get recipe desciptions from an array to string to display it

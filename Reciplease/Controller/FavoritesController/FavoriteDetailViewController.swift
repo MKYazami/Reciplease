@@ -10,10 +10,11 @@ import UIKit
 
 class FavoriteDetailViewController: UIViewController {
     
-    // MARK: Properties
-    @IBOutlet var recipeDetailView: RecipeDetailView!
+    // MARK: Property
+    var detailedRecipe: DetailedRecipeData?
     
-    // MARK: Outlets
+    // MARK: Outlet
+    @IBOutlet var recipeDetailView: RecipeDetailView!
     
     // MARK: Actions
     @IBAction func favoriteItem(_ sender: Any) {
@@ -24,6 +25,18 @@ class FavoriteDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeDetailView.actionDelegate = self
+        configureDetailedView()
+    }
+    
+    /// Configure and display the custom detailed view
+    private func configureDetailedView() {
+        guard let detailedRecipe = detailedRecipe else { return }
+        let rating: Int? = Int(detailedRecipe.rating)
+        let preparationTime = detailedRecipe.preparationTime
+        let recipeName = detailedRecipe.recipeName ?? "Sorry Missing Recipe Name :("
+        let ingredients = (detailedRecipe.ingredients as? [String]) ?? ["Ouupps Missing Ingredients!"]
+        let recipeImage = detailedRecipe.image
+        recipeDetailView.detailConfiguratorFromLocalPersistence(rating: rating, preparationTime: preparationTime, recipeName: recipeName, detailedRecipe: ingredients, recipeImage: recipeImage)
     }
 }
 

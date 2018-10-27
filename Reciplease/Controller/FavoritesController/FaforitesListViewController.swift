@@ -9,16 +9,14 @@
 import UIKit
 
 class FaforitesListViewController: UIViewController {
-    // ########################################## Data For Tests ########################################## \\
-    // MARK: Data for visual Test Preview Only !
-    // TODO: Remove For productive App
-    private let cellTitles = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-    
-    private let cellDescriptions = ["One Cellule", "Two Cellules", "Three Cellules", "Four Cellules", "Five Cellules", "Six Cellules", "Seven Cellules", "Eight Cellules", "Nine  Cellules"]
-    // ########################################## Data For Tests ########################################## \\
     
     // MARK: Properties
-
+    var recipes: [RecipeData]?
+    var detailedRecipe: DetailedRecipeData?
+    private var segueToFavoriteDetailVC: String {
+        return "fromFavoritesListToFavoriteDetails"
+    }
+    
     // MARK: Outlets
     @IBOutlet var mainView: RecipeTableView!
     
@@ -33,7 +31,10 @@ class FaforitesListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        recipes = RecipeData.getRecipes
         mainView.tableView.reloadData()
+        toogleActivityIndicator(shown: false)
+        toogleTableViewUserInteractions(enable: true)
     }
     
     private func setupDelegates() {
@@ -45,27 +46,114 @@ class FaforitesListViewController: UIViewController {
         typealias CellConstants = Constants.TableViewCells
         TableViewCellConfigurator.loadCellNib(nibName: CellConstants.recipeTableViewCellNib, cellIdentifier: CellConstants.recipeCellId, tableView: mainView.tableView)
     }
+    
+    private func getDetailedRecipeData(recipeID: String) {
+        let fetchRequest = DetailedRecipeData.getDetailedRecipesFetchRequest(recipeID: recipeID)
+        
+        do {
+            let detailedRecipeData = try AppDelegate.viewContext.fetch(fetchRequest)
+            
+            detailedRecipe = detailedRecipeData.first
+            
+            performSegue(withIdentifier: segueToFavoriteDetailVC, sender: self)
+        } catch let error as NSError {
+            print("Error to get detailed recipe from Core Data \(error) \n Error Description: \(error.userInfo)")
+            alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle, message: Constants.AlertMessage.getDetailedRecipeErrorDescription)
+            toogleActivityIndicator(shown: false)
+            toogleTableViewUserInteractions(enable: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == segueToFavoriteDetailVC {
+            let favoriteDetailedVC = segue.destination as! FavoriteDetailViewController
+            favoriteDetailedVC.detailedRecipe = detailedRecipe
+        }
+        
+    }
+    
+    /// Allows to enable OR desable the interactions between the user & the table view selection
+    ///
+    /// - Parameter enable: true interaction is enable & false interaction is disable
+    private func toogleTableViewUserInteractions(enable: Bool) {
+        mainView.tableView.isUserInteractionEnabled = enable
+    }
+    
+    /// Allows to show or hide the acitity indicator
+    ///
+    /// - Parameter shown: true to show & false to hide
+    private func toogleActivityIndicator(shown: Bool) {
+        mainView.activityIndicator.isHidden = !shown
+    }
+    
+    /// Display pop up to warn the user
+    ///
+    /// - Parameters:
+    ///   - title: Alert title
+    ///   - message: Message title
+    private func alertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
 
 }
 
+// MARK: Table View
 extension FaforitesListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellTitles.count
+        guard let recipes = recipes else { return 0 }
+        return recipes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.recipeCellId, for: indexPath) as? RecipeTableViewCell else {
-            print("Not casted")
-            return UITableViewCell()
-        }
+        // This empty cell allows to return cell with background color as light orange color totally transparent (same as table view background color) in order to avoid bad design color
+        let emptyCell = UITableViewCell()
+        emptyCell.backgroundColor = UIColor(red: 228/255, green: 126/255, blue: 72/255, alpha: 0)
         
-        cell.cellConfigurator(rating: 4, preparationTime: 10, recipeTitle: cellTitles[indexPath.row], recipeDescriptions: [cellDescriptions[indexPath.row]], recipeURLStringImage: "")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.recipeCellId, for: indexPath) as? RecipeTableViewCell else { return emptyCell }
+        
+        // Set cell delegate
+        cell.cellSelectionDelegate = self
+        
+        // Get elements from recipes to send to custom cell
+        guard let recipes = recipes else { return emptyCell }
+        let rating = Int(recipes[indexPath.row].rating)
+        let preparationTime = Int(recipes[indexPath.row].totalTimeInSeconds)
+        guard let recipeName = recipes[indexPath.row].recipeName else { return emptyCell }
+        guard let recipeDescription = recipes[indexPath.row].ingredients as? [String] else { return emptyCell }
+        let imageData = recipes[indexPath.row].image
+        
+        cell.cellConfigurator(rating: rating, preparationTime: preparationTime, recipeTitle: recipeName, recipeDescriptions: recipeDescription, recipeURLStringImage: nil, imageData: imageData)
         
         return cell
     }
+}
+
+// MARK: Listen to selected cell
+extension FaforitesListViewController: ListenToSelectedCell {
+    
+    /// Listing when user select action from custom table view cell
+    func listingSelection() {
+        
+        toogleTableViewUserInteractions(enable: false)
+        toogleActivityIndicator(shown: true)
+        
+        // Get cell index selected by user to get detailed recipe
+        guard let cellIndex = mainView.tableView.indexPathForSelectedRow?.row else { return }
+        
+        // Get recipe ID
+        guard let recipe = recipes?[cellIndex],
+        let recipeID = recipe.recipeID else { return }
+
+        getDetailedRecipeData(recipeID: recipeID)
+    }
+    
 }

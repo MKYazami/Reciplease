@@ -15,3 +15,4 @@ disabled_rules: # rule identifiers to exclude from running
   - function_body_length
   - for_where
   - force_try
+  - function_parameter_count

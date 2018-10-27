@@ -13,12 +13,15 @@ class DetailViewController: UIViewController {
     // MARK: Properties
     var detailedRecipe: DetailedRecipe!
     
+    // Global recipeID property allows to save the detailed recipe ID
+    private var recipeID: String?
+    
     // Contains the recipe items in list in order to store them in Core Data
-    var recipeInList: Match!
+    var recipeInList: Match?
     
     // Init contexts
-    let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
-    let listRecipeData = RecipeData(context: AppDelegate.viewContext)
+    private let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
+    private let listRecipeData = RecipeData(context: AppDelegate.viewContext)
     
     // MARK: Outlets
     @IBOutlet var recipeViewDetail: RecipeDetailView!
@@ -57,8 +60,8 @@ class DetailViewController: UIViewController {
     /// - Parameter favoriteButton: BarButtonItem
     private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
         if favoriteButton.image == UIImage(named: "Favorite") {
-            saveDetailedRecipe()
             saveRecipeInList()
+            saveDetailedRecipe()
             favoriteButton.image = UIImage(named: "FavoriteSelected")
         } else if favoriteButton.image == UIImage(named: "FavoriteSelected") {
             removeRecipeInList()
@@ -69,14 +72,20 @@ class DetailViewController: UIViewController {
     
     /// Save recipe presented in the list
     private func saveRecipeInList() {
+        guard let recipeInList = recipeInList else { return }
         let recipeName = recipeInList.recipeName
+        let recipeID = recipeInList.recipeID
         let rating = recipeInList.rating ?? 0
         let image = recipeViewDetail.recipeImageView.image
         let ingredients = recipeInList.ingredients
         let totalTimeInSeconds = recipeInList.totalTimeInSeconds
         
+        // Fill global recipeID property
+        self.recipeID = recipeID
+        
         // Save data
         listRecipeData.recipeName = recipeName
+        listRecipeData.recipeID = recipeID
         listRecipeData.rating = Int16(rating)
         listRecipeData.image = image?.jpegData(compressionQuality: 1.0)
         listRecipeData.ingredients = ingredients as NSArray
@@ -85,14 +94,22 @@ class DetailViewController: UIViewController {
         
         do {
             try AppDelegate.viewContext.save()
-        } catch {
+        } catch let error as NSError {
             alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle, message: Constants.AlertMessage.saveRecipeErrorDescription)
+            print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
         }
     }
     
     /// Remove recipe presented in the list
     private func removeRecipeInList() {
         AppDelegate.viewContext.delete(listRecipeData)
+        do {
+            try AppDelegate.viewContext.save()
+            
+        } catch let error as NSError {
+            alertMessage(title: Constants.AlertMessage.deleteRecipeErrorTitle, message: Constants.AlertMessage.deleteRecipeErrorDescription)
+            print("Deleting error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
     }
     
     /// Save detailed recipe
@@ -107,23 +124,30 @@ class DetailViewController: UIViewController {
         
         // Save data
         detailedRecipeData.recipeName = recipeName
+        detailedRecipeData.recipeID = recipeID
         detailedRecipeData.rating = Int16(rating)
         detailedRecipeData.preparationTime = preparationTime
         detailedRecipeData.image = recipeImage?.jpegData(compressionQuality: 1.0)
         detailedRecipeData.ingredients = ingredients as NSArray
         detailedRecipeData.sourceRecipeURL = sourceRecipeURL
-        detailedRecipeData.recipeInList = listRecipeData
         
         do {
             try AppDelegate.viewContext.save()
-        } catch {
+        } catch let error as NSError {
             alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle, message: Constants.AlertMessage.saveRecipeErrorDescription)
+            print("Detailed recipe saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
         }
     }
     
     /// Remove detailed recipe
     private func removeDetailedRecipe() {
         AppDelegate.viewContext.delete(detailedRecipeData)
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            alertMessage(title: Constants.AlertMessage.deleteRecipeErrorTitle, message: Constants.AlertMessage.deleteRecipeErrorDescription)
+            print("Deleting error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
     }
     
     /// Display pop up to warn the user

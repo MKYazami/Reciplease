@@ -40,6 +40,22 @@ struct Constants {
         static var saveRecipeErrorDescription: String {
             return "Impossible to save recipe, try later"
         }
+        
+        static var deleteRecipeErrorTitle: String {
+            return "Error to delete"
+        }
+        
+        static var deleteRecipeErrorDescription: String {
+            return "Imposible to remove recipe from favorites"
+        }
+        
+        static var getDetailedRecipeErrorTitle: String {
+            return "Impossible to get detailed recipe"
+        }
+        
+        static var getDetailedRecipeErrorDescription: String {
+            return "A problem has occurred and it is impossible to get the recipe detail"
+        }
     }
     
     struct YummlyAPI {

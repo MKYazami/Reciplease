@@ -58,13 +58,48 @@ class RecipeDetailView: UIView {
         detailViewContent.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
-    // TODO: Methdo Comment!
+    /// Populate the detailed recipe view as labels & images coming from remote API data
+    ///
+    /// - Parameters:
+    ///   - rating: rating
+    ///   - preparationTime: estimated time for preparation
+    ///   - recipeTitle: recipe title
+    ///   - detailedRecipe: detailed recipe (ingredients)
+    ///   - recipeURLStringImage: URL which contains the recipe image
     func detailConfigurator(rating: Int?, preparationTime: Int, recipeTitle: String, detailedRecipe: [String], recipeURLStringImage: String?) {
         ratingImageView.image = UIImage(imageLiteralResourceName: Recipe.defineRatingStars(rating: rating))
         preparationTimeLabel.text = Recipe.convertSecondsToMinutesOrHours(numberOfSeconds: preparationTime)
         recipeNameLabel.text = recipeTitle
         recipeTextView.text = getStringDetailedRecipeFromArray(detailedRecipe: detailedRecipe)
         recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
+    }
+    
+    /// Populate detailed recipe view as labels & images coming from lacal persistence data
+    ///
+    /// - Parameters:
+    ///   - rating: rating
+    ///   - preparationTime: estimated time for preparation
+    ///   - recipeName: recipe name
+    ///   - detailedRecipe: detailed recipe
+    ///   - recipeImage: recipe image under form of data stored in local data base
+    func detailConfiguratorFromLocalPersistence(rating: Int?, preparationTime: String?, recipeName: String, detailedRecipe: [String], recipeImage: Data?) {
+        ratingImageView.image = UIImage(imageLiteralResourceName: Recipe.defineRatingStars(rating: rating))
+        preparationTimeLabel.text = preparationTime
+        recipeNameLabel.text = recipeName
+        recipeTextView.text = getStringDetailedRecipeFromArray(detailedRecipe: detailedRecipe)
+        recipeImageView.image = setRecipeImageFromData(recipeImage: recipeImage)
+    }
+    
+    /// Allows to restaure an image from data
+    ///
+    /// - Parameter recipeImage: recipe image to convert
+    /// - Returns: Image converted if success else return default image
+    private func setRecipeImageFromData(recipeImage: Data?) -> UIImage {
+        if let recipeImage = recipeImage {
+            return UIImage(data: recipeImage) ?? UIImage(imageLiteralResourceName: "defaultImage")
+        } else {
+            return UIImage(imageLiteralResourceName: "defaultImage")
+        }
     }
     
     /// Allows to get detailed recipe from an array to string to display it
