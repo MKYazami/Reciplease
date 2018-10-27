@@ -49,6 +49,14 @@ struct Constants {
             return "Imposible to remove recipe from favorites"
         }
         
+        static var getDirectionsErrorTitle: String {
+            return "Impossible to get directions!"
+        }
+        
+        static var getDirectionsErrorDescription: String {
+            return "Try later or with another recipe"
+        }
+        
         static var getDetailedRecipeErrorTitle: String {
             return "Impossible to get detailed recipe"
         }

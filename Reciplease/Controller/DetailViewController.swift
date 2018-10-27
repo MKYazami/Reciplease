@@ -48,7 +48,7 @@ class DetailViewController: UIViewController {
     
     private func getDirections(urlString: String) {
         guard let url = URL(string: urlString) else {
-            alertMessage(title: "Impossible to get directions!", message: "Try later or with another recipe.")
+            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle, message: Constants.AlertMessage.getDirectionsErrorDescription)
             return
         }
         

@@ -38,10 +38,33 @@ class FavoriteDetailViewController: UIViewController {
         let recipeImage = detailedRecipe.image
         recipeDetailView.detailConfiguratorFromLocalPersistence(rating: rating, preparationTime: preparationTime, recipeName: recipeName, detailedRecipe: ingredients, recipeImage: recipeImage)
     }
+    
+    private func getDirections(urlString: String?) {
+        guard let urlString = urlString,
+              let url = URL(string: urlString) else {
+            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle, message: Constants.AlertMessage.getDirectionsErrorDescription)
+            return
+        }
+        
+        Helper.openURLInWebBrowser(url: url)
+    }
+    
+    /// Display pop up to warn the user
+    ///
+    /// - Parameters:
+    ///   - title: Alert title
+    ///   - message: Message title
+    private func alertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
 }
 
 extension FavoriteDetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
-        // TODO: Actions to get directions
+        getDirections(urlString: detailedRecipe?.sourceRecipeURL)
     }
 }
