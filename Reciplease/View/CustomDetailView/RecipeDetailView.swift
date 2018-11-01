@@ -96,9 +96,9 @@ class RecipeDetailView: UIView {
     /// - Returns: Image converted if success else return default image
     private func setRecipeImageFromData(recipeImage: Data?) -> UIImage {
         if let recipeImage = recipeImage {
-            return UIImage(data: recipeImage) ?? UIImage(imageLiteralResourceName: "defaultImage")
+            return UIImage(data: recipeImage) ?? UIImage(imageLiteralResourceName: UIImageNames.defaultImage.rawValue)
         } else {
-            return UIImage(imageLiteralResourceName: "defaultImage")
+            return UIImage(imageLiteralResourceName: UIImageNames.defaultImage.rawValue)
         }
     }
     

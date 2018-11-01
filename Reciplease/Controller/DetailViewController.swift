@@ -59,14 +59,14 @@ class DetailViewController: UIViewController {
     ///
     /// - Parameter favoriteButton: BarButtonItem
     private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
-        if favoriteButton.image == UIImage(named: "Favorite") {
+        if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
             saveRecipeInList()
             saveDetailedRecipe()
-            favoriteButton.image = UIImage(named: "FavoriteSelected")
-        } else if favoriteButton.image == UIImage(named: "FavoriteSelected") {
+            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
+        } else if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
             removeRecipeInList()
             removeDetailedRecipe()
-            favoriteButton.image = UIImage(named: "Favorite")
+            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
         }
     }
     

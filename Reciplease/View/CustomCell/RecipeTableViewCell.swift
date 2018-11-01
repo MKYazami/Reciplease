@@ -64,7 +64,7 @@ class RecipeTableViewCell: UITableViewCell {
         } else if let recipeURLStringImage = recipeURLStringImage {
             recipeImageView.loadFromRemote(urlImageString: recipeURLStringImage)
         } else {
-            recipeImageView.image = UIImage(imageLiteralResourceName: "defaultImage")
+            recipeImageView.image = UIImage(imageLiteralResourceName: UIImageNames.defaultImage.rawValue)
         }
     }
     

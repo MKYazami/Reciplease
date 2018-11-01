@@ -1,5 +1,5 @@
 //
-//  RatingStarsImagesNames.swift
+//  ImageNamesEnum.swift
 //  Reciplease
 //
 //  Created by Mehdi on 15/09/2018.
@@ -23,4 +23,13 @@ enum RatingStarsImagesNames: String {
     case rating3Of5
     case rating4Of5
     case rating5Of5
+}
+
+/// Enum image names that are in the user interface
+enum UIImageNames: String {
+    case defaultImage
+    case Favorite
+    case FavoriteSelected
+    case clockCircular
+    case searcher
 }

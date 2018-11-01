@@ -15,14 +15,14 @@ extension UIImageView {
     /// - Parameter urlImageString: url string whitch contains the image
     func loadFromRemote(urlImageString: String?) {
         guard let urlImageString = urlImageString else {
-            self.image = UIImage(imageLiteralResourceName: "defaultImage")
+            self.image = UIImage(imageLiteralResourceName: UIImageNames.defaultImage.rawValue)
             return
         }
         
         // We change the the image size in url to get greater image
         let urlImageStringWithGreaterSize = urlImageString.replacingOccurrences(of: "=s90", with: "=s1000")
         guard let urlImage = URL(string: urlImageStringWithGreaterSize) else {
-            self.image = UIImage(imageLiteralResourceName: "defaultImage")
+            self.image = UIImage(imageLiteralResourceName: UIImageNames.defaultImage.rawValue)
             return
         }
         
