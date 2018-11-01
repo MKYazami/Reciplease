@@ -15,6 +15,7 @@ class FavoriteDetailViewController: UIViewController {
     
     // MARK: Outlet
     @IBOutlet var recipeDetailView: RecipeDetailView!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     // MARK: Actions
     @IBAction func favoriteItem(_ sender: Any) {
