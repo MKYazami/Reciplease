@@ -19,7 +19,8 @@ class FavoriteDetailViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func favoriteItem(_ sender: Any) {
-        
+        guard let favoriteButton = sender as? UIBarButtonItem else { return }
+        switchFavoriteButton(favoriteButton: favoriteButton)
     }
     
     // MARK: Methods
@@ -27,6 +28,41 @@ class FavoriteDetailViewController: UIViewController {
         super.viewDidLoad()
         recipeDetailView.actionDelegate = self
         configureDetailedView()
+    }
+    
+    /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
+    ///
+    /// - Parameter favoriteButton: BarButtonItem
+    private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
+        if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
+            deleteRecipe()
+            deleteDetailedRecipe()
+            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
+        } else if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
+            saveDetailedRecipe()
+            saveRecipe()
+            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
+        }
+    }
+    
+    /// Save detailed recipe
+    private func saveDetailedRecipe() {
+        
+    }
+    
+    /// Delete detailed recipe
+    private func deleteDetailedRecipe() {
+        
+    }
+    
+    /// Save recipe presented in the list
+    private func saveRecipe() {
+        
+    }
+    
+    /// Delete recipe presented in the list
+    private func deleteRecipe() {
+        
     }
     
     /// Configure and display the custom detailed view
