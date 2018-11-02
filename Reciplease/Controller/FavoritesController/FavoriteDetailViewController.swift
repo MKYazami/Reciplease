@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoriteDetailViewController: UIViewController {
     
     // MARK: Property
     var detailedRecipe: DetailedRecipeData?
+    var recipeInList: RecipeData?
     
     // MARK: Outlet
     @IBOutlet var recipeDetailView: RecipeDetailView!
@@ -35,12 +37,11 @@ class FavoriteDetailViewController: UIViewController {
     /// - Parameter favoriteButton: BarButtonItem
     private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
         if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
-            deleteRecipe()
-            deleteDetailedRecipe()
+            deleteRecipes(recipe: detailedRecipe)
+            deleteRecipes(recipe: recipeInList)
             favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
         } else if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
-            saveDetailedRecipe()
-            saveRecipe()
+            
             favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
         }
     }
@@ -50,19 +51,32 @@ class FavoriteDetailViewController: UIViewController {
         
     }
     
-    /// Delete detailed recipe
-    private func deleteDetailedRecipe() {
+    /// Delete recipe from persistence
+    ///
+    /// - Parameter recipe: the recipe, either detailed or in list
+    private func deleteRecipes(recipe: NSManagedObject?) {
+        guard let recipe = recipe else { return }
+        AppDelegate.viewContext.delete(recipe)
         
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Error to delete detailed recipe: \(error) \n Description: \(error.userInfo)")
+        }
     }
     
     /// Save recipe presented in the list
-    private func saveRecipe() {
+    private func saveRecipe(recipe: NSManagedObject?) {
+        guard let recipe = recipe else { return }
         
-    }
-    
-    /// Delete recipe presented in the list
-    private func deleteRecipe() {
+        let detailedRecipeRequest: NSFetchRequest<DetailedRecipeData> = DetailedRecipeData.fetchRequest()
+        let recipeRequest: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
         
+        if recipe is RecipeData {
+            
+        } else if recipe is DetailedRecipeData {
+            
+        }
     }
     
     /// Configure and display the custom detailed view

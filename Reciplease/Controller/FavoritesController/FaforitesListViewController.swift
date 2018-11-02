@@ -11,8 +11,11 @@ import UIKit
 class FaforitesListViewController: UIViewController {
     
     // MARK: Properties
-    var recipes: [RecipeData]?
+    private var recipes: [RecipeData]?
+    // Property to transfert to FavoriteDetailViewController for Persistence manipulations
+    var recipeInList: RecipeData?
     var detailedRecipe: DetailedRecipeData?
+    
     private var segueToFavoriteDetailVC: String {
         return "fromFavoritesListToFavoriteDetails"
     }
@@ -69,6 +72,7 @@ class FaforitesListViewController: UIViewController {
         if segue.identifier == segueToFavoriteDetailVC {
             let favoriteDetailedVC = segue.destination as! FavoriteDetailViewController
             favoriteDetailedVC.detailedRecipe = detailedRecipe
+            favoriteDetailedVC.recipeInList = recipeInList
         }
         
     }
@@ -148,6 +152,9 @@ extension FaforitesListViewController: ListenToSelectedCell {
         
         // Get cell index selected by user to get detailed recipe
         guard let cellIndex = mainView.tableView.indexPathForSelectedRow?.row else { return }
+        
+        // Get recipeInList selected by user
+        recipeInList = recipes?[cellIndex]
         
         // Get recipe ID
         guard let recipe = recipes?[cellIndex],
