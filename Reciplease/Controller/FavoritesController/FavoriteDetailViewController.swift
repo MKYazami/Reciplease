@@ -37,45 +37,107 @@ class FavoriteDetailViewController: UIViewController {
     /// - Parameter favoriteButton: BarButtonItem
     private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
         if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
-            deleteRecipes(recipe: detailedRecipe)
-            deleteRecipes(recipe: recipeInList)
+            deleteDetailedRecipe()
+            deleteRecipeInList()
             favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
         } else if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
-            
+            saveRecipeInList()
+            saveDetailedRecipe()
             favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
+        }
+    }
+    
+    /// Delete detailed recipe from persistence
+    private func deleteDetailedRecipe() {
+        guard let recipeID = detailedRecipe?.recipeID else {
+            print("Error: detailed recipe ID is nil")
+            return
+        }
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try AppDelegate.viewContext.execute(request)
+        } catch let error as NSError {
+            print("Error to delete detailled recipe: \(error) \n Description: \(error.userInfo)")
+        }
+    }
+    
+    /// Delete recipe in list from persistence
+    private func deleteRecipeInList() {
+        guard let recipeID = recipeInList?.recipeID else {
+            print("Error: recipe in list ID is nil")
+            return
+        }
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try AppDelegate.viewContext.execute(request)
+        } catch let error as NSError {
+            print("Error to delete recipe in list: \(error) \n Description: \(error.userInfo)")
         }
     }
     
     /// Save detailed recipe
     private func saveDetailedRecipe() {
+        guard let detailedRecipe = detailedRecipe else { return }
         
-    }
-    
-    /// Delete recipe from persistence
-    ///
-    /// - Parameter recipe: the recipe, either detailed or in list
-    private func deleteRecipes(recipe: NSManagedObject?) {
-        guard let recipe = recipe else { return }
-        AppDelegate.viewContext.delete(recipe)
+        let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
+        
+        let recipeName = detailedRecipe.recipeName
+        let recipeID = detailedRecipe.recipeID
+        let rating = detailedRecipe.rating
+        let preparationTime = detailedRecipe.preparationTime
+        let recipeImageData = detailedRecipe.image
+        let ingredients = detailedRecipe.ingredients
+        let sourceRecipeURL = detailedRecipe.sourceRecipeURL
+        
+        detailedRecipeData.recipeName = recipeName
+        detailedRecipeData.recipeID = recipeID
+        detailedRecipeData.rating = rating
+        detailedRecipeData.preparationTime = preparationTime
+        detailedRecipeData.image = recipeImageData
+        detailedRecipeData.ingredients = ingredients
+        detailedRecipeData.sourceRecipeURL = sourceRecipeURL
         
         do {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
-            print("Error to delete detailed recipe: \(error) \n Description: \(error.userInfo)")
+            print("Error to save detailed recipe: \(error) \n Description: \(error.userInfo)")
         }
     }
     
     /// Save recipe presented in the list
-    private func saveRecipe(recipe: NSManagedObject?) {
-        guard let recipe = recipe else { return }
+    private func saveRecipeInList() {
+        guard let recipeInList = recipeInList else { return }
         
-        let detailedRecipeRequest: NSFetchRequest<DetailedRecipeData> = DetailedRecipeData.fetchRequest()
-        let recipeRequest: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
+        let recipeData = RecipeData(context: AppDelegate.viewContext)
         
-        if recipe is RecipeData {
-            
-        } else if recipe is DetailedRecipeData {
-            
+        let recipeName = recipeInList.recipeName
+        let recipeID = recipeInList.recipeID
+        let rating = recipeInList.rating
+        let imageData = recipeInList.image
+        let ingredients = recipeInList.ingredients
+        let totalTimeInSeconds = recipeInList.totalTimeInSeconds
+        
+        recipeData.recipeName = recipeName
+        recipeData.recipeID = recipeID
+        recipeData.rating = rating
+        recipeData.image = imageData
+        recipeData.ingredients = ingredients
+        recipeData.totalTimeInSeconds = totalTimeInSeconds
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Error to save recipe in list: \(error) \n Description: \(error.userInfo)")
         }
     }
     
