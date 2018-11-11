@@ -49,10 +49,7 @@ class FavoriteDetailViewController: UIViewController {
     
     /// Delete detailed recipe from persistence
     private func deleteDetailedRecipe() {
-        guard let recipeID = detailedRecipe?.recipeID else {
-            print("Error: detailed recipe ID is nil")
-            return
-        }
+        guard let recipeID = detailedRecipe?.recipeID else { return }
         
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
@@ -68,10 +65,7 @@ class FavoriteDetailViewController: UIViewController {
     
     /// Delete recipe in list from persistence
     private func deleteRecipeInList() {
-        guard let recipeID = recipeInList?.recipeID else {
-            print("Error: recipe in list ID is nil")
-            return
-        }
+        guard let recipeID = recipeInList?.recipeID else { return }
         
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeData")
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), recipeID)

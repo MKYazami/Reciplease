@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
     
@@ -20,8 +21,8 @@ class DetailViewController: UIViewController {
     var recipeInList: Match?
     
     // Init contexts
-    private let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
-    private let listRecipeData = RecipeData(context: AppDelegate.viewContext)
+    private lazy var detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
+    private lazy var listRecipeData = RecipeData(context: AppDelegate.viewContext)
     
     // MARK: Outlets
     @IBOutlet var recipeViewDetail: RecipeDetailView!
@@ -102,13 +103,17 @@ class DetailViewController: UIViewController {
     
     /// Remove recipe presented in the list
     private func removeRecipeInList() {
-        AppDelegate.viewContext.delete(listRecipeData)
+        guard let recipeID = listRecipeData.recipeID else { return }
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
         do {
-            try AppDelegate.viewContext.save()
-            
+            try AppDelegate.viewContext.execute(request)
         } catch let error as NSError {
-            alertMessage(title: Constants.AlertMessage.deleteRecipeErrorTitle, message: Constants.AlertMessage.deleteRecipeErrorDescription)
-            print("Deleting error: \n \(error) \n User Info Error —> \(error.userInfo)")
+            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
         }
     }
     
@@ -141,12 +146,17 @@ class DetailViewController: UIViewController {
     
     /// Remove detailed recipe
     private func removeDetailedRecipe() {
-        AppDelegate.viewContext.delete(detailedRecipeData)
+        guard let recipeID = detailedRecipeData.recipeID else { return }
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
         do {
-            try AppDelegate.viewContext.save()
+            try AppDelegate.viewContext.execute(request)
         } catch let error as NSError {
-            alertMessage(title: Constants.AlertMessage.deleteRecipeErrorTitle, message: Constants.AlertMessage.deleteRecipeErrorDescription)
-            print("Deleting error: \n \(error) \n User Info Error —> \(error.userInfo)")
+            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
         }
     }
     
