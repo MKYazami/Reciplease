@@ -12,17 +12,13 @@ import CoreData
 class DetailViewController: UIViewController {
     
     // MARK: Properties
-    var detailedRecipe: DetailedRecipe!
-    
-    // Global recipeID property allows to save the detailed recipe ID
-    private var recipeID: String?
+    var detailedRecipe: DetailedRecipe?
     
     // Contains the recipe items in list in order to store them in Core Data
     var recipeInList: Match?
     
-    // Init contexts
-    private lazy var detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
-    private lazy var listRecipeData = RecipeData(context: AppDelegate.viewContext)
+    /// Global recipeID property allows to save/delete recipes by ID
+    private var recipeID: String?
     
     // MARK: Outlets
     @IBOutlet var recipeViewDetail: RecipeDetailView!
@@ -37,23 +33,36 @@ class DetailViewController: UIViewController {
     // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeViewDetail.actionDelegate = self
-        recipeViewDetail.detailConfigurator(rating: detailedRecipe.rating, preparationTime: detailedRecipe.totalTimeInSeconds, recipeTitle: detailedRecipe.name, detailedRecipe: detailedRecipe.ingredientLines, recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
+        setUpDelegates()
+        populateDetailedRecipeView()
+        // Fill global recipeID property to fetch/delete recipes by ID
+        self.recipeID = recipeInList?.recipeID
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Set text view scroll to the top
         recipeViewDetail.recipeTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
+        // TODO: CHANGE THE FAVORITE BUTTON ACCORDING TO THE RECIPE IS SAVED OR NOT
+        // - Checking in predicate and if the recipeID is already in database the favorite button must
+        // be selected or deselected otherwise
+    }
+}
+
+// MARK: Methods Helper
+extension DetailViewController {
+    private func setUpDelegates() {
+        recipeViewDetail.actionDelegate = self
     }
     
-    private func getDirections(urlString: String) {
-        guard let url = URL(string: urlString) else {
-            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle, message: Constants.AlertMessage.getDirectionsErrorDescription)
-            return
-        }
-        
-        Helper.openURLInWebBrowser(url: url)
+    /// Allows to populate labels, text views, image views… in detailed recipe view
+    private func populateDetailedRecipeView() {
+        guard let detailedRecipe = detailedRecipe else { return }
+        recipeViewDetail.detailConfigurator(rating: detailedRecipe.rating,
+                                            preparationTime: detailedRecipe.totalTimeInSeconds,
+                                            recipeTitle: detailedRecipe.name,
+                                            detailedRecipe: detailedRecipe.ingredientLines,
+                                            recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
     }
     
     /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
@@ -70,94 +79,15 @@ class DetailViewController: UIViewController {
             favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
         }
     }
-    
-    /// Save recipe presented in the list
-    private func saveRecipeInList() {
-        guard let recipeInList = recipeInList else { return }
-        let recipeName = recipeInList.recipeName
-        let recipeID = recipeInList.recipeID
-        let rating = recipeInList.rating ?? 0
-        let image = recipeViewDetail.recipeImageView.image
-        let ingredients = recipeInList.ingredients
-        let totalTimeInSeconds = recipeInList.totalTimeInSeconds
         
-        // Fill global recipeID property
-        self.recipeID = recipeID
-        
-        // Save data
-        listRecipeData.recipeName = recipeName
-        listRecipeData.recipeID = recipeID
-        listRecipeData.rating = Int16(rating)
-        listRecipeData.image = image?.jpegData(compressionQuality: 1.0)
-        listRecipeData.ingredients = ingredients as NSArray
-        listRecipeData.totalTimeInSeconds = Int16(totalTimeInSeconds)
-        listRecipeData.detailedRecipe = detailedRecipeData
-        
-        do {
-            try AppDelegate.viewContext.save()
-        } catch let error as NSError {
-            alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle, message: Constants.AlertMessage.saveRecipeErrorDescription)
-            print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+    private func getDirections(urlString: String) {
+        guard let url = URL(string: urlString) else {
+            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
+                         message: Constants.AlertMessage.getDirectionsErrorDescription)
+            return
         }
-    }
-    
-    /// Remove recipe presented in the list
-    private func removeRecipeInList() {
-        guard let recipeID = listRecipeData.recipeID else { return }
         
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeData")
-        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), recipeID)
-        
-        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-        
-        do {
-            try AppDelegate.viewContext.execute(request)
-        } catch let error as NSError {
-            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
-        }
-    }
-    
-    /// Save detailed recipe
-    private func saveDetailedRecipe() {
-        // Get detail recipe items
-        let recipeName = detailedRecipe.name
-        let rating = detailedRecipe.rating
-        let preparationTime = recipeViewDetail.preparationTimeLabel.text
-        let recipeImage = recipeViewDetail.recipeImageView.image
-        let ingredients = detailedRecipe.ingredientLines
-        let sourceRecipeURL = detailedRecipe.source.sourceRecipeUrl
-        
-        // Save data
-        detailedRecipeData.recipeName = recipeName
-        detailedRecipeData.recipeID = recipeID
-        detailedRecipeData.rating = Int16(rating)
-        detailedRecipeData.preparationTime = preparationTime
-        detailedRecipeData.image = recipeImage?.jpegData(compressionQuality: 1.0)
-        detailedRecipeData.ingredients = ingredients as NSArray
-        detailedRecipeData.sourceRecipeURL = sourceRecipeURL
-        
-        do {
-            try AppDelegate.viewContext.save()
-        } catch let error as NSError {
-            alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle, message: Constants.AlertMessage.saveRecipeErrorDescription)
-            print("Detailed recipe saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
-        }
-    }
-    
-    /// Remove detailed recipe
-    private func removeDetailedRecipe() {
-        guard let recipeID = detailedRecipeData.recipeID else { return }
-        
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
-        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
-        
-        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-        
-        do {
-            try AppDelegate.viewContext.execute(request)
-        } catch let error as NSError {
-            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
-        }
+        Helper.openURLInWebBrowser(url: url)
     }
     
     /// Display pop up to warn the user
@@ -171,12 +101,106 @@ class DetailViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
+}
+
+// MARK: Persistence
+extension DetailViewController {
+    /// Save recipe presented in the list
+    private func saveRecipeInList() {
+        guard let recipeInList = recipeInList else { return }
+        let recipeName = recipeInList.recipeName
+        let recipeID = recipeInList.recipeID
+        let rating = recipeInList.rating ?? 0
+        let image = recipeViewDetail.recipeImageView.image
+        let ingredients = recipeInList.ingredients
+        let totalTimeInSeconds = recipeInList.totalTimeInSeconds
+        
+        // Save data
+        let listRecipeData = RecipeData(context: AppDelegate.viewContext)
+        listRecipeData.recipeName = recipeName
+        listRecipeData.recipeID = recipeID
+        listRecipeData.rating = Int16(rating)
+        listRecipeData.image = image?.jpegData(compressionQuality: 0.5)
+        listRecipeData.ingredients = ingredients as NSArray
+        listRecipeData.totalTimeInSeconds = Int16(totalTimeInSeconds)
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle,
+                         message: Constants.AlertMessage.saveRecipeErrorDescription)
+            print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
+    }
     
+    /// Save detailed recipe
+    private func saveDetailedRecipe() {
+        guard let detailedRecipe = detailedRecipe else { return }
+        
+        // Get detail recipe items
+        let recipeName = detailedRecipe.name
+        let rating = detailedRecipe.rating
+        let preparationTime = recipeViewDetail.preparationTimeLabel.text
+        let recipeImage = recipeViewDetail.recipeImageView.image
+        let ingredients = detailedRecipe.ingredientLines
+        let sourceRecipeURL = detailedRecipe.source.sourceRecipeUrl
+        
+        // Save data
+        let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
+        detailedRecipeData.recipeName = recipeName
+        detailedRecipeData.recipeID = recipeID
+        detailedRecipeData.rating = Int16(rating)
+        detailedRecipeData.preparationTime = preparationTime
+        detailedRecipeData.image = recipeImage?.jpegData(compressionQuality: 1.0)
+        detailedRecipeData.ingredients = ingredients as NSArray
+        detailedRecipeData.sourceRecipeURL = sourceRecipeURL
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle,
+                         message: Constants.AlertMessage.saveRecipeErrorDescription)
+            print("Detailed recipe saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
+    }
+    
+    /// Remove recipe presented in the list
+    private func removeRecipeInList() {
+        guard let recipeID = recipeID else { return }
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try AppDelegate.viewContext.execute(request)
+        } catch let error as NSError {
+            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
+        }
+    }
+    
+    /// Remove detailed recipe
+    private func removeDetailedRecipe() {
+        guard let recipeID = recipeID else { return }
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try AppDelegate.viewContext.execute(request)
+        } catch let error as NSError {
+            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
+        }
+    }
 }
 
 // MARK: Actions delegates
 extension DetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
+        guard let detailedRecipe = detailedRecipe else { return }
         getDirections(urlString: detailedRecipe.source.sourceRecipeUrl)
     }
 }
