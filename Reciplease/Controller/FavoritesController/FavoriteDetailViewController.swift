@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class FavoriteDetailViewController: UIViewController {
     
@@ -90,29 +89,8 @@ class FavoriteDetailViewController: UIViewController {
     
     /// Save recipe presented in the list
     private func saveRecipeInList() {
-        guard let recipeInList = recipeInList else { return }
-        
-        let recipeData = RecipeData(context: AppDelegate.viewContext)
-        
-        let recipeName = recipeInList.recipeName
-        let recipeID = recipeInList.recipeID
-        let rating = recipeInList.rating
-        let imageData = recipeInList.image
-        let ingredients = recipeInList.ingredients
-        let totalTimeInSeconds = recipeInList.totalTimeInSeconds
-        
-        recipeData.recipeName = recipeName
-        recipeData.recipeID = recipeID
-        recipeData.rating = rating
-        recipeData.image = imageData
-        recipeData.ingredients = ingredients
-        recipeData.totalTimeInSeconds = totalTimeInSeconds
-        
-        do {
-            try AppDelegate.viewContext.save()
-        } catch let error as NSError {
-            print("Error to save recipe in list: \(error) \n Description: \(error.userInfo)")
-        }
+        guard let recipeData = recipeInList else { return }
+        RecipeData.saveRecipeFromLocalData(recipeData: recipeData)
     }
     
     /// Configure and display the custom detailed view

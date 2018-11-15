@@ -49,6 +49,34 @@ class RecipeData: NSManagedObject {
         }
     }
     
+    /// Allows to save recipe again (after deleted) from local data that are already previously saved 
+    ///
+    /// - Parameter recipeData: structure RecipeData
+    static func saveRecipeFromLocalData(recipeData: RecipeData) {
+        
+        let recipeName = recipeData.recipeName
+        let recipeID = recipeData.recipeID
+        let rating = recipeData.rating
+        let imageData = recipeData.image
+        let ingredients = recipeData.ingredients
+        let totalTimeInSeconds = recipeData.totalTimeInSeconds
+        
+        let recipeData = RecipeData(context: AppDelegate.viewContext)
+        
+        recipeData.recipeName = recipeName
+        recipeData.recipeID = recipeID
+        recipeData.rating = rating
+        recipeData.image = imageData
+        recipeData.ingredients = ingredients
+        recipeData.totalTimeInSeconds = totalTimeInSeconds
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Error to save recipe in list: \(error) \n Description: \(error.userInfo)")
+        }
+    }
+    
     /// Remove recipe from persistence with the help of recipe ID
     ///
     /// - Parameter recipeID: the ID of recipe
