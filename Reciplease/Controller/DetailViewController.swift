@@ -108,29 +108,10 @@ extension DetailViewController {
     /// Save recipe presented in the list
     private func saveRecipeInList() {
         guard let recipeInList = recipeInList else { return }
-        let recipeName = recipeInList.recipeName
-        let recipeID = recipeInList.recipeID
-        let rating = recipeInList.rating ?? 0
         let image = recipeViewDetail.recipeImageView.image
-        let ingredients = recipeInList.ingredients
-        let totalTimeInSeconds = recipeInList.totalTimeInSeconds
+        let imageData = image?.jpegData(compressionQuality: 0.5)
         
-        // Save data
-        let listRecipeData = RecipeData(context: AppDelegate.viewContext)
-        listRecipeData.recipeName = recipeName
-        listRecipeData.recipeID = recipeID
-        listRecipeData.rating = Int16(rating)
-        listRecipeData.image = image?.jpegData(compressionQuality: 0.5)
-        listRecipeData.ingredients = ingredients as NSArray
-        listRecipeData.totalTimeInSeconds = Int16(totalTimeInSeconds)
-        
-        do {
-            try AppDelegate.viewContext.save()
-        } catch let error as NSError {
-            alertMessage(title: Constants.AlertMessage.saveRecipeErrorTitle,
-                         message: Constants.AlertMessage.saveRecipeErrorDescription)
-            print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
-        }
+        RecipeData.saveRecipeFromYummlyData(recipe: recipeInList, imageData: imageData)
     }
     
     /// Save detailed recipe

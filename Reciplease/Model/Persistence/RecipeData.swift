@@ -21,6 +21,29 @@ class RecipeData: NSManagedObject {
         return recipes
     }
     
+    static func saveRecipeFromYummlyData(recipe: Match, imageData: Data?) {
+        let recipeName = recipe.recipeName
+        let recipeID = recipe.recipeID
+        let rating = recipe.rating ?? 0
+        let ingredients = recipe.ingredients
+        let totalTimeInSeconds = recipe.totalTimeInSeconds
+        
+        // Save data
+        let listRecipeData = RecipeData(context: AppDelegate.viewContext)
+        listRecipeData.recipeName = recipeName
+        listRecipeData.recipeID = recipeID
+        listRecipeData.rating = Int16(rating)
+        listRecipeData.image = imageData
+        listRecipeData.ingredients = ingredients as NSArray
+        listRecipeData.totalTimeInSeconds = Int16(totalTimeInSeconds)
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
+    }
+    
 }
 
 class DetailedRecipeData: NSManagedObject {
