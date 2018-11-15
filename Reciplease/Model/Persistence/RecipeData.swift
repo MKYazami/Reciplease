@@ -60,4 +60,28 @@ class DetailedRecipeData: NSManagedObject {
         return fetchRequest
     }
     
+    static func saveDetailedRecipeFromYummlyData(detailedRecipe: DetailedRecipe, recipeID: String?, imageData: Data?, preparationTime: String?) {
+        // Get detail recipe items
+        let recipeName = detailedRecipe.name
+        let rating = detailedRecipe.rating
+        let ingredients = detailedRecipe.ingredientLines
+        let sourceRecipeURL = detailedRecipe.source.sourceRecipeUrl
+        
+        // Save data
+        let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
+        detailedRecipeData.recipeName = recipeName
+        detailedRecipeData.recipeID = recipeID
+        detailedRecipeData.rating = Int16(rating)
+        detailedRecipeData.preparationTime = preparationTime
+        detailedRecipeData.image = imageData
+        detailedRecipeData.ingredients = ingredients as NSArray
+        detailedRecipeData.sourceRecipeURL = sourceRecipeURL
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Detailed recipe saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
+    }
+    
 }
