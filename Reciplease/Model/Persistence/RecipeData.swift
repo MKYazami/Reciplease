@@ -49,9 +49,9 @@ class RecipeData: NSManagedObject {
         }
     }
     
-    /// Allows to save recipe again (after deleted) from local data that are already previously saved 
+    /// Allows to save recipe again (after deleted) from local data that are already previously saved
     ///
-    /// - Parameter recipeData: structure RecipeData
+    /// - Parameter recipeData: RecipeData structure
     static func saveRecipeFromLocalData(recipeData: RecipeData) {
         
         let recipeName = recipeData.recipeName
@@ -137,6 +137,36 @@ class DetailedRecipeData: NSManagedObject {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
             print("Detailed recipe saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+        }
+    }
+    
+    /// Allows to save detailed recipe again (after deleted) from local data that are already previously saved
+    ///
+    /// - Parameter detailedRecipe: DetailedRecipe structure
+    static func saveDetailedRecipeFromLocalData(detailedRecipe: DetailedRecipeData) {
+        
+        let recipeName = detailedRecipe.recipeName
+        let recipeID = detailedRecipe.recipeID
+        let rating = detailedRecipe.rating
+        let preparationTime = detailedRecipe.preparationTime
+        let recipeImageData = detailedRecipe.image
+        let ingredients = detailedRecipe.ingredients
+        let sourceRecipeURL = detailedRecipe.sourceRecipeURL
+        
+        let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
+        
+        detailedRecipeData.recipeName = recipeName
+        detailedRecipeData.recipeID = recipeID
+        detailedRecipeData.rating = rating
+        detailedRecipeData.preparationTime = preparationTime
+        detailedRecipeData.image = recipeImageData
+        detailedRecipeData.ingredients = ingredients
+        detailedRecipeData.sourceRecipeURL = sourceRecipeURL
+        
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Error to save detailed recipe: \(error) \n Description: \(error.userInfo)")
         }
     }
     

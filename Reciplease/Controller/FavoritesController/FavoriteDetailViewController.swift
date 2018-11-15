@@ -60,31 +60,8 @@ class FavoriteDetailViewController: UIViewController {
     
     /// Save detailed recipe
     private func saveDetailedRecipe() {
-        guard let detailedRecipe = detailedRecipe else { return }
-        
-        let detailedRecipeData = DetailedRecipeData(context: AppDelegate.viewContext)
-        
-        let recipeName = detailedRecipe.recipeName
-        let recipeID = detailedRecipe.recipeID
-        let rating = detailedRecipe.rating
-        let preparationTime = detailedRecipe.preparationTime
-        let recipeImageData = detailedRecipe.image
-        let ingredients = detailedRecipe.ingredients
-        let sourceRecipeURL = detailedRecipe.sourceRecipeURL
-        
-        detailedRecipeData.recipeName = recipeName
-        detailedRecipeData.recipeID = recipeID
-        detailedRecipeData.rating = rating
-        detailedRecipeData.preparationTime = preparationTime
-        detailedRecipeData.image = recipeImageData
-        detailedRecipeData.ingredients = ingredients
-        detailedRecipeData.sourceRecipeURL = sourceRecipeURL
-        
-        do {
-            try AppDelegate.viewContext.save()
-        } catch let error as NSError {
-            print("Error to save detailed recipe: \(error) \n Description: \(error.userInfo)")
-        }
+        guard let detailedRecipeData = detailedRecipe else { return }
+        DetailedRecipeData.saveDetailedRecipeFromLocalData(detailedRecipe: detailedRecipeData)
     }
     
     /// Save recipe presented in the list
@@ -101,13 +78,18 @@ class FavoriteDetailViewController: UIViewController {
         let recipeName = detailedRecipe.recipeName ?? "Sorry Missing Recipe Name :("
         let ingredients = (detailedRecipe.ingredients as? [String]) ?? ["Ouupps Missing Ingredients!"]
         let recipeImage = detailedRecipe.image
-        recipeDetailView.detailConfiguratorFromLocalPersistence(rating: rating, preparationTime: preparationTime, recipeName: recipeName, detailedRecipe: ingredients, recipeImage: recipeImage)
+        recipeDetailView.detailConfiguratorFromLocalPersistence(rating: rating,
+                                                                preparationTime: preparationTime,
+                                                                recipeName: recipeName,
+                                                                detailedRecipe: ingredients,
+                                                                recipeImage: recipeImage)
     }
     
     private func getDirections(urlString: String?) {
         guard let urlString = urlString,
               let url = URL(string: urlString) else {
-            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle, message: Constants.AlertMessage.getDirectionsErrorDescription)
+            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
+                         message: Constants.AlertMessage.getDirectionsErrorDescription)
             return
         }
         
