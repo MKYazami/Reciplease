@@ -21,6 +21,11 @@ class RecipeData: NSManagedObject {
         return recipes
     }
     
+    /// Allows to save recipe from remote API Yummli which contains a data structure Match
+    ///
+    /// - Parameters:
+    ///   - recipe: recipe result is stored in Match data structure
+    ///   - imageData: image under form of data
     static func saveRecipeFromYummlyData(recipe: Match, imageData: Data?) {
         let recipeName = recipe.recipeName
         let recipeID = recipe.recipeID
@@ -44,6 +49,22 @@ class RecipeData: NSManagedObject {
         }
     }
     
+    /// Remove recipe from persistence with the help of recipe ID
+    ///
+    /// - Parameter recipeID: the ID of recipe
+    static func removeRecipeData(recipeID: String) {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try AppDelegate.viewContext.execute(request)
+        } catch let error as NSError {
+            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
+        }
+    }
+    
 }
 
 class DetailedRecipeData: NSManagedObject {
@@ -60,6 +81,13 @@ class DetailedRecipeData: NSManagedObject {
         return fetchRequest
     }
     
+    /// Save the detailed recipe
+    ///
+    /// - Parameters:
+    ///   - detailedRecipe: detailed recipe structure
+    ///   - recipeID: recipe ID
+    ///   - imageData: image under form of data
+    ///   - preparationTime: time of preparation as String
     static func saveDetailedRecipeFromYummlyData(detailedRecipe: DetailedRecipe, recipeID: String?, imageData: Data?, preparationTime: String?) {
         // Get detail recipe items
         let recipeName = detailedRecipe.name
