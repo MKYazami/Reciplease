@@ -50,17 +50,7 @@ class FavoriteDetailViewController: UIViewController {
     /// Delete detailed recipe from persistence
     private func deleteDetailedRecipe() {
         guard let recipeID = detailedRecipe?.recipeID else { return }
-        
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
-        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
-        
-        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-        
-        do {
-            try AppDelegate.viewContext.execute(request)
-        } catch let error as NSError {
-            print("Error to delete detailled recipe: \(error) \n Description: \(error.userInfo)")
-        }
+        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
     }
     
     /// Delete recipe in list from persistence

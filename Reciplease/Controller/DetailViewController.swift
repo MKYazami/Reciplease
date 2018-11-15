@@ -137,17 +137,7 @@ extension DetailViewController {
     /// Remove detailed recipe
     private func removeDetailedRecipe() {
         guard let recipeID = recipeID else { return }
-        
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
-        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
-        
-        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-        
-        do {
-            try AppDelegate.viewContext.execute(request)
-        } catch let error as NSError {
-            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
-        }
+        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
     }
 }
 

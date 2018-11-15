@@ -112,4 +112,20 @@ class DetailedRecipeData: NSManagedObject {
         }
     }
     
+    /// Removes detailed recipe with the help of recipe ID
+    ///
+    /// - Parameter recipeID: ID of recipe
+    static func removeDetailedRecipeData(recipeID: String) {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DetailedRecipeData")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
+        
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try AppDelegate.viewContext.execute(request)
+        } catch let error as NSError {
+            print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
+        }
+    }
+    
 }
