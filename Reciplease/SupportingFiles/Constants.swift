@@ -24,6 +24,20 @@ struct Constants {
         }
     }
     
+    struct Segue {
+        static var toRecipesResults: String {
+            return "segueToRecipesResults"
+        }
+        
+        static var toDetailedRecipe: String {
+            return "segueToDetailedRecipe"
+        }
+        
+        static var toFavoriteDetail: String {
+            return "fromFavoritesListToFavoriteDetails"
+        }
+    }
+    
     struct AlertMessage {
         static var networkErrorTitle: String {
             return "Network Problem!"

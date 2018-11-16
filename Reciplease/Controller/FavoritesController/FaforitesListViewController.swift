@@ -16,10 +16,6 @@ class FaforitesListViewController: UIViewController {
     var recipeInList: RecipeData?
     var detailedRecipe: DetailedRecipeData?
     
-    private var segueToFavoriteDetailVC: String {
-        return "fromFavoritesListToFavoriteDetails"
-    }
-    
     // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!
     
@@ -56,7 +52,7 @@ class FaforitesListViewController: UIViewController {
             
             detailedRecipe = detailedRecipeData.first
             
-            performSegue(withIdentifier: segueToFavoriteDetailVC, sender: self)
+            performSegue(withIdentifier: Constants.Segue.toFavoriteDetail, sender: self)
         } catch let error as NSError {
             print("Error to get detailed recipe from Core Data \(error) \n Error Description: \(error.userInfo)")
             alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle, message: Constants.AlertMessage.getDetailedRecipeErrorDescription)
@@ -67,7 +63,7 @@ class FaforitesListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == segueToFavoriteDetailVC {
+        if segue.identifier == Constants.Segue.toFavoriteDetail {
             let favoriteDetailedVC = segue.destination as! FavoriteDetailViewController
             favoriteDetailedVC.detailedRecipe = detailedRecipe
             favoriteDetailedVC.recipeInList = recipeInList

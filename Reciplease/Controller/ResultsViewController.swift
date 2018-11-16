@@ -36,7 +36,7 @@ class ResultsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToDetailedRecipe" {
+        if segue.identifier == Constants.Segue.toDetailedRecipe {
             let detailVC = segue.destination as! DetailViewController
             detailVC.detailedRecipe = detailedRecipe
             detailVC.recipeInList = recipeInList
@@ -56,7 +56,7 @@ extension ResultsViewController {
         RecipeService(urlStringType: YummlyDetailedURLString(recipeID: recipeID)).downloadDetailedRecipe { (success, detailedRecipe) in
             if success, let detailedRecipe = detailedRecipe {
                 self.detailedRecipe = detailedRecipe
-                self.performSegue(withIdentifier: "segueToDetailedRecipe", sender: self)
+                self.performSegue(withIdentifier: Constants.Segue.toDetailedRecipe, sender: self)
             } else {
                 self.alertMessage(title: Constants.AlertMessage.networkErrorTitle, message: Constants.AlertMessage.networkErrorDescription)
                 self.toogleTableViewUserInteractions(enable: true)

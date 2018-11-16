@@ -57,7 +57,7 @@ class HomePageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToRecipesResults" {
+        if segue.identifier == Constants.Segue.toRecipesResults {
             let resultesVC = segue.destination as! ResultsViewController
             resultesVC.recipes = recipes
         }
@@ -77,7 +77,7 @@ extension HomePageViewController {
         RecipeService(urlStringType: YummlyURLString(ingredients: ingredientsInArray)).downloadRecipe { (success, recipe) in
             if success, let recipe = recipe {
                 self.recipes = recipe
-                self.performSegue(withIdentifier: "segueToRecipesResults", sender: self)
+                self.performSegue(withIdentifier: Constants.Segue.toRecipesResults, sender: self)
             } else {
                 self.alertMessage(title: Constants.AlertMessage.networkErrorTitle, message: Constants.AlertMessage.networkErrorDescription)
                 self.toogleActivityIndicator(shown: false)
