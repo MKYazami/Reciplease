@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    // MARK: Properties
+    // MARK: PROPERTIES
     var detailedRecipe: DetailedRecipe?
     
     // Contains the recipe items in list in order to store them in Core Data
@@ -19,17 +19,17 @@ class DetailViewController: UIViewController {
     /// Global recipeID property allows to save/delete recipes by ID
     private var recipeID: String?
     
-    // MARK: Outlets
+    // MARK: OUTLETS
     @IBOutlet var recipeViewDetail: RecipeDetailView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
-    // MARK: Actions
+    // MARK: ACTIONS
     @IBAction func favoriteItem(_ sender: Any) {
         guard let favoriteButton = sender as? UIBarButtonItem else { return }
         switchFavoriteButton(favoriteButton: favoriteButton)
     }
     
-    // MARK: Methods
+    // MARK: METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegates()
@@ -48,7 +48,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-// MARK: Methods Helper
+// MARK: METHODS HELPER
 extension DetailViewController {
     private func setUpDelegates() {
         recipeViewDetail.actionDelegate = self
@@ -102,7 +102,7 @@ extension DetailViewController {
     }
 }
 
-// MARK: Persistence
+// MARK: PERSISTENCE
 extension DetailViewController {
     /// Save recipe presented in the list
     private func saveRecipeInList() {
@@ -140,7 +140,7 @@ extension DetailViewController {
     }
 }
 
-// MARK: Actions delegates
+// MARK: ACTIONS DELEGATES
 extension DetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
         guard let detailedRecipe = detailedRecipe else { return }

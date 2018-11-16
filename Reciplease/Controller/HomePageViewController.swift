@@ -9,20 +9,21 @@
 import UIKit
 
 class HomePageViewController: UIViewController {
-    // MARK: Properties
+    
+    // MARK: PROPERTIES
     var recipes: Recipe!
     
     /// String set to remove duplicated ingredients in text view.
     /// All ingredients are strored in this set untill the user decides to clear all ingredients.
     var ingredientsSetInTextView = Set<String>()
     
-    // MARK: Outlets
+    // MARK: OUTLETS
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var ingredientsTextView: UITextView!
     @IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBoutton: UIButton!
     
-    // MARK: Actions
+    // MARK: ACTIONS
     @IBAction func addIngredients() {
         getIngredientsFromTextField(ingredients: ingredientsTextField.text)
         resetIngredientsTextField()
@@ -43,7 +44,7 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    // MARK: Methods
+    // MARK: METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
@@ -62,6 +63,11 @@ class HomePageViewController: UIViewController {
         }
     }
     
+}
+
+// MARK: NETWORK REQUEST
+extension HomePageViewController {
+    
     private func getRecipes() {
         guard let ingredients = ingredientsTextView.text else { return }
         let ingredientsInArray = ingredients.convertStringToStringArray(separator: ["\n"])
@@ -79,6 +85,15 @@ class HomePageViewController: UIViewController {
         }
     }
     
+}
+
+// MARK: METHODS HELPER
+extension HomePageViewController {
+    
+    private func setupDelegates() {
+        ingredientsTextField.delegate = self
+    }
+    
     /// Get ingredient from user entred in text field
     ///
     /// - Parameter ingredients: String contained in the text field
@@ -92,7 +107,7 @@ class HomePageViewController: UIViewController {
             
             // Transforming the ingredients in string separated by space to ingredients in array
             let ingredientsInArray = trimmedIngredients.convertStringToStringArray(separator: [" "])
-        
+            
             addIngredientsToTextView(ingredients: ingredientsInArray)
         }
     }
@@ -109,13 +124,13 @@ class HomePageViewController: UIViewController {
         let nonDuplicatedIngredientsFromTextField = [Any].removeDuplicatedStringArrayItem(stringArray: ingredients)
         
         // Insert ingredients from Array which contains ingredients from text field to the Set<String> which contains ingredients in text view to remove duplicated ingredient
-            for ingredient in nonDuplicatedIngredientsFromTextField {
-                if ingredient.count > 2 && !ingredient.isEmpty {
-                    // Set<String> which contains all ingredients in text view
-                    ingredientsSetInTextView.insert(ingredient)
-                }
+        for ingredient in nonDuplicatedIngredientsFromTextField {
+            if ingredient.count > 2 && !ingredient.isEmpty {
+                // Set<String> which contains all ingredients in text view
+                ingredientsSetInTextView.insert(ingredient)
             }
-
+        }
+        
         // Fill ingredients from Set<String> to string with new line to present them as list
         for ingredient in ingredientsSetInTextView {
             ingredientToList += "﹆ \(ingredient)\n"
@@ -128,7 +143,7 @@ class HomePageViewController: UIViewController {
             view.endEditing(true)
         }
     }
-
+    
     /// Present confirmation message to delete the ingredients from text view with the possibility to cancel the deletation
     private func clearIngredientsConfirmation() {
         let alertMessage = UIAlertController(title: "Delete all ingredients?", message: "If you erase the ingredients you will not be able to recover them!", preferredStyle: .alert)
@@ -153,7 +168,22 @@ class HomePageViewController: UIViewController {
         searchBoutton.isHidden = shown
     }
     
-    // MARK: Reset texts
+    /// Display pop up to warn the user
+    ///
+    /// - Parameters:
+    ///   - title: Alert title
+    ///   - message: Message title
+    private func alertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+}
+
+// MARK: RESET TEXTS
+extension HomePageViewController {
     
     /// Reset ingredients text field as empty text
     private func resetIngredientsTextField() {
@@ -172,25 +202,9 @@ class HomePageViewController: UIViewController {
         resetIndredientsTextView()
     }
     
-    private func setupDelegates() {
-        ingredientsTextField.delegate = self
-    }
-    
-    /// Display pop up to warn the user
-    ///
-    /// - Parameters:
-    ///   - title: Alert title
-    ///   - message: Message title
-    private func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-
 }
 
-// MARK: Text Field
+// MARK: TEXT FIELD
 extension HomePageViewController: UITextFieldDelegate {
     // Dismiss Keyboard by touching anywhere in the screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

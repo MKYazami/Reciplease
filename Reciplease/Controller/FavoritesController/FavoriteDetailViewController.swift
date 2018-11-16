@@ -10,25 +10,34 @@ import UIKit
 
 class FavoriteDetailViewController: UIViewController {
     
-    // MARK: Property
+    // MARK: PROPERTY
     var detailedRecipe: DetailedRecipeData?
     var recipeInList: RecipeData?
     
-    // MARK: Outlet
+    // MARK: OUTLET
     @IBOutlet var recipeDetailView: RecipeDetailView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
-    // MARK: Actions
+    // MARK: ACTIONS
     @IBAction func favoriteItem(_ sender: Any) {
         guard let favoriteButton = sender as? UIBarButtonItem else { return }
         switchFavoriteButton(favoriteButton: favoriteButton)
     }
     
-    // MARK: Methods
+    // MARK: METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeDetailView.actionDelegate = self
+        setUpDelegates()
         configureDetailedView()
+    }
+    
+}
+
+// MARK: METHODS HELPER
+extension FavoriteDetailViewController {
+    
+    private func setUpDelegates() {
+        recipeDetailView.actionDelegate = self
     }
     
     /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
@@ -44,30 +53,6 @@ class FavoriteDetailViewController: UIViewController {
             saveDetailedRecipe()
             favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
         }
-    }
-    
-    /// Delete detailed recipe from persistence
-    private func deleteDetailedRecipe() {
-        guard let recipeID = detailedRecipe?.recipeID else { return }
-        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
-    }
-    
-    /// Delete recipe in list from persistence
-    private func deleteRecipeInList() {
-        guard let recipeID = recipeInList?.recipeID else { return }
-        RecipeData.removeRecipeData(recipeID: recipeID)
-    }
-    
-    /// Save detailed recipe
-    private func saveDetailedRecipe() {
-        guard let detailedRecipeData = detailedRecipe else { return }
-        DetailedRecipeData.saveDetailedRecipeFromLocalData(detailedRecipe: detailedRecipeData)
-    }
-    
-    /// Save recipe presented in the list
-    private func saveRecipeInList() {
-        guard let recipeData = recipeInList else { return }
-        RecipeData.saveRecipeFromLocalData(recipeData: recipeData)
     }
     
     /// Configure and display the custom detailed view
@@ -87,15 +72,15 @@ class FavoriteDetailViewController: UIViewController {
     
     private func getDirections(urlString: String?) {
         guard let urlString = urlString,
-              let url = URL(string: urlString) else {
-            alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
-                         message: Constants.AlertMessage.getDirectionsErrorDescription)
-            return
+            let url = URL(string: urlString) else {
+                alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
+                             message: Constants.AlertMessage.getDirectionsErrorDescription)
+                return
         }
         
         Helper.openURLInWebBrowser(url: url)
     }
-    
+
     /// Display pop up to warn the user
     ///
     /// - Parameters:
@@ -110,6 +95,36 @@ class FavoriteDetailViewController: UIViewController {
     
 }
 
+// MARK: PERSISTENCE
+extension FavoriteDetailViewController {
+    
+    /// Delete detailed recipe from persistence
+    private func deleteDetailedRecipe() {
+        guard let recipeID = detailedRecipe?.recipeID else { return }
+        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
+    }
+    
+    /// Delete recipe in list from persistence
+    private func deleteRecipeInList() {
+        guard let recipeID = recipeInList?.recipeID else { return }
+        RecipeData.removeRecipeData(recipeID: recipeID)
+    }
+    
+    /// Save recipe presented in the list
+    private func saveRecipeInList() {
+        guard let recipeData = recipeInList else { return }
+        RecipeData.saveRecipeFromLocalData(recipeData: recipeData)
+    }
+    
+    /// Save detailed recipe
+    private func saveDetailedRecipe() {
+        guard let detailedRecipeData = detailedRecipe else { return }
+        DetailedRecipeData.saveDetailedRecipeFromLocalData(detailedRecipe: detailedRecipeData)
+    }
+    
+}
+
+// MARK: ACTIONS DELEGATES
 extension FavoriteDetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
         getDirections(urlString: detailedRecipe?.sourceRecipeURL)

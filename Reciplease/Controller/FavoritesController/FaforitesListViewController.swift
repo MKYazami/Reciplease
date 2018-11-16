@@ -10,7 +10,7 @@ import UIKit
 
 class FaforitesListViewController: UIViewController {
     
-    // MARK: Properties
+    // MARK: PROPERTIES
     private var recipes: [RecipeData]?
     // Property to transfert to FavoriteDetailViewController for Persistence manipulations
     var recipeInList: RecipeData?
@@ -20,12 +20,10 @@ class FaforitesListViewController: UIViewController {
         return "fromFavoritesListToFavoriteDetails"
     }
     
-    // MARK: Outlets
+    // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!
     
-    // MARK: Actions
-    
-    // MARK: Methods
+    // MARK: METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
@@ -105,7 +103,7 @@ class FaforitesListViewController: UIViewController {
 
 }
 
-// MARK: Table View
+// MARK: TABLE VIEW
 extension FaforitesListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -141,7 +139,7 @@ extension FaforitesListViewController: UITableViewDataSource {
     }
 }
 
-// MARK: Listen to selected cell
+// MARK: LISTEN TO SELECTED CELL
 extension FaforitesListViewController: ListenToSelectedCell {
     
     /// Listing when user select action from custom table view cell

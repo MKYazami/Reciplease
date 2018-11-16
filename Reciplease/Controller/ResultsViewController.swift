@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    // MARK: Properties
+    // MARK: PROPERTIES
     var recipes: Recipe!
     
     // This object contains the elements to be saved in Core Data in DetailViewController
@@ -18,10 +18,10 @@ class ResultsViewController: UIViewController {
     
     var detailedRecipe: DetailedRecipe!
     
-    // MARK: Outlets
+    // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!
     
-    // MARK: Methods
+    // MARK: METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
@@ -43,16 +43,11 @@ class ResultsViewController: UIViewController {
         }
     }
     
-    private func setupDelegates() {
-        mainView.tableView.dataSource = self
-    }
-    
-    /// Load nib which contains cell
-    private func loadCellNib() {
-        typealias CellConstants = Constants.TableViewCells
-        TableViewCellConfigurator.loadCellNib(nibName: CellConstants.recipeTableViewCellNib, cellIdentifier: CellConstants.recipeCellId, tableView: mainView.tableView)
-    }
+}
 
+// MARK: NETWORK REQUEST
+extension ResultsViewController {
+    
     /// Download detailed recipe elements
     ///
     /// - Parameter recipeID: recipe id that allows to get detailed recipe
@@ -68,6 +63,21 @@ class ResultsViewController: UIViewController {
                 self.toogleActivityIndicator(shown: false)
             }
         }
+    }
+    
+}
+
+// MARK: METHODS HELPER
+extension ResultsViewController {
+    
+    private func setupDelegates() {
+        mainView.tableView.dataSource = self
+    }
+    
+    /// Load nib which contains cell
+    private func loadCellNib() {
+        typealias CellConstants = Constants.TableViewCells
+        TableViewCellConfigurator.loadCellNib(nibName: CellConstants.recipeTableViewCellNib, cellIdentifier: CellConstants.recipeCellId, tableView: mainView.tableView)
     }
     
     /// Allows to show or hide the acitity indicator
@@ -95,8 +105,10 @@ class ResultsViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
+    
 }
 
+// MARK: TABLE VIEW
 extension ResultsViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,6 +134,7 @@ extension ResultsViewController: UITableViewDataSource {
     }
 }
 
+// MARK: ACTIONS DELEGATES
 extension ResultsViewController: ListenToSelectedCell {
 
     /// Listing when user select action from custom table view cell
