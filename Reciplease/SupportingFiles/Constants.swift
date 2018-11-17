@@ -39,6 +39,10 @@ struct Constants {
     }
     
     struct AlertMessage {
+        static var actionTitleOK: String {
+            return "OK"
+        }
+        
         static var networkErrorTitle: String {
             return "Network Problem!"
         }

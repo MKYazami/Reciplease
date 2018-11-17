@@ -42,7 +42,7 @@ class HomePageViewController: UIViewController {
         } else {
             VCHelper.alertMessage(title: "No ingredients!",
                                   message: "Thank you to enter at least one ingredient to get recipe",
-                                  actionTitle: "OK", on: self)
+                                  actionTitle: Constants.AlertMessage.actionTitleOK, on: self)
         }
     }
     
@@ -83,7 +83,7 @@ extension HomePageViewController {
             } else {
                 VCHelper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
                                       message: Constants.AlertMessage.networkErrorDescription,
-                                      actionTitle: "OK",
+                                      actionTitle: Constants.AlertMessage.actionTitleOK,
                                       on: self)
                 self.toogleActivityIndicator(shown: false)
             }

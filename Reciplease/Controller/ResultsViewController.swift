@@ -60,7 +60,7 @@ extension ResultsViewController {
             } else {
                 VCHelper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
                                       message: Constants.AlertMessage.networkErrorDescription,
-                                      actionTitle: "OK",
+                                      actionTitle: Constants.AlertMessage.actionTitleOK,
                                       on: self)
                 self.toogleTableViewUserInteractions(enable: true)
                 self.toogleActivityIndicator(shown: false)

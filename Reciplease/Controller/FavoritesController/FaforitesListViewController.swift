@@ -57,7 +57,7 @@ class FaforitesListViewController: UIViewController {
             print("Error to get detailed recipe from Core Data \(error) \n Error Description: \(error.userInfo)")
             VCHelper.alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle,
                                   message: Constants.AlertMessage.getDetailedRecipeErrorDescription,
-                                  actionTitle: "OK",
+                                  actionTitle: Constants.AlertMessage.actionTitleOK,
                                   on: self)
             toogleActivityIndicator(shown: false)
             toogleTableViewUserInteractions(enable: true)

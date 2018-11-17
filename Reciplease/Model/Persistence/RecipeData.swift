@@ -11,6 +11,8 @@ import CoreData
 
 class RecipeData: NSManagedObject {
     
+    static var alertMessageDelegate: ListenToAlertMessage?
+    
     /// Returns the list of all Recipes to present in list
     /// - In case of no data, the array will be empty
     static var getRecipes: [RecipeData] {
@@ -46,7 +48,9 @@ class RecipeData: NSManagedObject {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
             print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
-            
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.saveRecipeErrorTitle,
+                                               message: Constants.AlertMessage.saveRecipeErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
         }
     }
     
@@ -75,6 +79,9 @@ class RecipeData: NSManagedObject {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
             print("Error to save recipe in list: \(error) \n Description: \(error.userInfo)")
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.saveRecipeErrorTitle,
+                                               message: Constants.AlertMessage.saveRecipeErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
         }
     }
     
@@ -91,12 +98,17 @@ class RecipeData: NSManagedObject {
             try AppDelegate.viewContext.execute(request)
         } catch let error as NSError {
             print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.deleteRecipeErrorTitle,
+                                               message: Constants.AlertMessage.deleteRecipeErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
         }
     }
     
 }
 
 class DetailedRecipeData: NSManagedObject {
+    
+    static var alertMessageDelegate: ListenToAlertMessage?
     
     /// Allows to get the fetch request of DetailedRecipeData
     ///
@@ -138,6 +150,9 @@ class DetailedRecipeData: NSManagedObject {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
             print("Detailed recipe saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.saveRecipeErrorTitle,
+                                               message: Constants.AlertMessage.saveRecipeErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
         }
     }
     
@@ -168,6 +183,9 @@ class DetailedRecipeData: NSManagedObject {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
             print("Error to save detailed recipe: \(error) \n Description: \(error.userInfo)")
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.saveRecipeErrorTitle,
+                                               message: Constants.AlertMessage.saveRecipeErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
         }
     }
     
@@ -184,6 +202,9 @@ class DetailedRecipeData: NSManagedObject {
             try AppDelegate.viewContext.execute(request)
         } catch let error as NSError {
             print("Error to delete detailed recipe \(error) \n Description: \(error.userInfo)")
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.deleteRecipeErrorTitle,
+                                               message: Constants.AlertMessage.deleteRecipeErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
         }
     }
     

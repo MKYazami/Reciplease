@@ -38,6 +38,7 @@ extension FavoriteDetailViewController {
     
     private func setUpDelegates() {
         recipeDetailView.actionDelegate = self
+        RecipeData.alertMessageDelegate = self
     }
     
     /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
@@ -73,24 +74,14 @@ extension FavoriteDetailViewController {
     private func getDirections(urlString: String?) {
         guard let urlString = urlString,
             let url = URL(string: urlString) else {
-                alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
-                             message: Constants.AlertMessage.getDirectionsErrorDescription)
+                VCHelper.alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
+                                      message: Constants.AlertMessage.getDirectionsErrorDescription,
+                                      actionTitle: Constants.AlertMessage.actionTitleOK,
+                                      on: self)
                 return
         }
         
         Helper.openURLInWebBrowser(url: url)
-    }
-
-    /// Display pop up to warn the user
-    ///
-    /// - Parameters:
-    ///   - title: Alert title
-    ///   - message: Message title
-    private func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
     }
     
 }
@@ -128,5 +119,11 @@ extension FavoriteDetailViewController {
 extension FavoriteDetailViewController: ListeningGetDirectionsAction {
     func listingAction() {
         getDirections(urlString: detailedRecipe?.sourceRecipeURL)
+    }
+}
+
+extension FavoriteDetailViewController: ListenToAlertMessage {
+    func alertMessage(alertTitle: String, message: String, actionTitle: String) {
+        VCHelper.alertMessage(title: alertTitle, message: message, actionTitle: actionTitle, on: self)
     }
 }
