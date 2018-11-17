@@ -45,14 +45,12 @@ class RecipeService {
             
             // Decode JSON data
             guard let recipe = try? JSONDecoder().decode(Recipe.self, from: data) else {
-                print("Problem of decodage")
                 callback(false, nil)
                 return
             }
             
             // The purpose of this check is to verify that Recipe's array matches is not empty due to a wrong response from the API when the user enters certain couple of ingredients
             guard recipe.matches.count > 0 else {
-                print("matches is empty")
                 callback(false, nil)
                 return
             }
@@ -84,7 +82,6 @@ class RecipeService {
             
             // Decode JSON data
             guard let detailedRecipe = try? JSONDecoder().decode(DetailedRecipe.self, from: data) else {
-                print("Problem of decodage")
                 callback(false, nil)
                 return
             }

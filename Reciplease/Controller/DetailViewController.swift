@@ -42,9 +42,7 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         // Set text view scroll to the top
         Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeViewDetail)
-        // TODO: CHANGE THE FAVORITE BUTTON ACCORDING TO THE RECIPE IS SAVED OR NOT
-        // - Checking in predicate and if the recipeID is already in database the favorite button must
-        // be selected or deselected otherwise
+        setFavoriteButton()
     }
 }
 
@@ -76,6 +74,16 @@ extension DetailViewController {
         } else if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
             removeRecipeInList()
             removeDetailedRecipe()
+            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
+        }
+    }
+    
+    /// Set favorite button according if the recipe already stored in the persistence or not
+    private func setFavoriteButton() {
+        guard let recipeID = recipeID else { return }
+        if DetailedRecipeData.checkIfRecipeExists(recipeID: recipeID) {
+            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
+        } else {
             favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
         }
     }

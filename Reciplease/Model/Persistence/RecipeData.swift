@@ -23,6 +23,11 @@ class RecipeData: NSManagedObject {
         return recipes
     }
     
+}
+
+// MARK: SAVE RECIPE
+extension RecipeData {
+    
     /// Allows to save recipe from remote API Yummli which contains a data structure Match
     ///
     /// - Parameters:
@@ -85,6 +90,11 @@ class RecipeData: NSManagedObject {
         }
     }
     
+}
+
+// MARK: REMOVE RECIPE
+extension RecipeData {
+    
     /// Remove recipe from persistence with the help of recipe ID
     ///
     /// - Parameter recipeID: the ID of recipe
@@ -121,6 +131,11 @@ class DetailedRecipeData: NSManagedObject {
         
         return fetchRequest
     }
+    
+}
+
+// MARK: SAVE DETAILED RECIPE
+extension DetailedRecipeData {
     
     /// Save the detailed recipe
     ///
@@ -189,6 +204,11 @@ class DetailedRecipeData: NSManagedObject {
         }
     }
     
+}
+
+// MARK: REMOVE DETAILED RECIPE
+extension DetailedRecipeData {
+    
     /// Removes detailed recipe with the help of recipe ID
     ///
     /// - Parameter recipeID: ID of recipe
@@ -206,6 +226,28 @@ class DetailedRecipeData: NSManagedObject {
                                                message: Constants.AlertMessage.deleteRecipeErrorDescription,
                                                actionTitle: Constants.AlertMessage.actionTitleOK)
         }
+    }
+    
+}
+
+// MARK: CHECK IF RECIPE EXISTS
+extension DetailedRecipeData {
+    
+    static func checkIfRecipeExists(recipeID: String) -> Bool {
+        
+        let recipeIDFetch: NSFetchRequest<DetailedRecipeData> = DetailedRecipeData.fetchRequest()
+        recipeIDFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
+        
+        do {
+            let result = try AppDelegate.viewContext.count(for: recipeIDFetch)
+            
+            guard result > 0 else { return false }
+            return true
+        } catch let error as NSError {
+            print("Error to check if recipe exists in DB: \n \(error)")
+            return false
+        }
+        
     }
     
 }
