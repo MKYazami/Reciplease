@@ -41,7 +41,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Set text view scroll to the top
-        recipeViewDetail.recipeTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
+        Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeViewDetail)
         // TODO: CHANGE THE FAVORITE BUTTON ACCORDING TO THE RECIPE IS SAVED OR NOT
         // - Checking in predicate and if the recipeID is already in database the favorite button must
         // be selected or deselected otherwise

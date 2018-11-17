@@ -20,6 +20,12 @@ struct Helper {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
+    /// Allows to set range of text view in custom recipe view detail
+    ///
+    /// - Parameter recipeViewDetail: reciped detail view to set
+    static func setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: RecipeDetailView) {
+        recipeViewDetail.recipeTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
+    }
 }
 
 /// Contains some useful methods, used especially in view controllers
@@ -31,7 +37,7 @@ class VCHelper: UIViewController {
     ///   - title: alert title
     ///   - message: alert message
     ///   - actionTitle: action title (as: Okay, Understand…)
-    ///   - viewController: the view controller to present modally
+    ///   - viewController: the view controller that presents modally
     static func alertMessage(title: String, message: String, actionTitle: String, on viewController: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitle, style: .cancel, handler: nil)

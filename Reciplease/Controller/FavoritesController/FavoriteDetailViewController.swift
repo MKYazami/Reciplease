@@ -31,6 +31,11 @@ class FavoriteDetailViewController: UIViewController {
         configureDetailedView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeDetailView)
+    }
+    
 }
 
 // MARK: METHODS HELPER
