@@ -58,7 +58,10 @@ extension ResultsViewController {
                 self.detailedRecipe = detailedRecipe
                 self.performSegue(withIdentifier: Constants.Segue.toDetailedRecipe, sender: self)
             } else {
-                self.alertMessage(title: Constants.AlertMessage.networkErrorTitle, message: Constants.AlertMessage.networkErrorDescription)
+                VCHelper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
+                                      message: Constants.AlertMessage.networkErrorDescription,
+                                      actionTitle: "OK",
+                                      on: self)
                 self.toogleTableViewUserInteractions(enable: true)
                 self.toogleActivityIndicator(shown: false)
             }
@@ -92,18 +95,6 @@ extension ResultsViewController {
     /// - Parameter enable: true interaction is enable & false interaction is disable
     private func toogleTableViewUserInteractions(enable: Bool) {
         mainView.tableView.isUserInteractionEnabled = enable
-    }
-    
-    /// Display pop up to warn the user
-    ///
-    /// - Parameters:
-    ///   - title: Alert title
-    ///   - message: Message title
-    private func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
     }
     
 }

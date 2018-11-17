@@ -55,7 +55,10 @@ class FaforitesListViewController: UIViewController {
             performSegue(withIdentifier: Constants.Segue.toFavoriteDetail, sender: self)
         } catch let error as NSError {
             print("Error to get detailed recipe from Core Data \(error) \n Error Description: \(error.userInfo)")
-            alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle, message: Constants.AlertMessage.getDetailedRecipeErrorDescription)
+            VCHelper.alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle,
+                                  message: Constants.AlertMessage.getDetailedRecipeErrorDescription,
+                                  actionTitle: "OK",
+                                  on: self)
             toogleActivityIndicator(shown: false)
             toogleTableViewUserInteractions(enable: true)
         }
@@ -83,18 +86,6 @@ class FaforitesListViewController: UIViewController {
     /// - Parameter shown: true to show & false to hide
     private func toogleActivityIndicator(shown: Bool) {
         mainView.activityIndicator.isHidden = !shown
-    }
-    
-    /// Display pop up to warn the user
-    ///
-    /// - Parameters:
-    ///   - title: Alert title
-    ///   - message: Message title
-    private func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
     }
 
 }

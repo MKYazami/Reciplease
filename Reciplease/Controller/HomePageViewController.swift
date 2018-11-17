@@ -40,7 +40,9 @@ class HomePageViewController: UIViewController {
             self.toogleActivityIndicator(shown: true)
             getRecipes()
         } else {
-            alertMessage(title: "No ingredients!", message: "Thank you to enter at least one ingredient to get recipe")
+            VCHelper.alertMessage(title: "No ingredients!",
+                                  message: "Thank you to enter at least one ingredient to get recipe",
+                                  actionTitle: "OK", on: self)
         }
     }
     
@@ -79,7 +81,10 @@ extension HomePageViewController {
                 self.recipes = recipe
                 self.performSegue(withIdentifier: Constants.Segue.toRecipesResults, sender: self)
             } else {
-                self.alertMessage(title: Constants.AlertMessage.networkErrorTitle, message: Constants.AlertMessage.networkErrorDescription)
+                VCHelper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
+                                      message: Constants.AlertMessage.networkErrorDescription,
+                                      actionTitle: "OK",
+                                      on: self)
                 self.toogleActivityIndicator(shown: false)
             }
         }
@@ -148,7 +153,7 @@ extension HomePageViewController {
     private func clearIngredientsConfirmation() {
         let alertMessage = UIAlertController(title: "Delete all ingredients?", message: "If you erase the ingredients you will not be able to recover them!", preferredStyle: .alert)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (_) in
             self.view.endEditing(true)
             self.resetIndredientsTextView()
         }
@@ -166,18 +171,6 @@ extension HomePageViewController {
     private func toogleActivityIndicator(shown: Bool) {
         searchActivityIndicator.isHidden = !shown
         searchBoutton.isHidden = shown
-    }
-    
-    /// Display pop up to warn the user
-    ///
-    /// - Parameters:
-    ///   - title: Alert title
-    ///   - message: Message title
-    private func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
     }
     
 }
