@@ -46,6 +46,7 @@ class RecipeData: NSManagedObject {
             try AppDelegate.viewContext.save()
         } catch let error as NSError {
             print("Recipe in list saving error: \n \(error) \n User Info Error —> \(error.userInfo)")
+            
         }
     }
     

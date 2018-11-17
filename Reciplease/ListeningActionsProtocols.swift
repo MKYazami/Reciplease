@@ -17,3 +17,8 @@ protocol ListeningGetDirectionsAction {
 protocol ListenToSelectedCell {
     func listingSelection()
 }
+
+/// Use to implement a pattern delegate to warn controllers that an event or error has occurred in the model or elsewhere
+protocol ListenToAlertMessage {
+    func alertMessage(alertTitle: String, message: String, actionTitle: String)
+}
