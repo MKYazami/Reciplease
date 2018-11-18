@@ -81,7 +81,7 @@ extension DetailViewController {
     /// Set favorite button according if the recipe already stored in the persistence or not
     private func setFavoriteButton() {
         guard let recipeID = recipeID else { return }
-        if DetailedRecipeData.checkIfRecipeExists(recipeID: recipeID) {
+        if DetailedRecipeData.isRecipeExists(recipeID: recipeID) {
             favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
         } else {
             favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)

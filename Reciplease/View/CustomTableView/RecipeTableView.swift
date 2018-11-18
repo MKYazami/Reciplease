@@ -15,6 +15,7 @@ class RecipeTableView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var userInformationTextField: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     // MARK: Inits
     

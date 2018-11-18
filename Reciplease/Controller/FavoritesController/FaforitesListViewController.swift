@@ -28,11 +28,27 @@ class FaforitesListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setUserInformationTextField()
         recipes = RecipeData.getRecipes
         mainView.tableView.reloadData()
         toogleActivityIndicator(shown: false)
         toogleTableViewUserInteractions(enable: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.Segue.toFavoriteDetail {
+            let favoriteDetailedVC = segue.destination as! FavoriteDetailViewController
+            favoriteDetailedVC.detailedRecipe = detailedRecipe
+            favoriteDetailedVC.recipeInList = recipeInList
+        }
+        
+    }
+    
+}
+
+// MARK: METHODS HELPER
+extension FaforitesListViewController {
     
     private func setupDelegates() {
         mainView.tableView.dataSource = self
@@ -41,8 +57,38 @@ class FaforitesListViewController: UIViewController {
     /// Load nib which contains cell
     private func loadCellNib() {
         typealias CellConstants = Constants.TableViewCells
-        TableViewCellConfigurator.loadCellNib(nibName: CellConstants.recipeTableViewCellNib, cellIdentifier: CellConstants.recipeCellId, tableView: mainView.tableView)
+        TableViewCellConfigurator.loadCellNib(nibName: CellConstants.recipeTableViewCellNib,
+                                              cellIdentifier: CellConstants.recipeCellId,
+                                              tableView: mainView.tableView)
     }
+    
+    /// Allows to show or hide the user information text field according if there is almost one recipe or more in the favorite
+    private func setUserInformationTextField() {
+        if RecipeData.isFavoriteRecipeEmpty {
+            mainView.userInformationTextField.isHidden = false
+        } else {
+            mainView.userInformationTextField.isHidden = true
+        }
+    }
+    
+    /// Allows to enable OR desable the interactions between the user & the table view selection
+    ///
+    /// - Parameter enable: true interaction is enable & false interaction is disable
+    private func toogleTableViewUserInteractions(enable: Bool) {
+        mainView.tableView.isUserInteractionEnabled = enable
+    }
+    
+    /// Allows to show or hide the acitity indicator
+    ///
+    /// - Parameter shown: true to show & false to hide
+    private func toogleActivityIndicator(shown: Bool) {
+        mainView.activityIndicator.isHidden = !shown
+    }
+    
+}
+
+// MARK: PERSISTENCE
+extension FaforitesListViewController {
     
     private func getDetailedRecipeData(recipeID: String) {
         let fetchRequest = DetailedRecipeData.getDetailedRecipesFetchRequest(recipeID: recipeID)
@@ -64,30 +110,6 @@ class FaforitesListViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == Constants.Segue.toFavoriteDetail {
-            let favoriteDetailedVC = segue.destination as! FavoriteDetailViewController
-            favoriteDetailedVC.detailedRecipe = detailedRecipe
-            favoriteDetailedVC.recipeInList = recipeInList
-        }
-        
-    }
-    
-    /// Allows to enable OR desable the interactions between the user & the table view selection
-    ///
-    /// - Parameter enable: true interaction is enable & false interaction is disable
-    private func toogleTableViewUserInteractions(enable: Bool) {
-        mainView.tableView.isUserInteractionEnabled = enable
-    }
-    
-    /// Allows to show or hide the acitity indicator
-    ///
-    /// - Parameter shown: true to show & false to hide
-    private func toogleActivityIndicator(shown: Bool) {
-        mainView.activityIndicator.isHidden = !shown
-    }
-
 }
 
 // MARK: TABLE VIEW

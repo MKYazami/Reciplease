@@ -116,6 +116,26 @@ extension RecipeData {
     
 }
 
+// MARK: CHECK IF FAVORITE RECIPE IS EMPTY
+extension RecipeData {
+    
+    static var isFavoriteRecipeEmpty: Bool {
+        let fetchRecipes: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
+        
+        do {
+            let countResult = try AppDelegate.viewContext.count(for: fetchRecipes)
+            guard countResult > 0 else { return true }
+            
+            return false
+        } catch let error as NSError {
+            print("Fetch count result error: \(error) \n Description: \(error.userInfo) ")
+            return true
+        }
+        
+    }
+    
+}
+
 class DetailedRecipeData: NSManagedObject {
     
     static var alertMessageDelegate: ListenToAlertMessage?
@@ -233,15 +253,15 @@ extension DetailedRecipeData {
 // MARK: CHECK IF RECIPE EXISTS
 extension DetailedRecipeData {
     
-    static func checkIfRecipeExists(recipeID: String) -> Bool {
+    static func isRecipeExists(recipeID: String) -> Bool {
         
         let recipeIDFetch: NSFetchRequest<DetailedRecipeData> = DetailedRecipeData.fetchRequest()
         recipeIDFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(DetailedRecipeData.recipeID), recipeID)
         
         do {
-            let result = try AppDelegate.viewContext.count(for: recipeIDFetch)
+            let countResult = try AppDelegate.viewContext.count(for: recipeIDFetch)
             
-            guard result > 0 else { return false }
+            guard countResult > 0 else { return false }
             return true
         } catch let error as NSError {
             print("Error to check if recipe exists in DB: \n \(error)")
