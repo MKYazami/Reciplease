@@ -14,9 +14,9 @@ class ResultsViewController: UIViewController {
     var recipes: Recipe!
     
     // This object contains the elements to be saved in Core Data in DetailViewController
-    var recipeInList: Match!
+    private var recipeInList: Match!
     
-    var detailedRecipe: DetailedRecipe!
+    private var detailedRecipe: DetailedRecipe!
     
     // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!

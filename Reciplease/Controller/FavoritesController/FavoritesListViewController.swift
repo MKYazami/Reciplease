@@ -13,8 +13,8 @@ class FavoritesListViewController: UIViewController {
     // MARK: PROPERTIES
     private var recipes: [RecipeData]?
     // Property to transfert to FavoriteDetailViewController for Persistence manipulations
-    var recipeInList: RecipeData?
-    var detailedRecipe: DetailedRecipeData?
+    private var recipeInList: RecipeData?
+    private var detailedRecipe: DetailedRecipeData?
     
     // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!

@@ -11,11 +11,11 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     // MARK: PROPERTIES
-    var recipes: Recipe!
+    private var recipes: Recipe!
     
     /// String set to remove duplicated ingredients in text view.
     /// All ingredients are strored in this set untill the user decides to clear all ingredients.
-    var ingredientsSetInTextView = Set<String>()
+    private var ingredientsSetInTextView = Set<String>()
     
     // MARK: OUTLETS
     @IBOutlet weak var ingredientsTextField: UITextField!
