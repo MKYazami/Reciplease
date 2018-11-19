@@ -21,10 +21,13 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: ACTIONS
     @IBAction func favoriteItem(_ sender: Any) {
         guard let favoriteButton = sender as? UIBarButtonItem else { return }
-        switchFavoriteButton(favoriteButton: favoriteButton)
+        Helper.switchFavoriteButton(favoriteButton: favoriteButton,
+                                    saveRecipe: saveRecipeInList(),
+                                    saveDetailedRecipe: saveDetailedRecipe(),
+                                    recipeID: detailedRecipe?.recipeID)
     }
     
-    // MARK: METHODS
+    // MARK: METHODS OVERRIDE
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegates()
@@ -44,21 +47,6 @@ extension FavoriteDetailViewController {
     private func setUpDelegates() {
         recipeDetailView.actionDelegate = self
         RecipeData.alertMessageDelegate = self
-    }
-    
-    /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
-    ///
-    /// - Parameter favoriteButton: BarButtonItem
-    private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
-        if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
-            deleteDetailedRecipe()
-            deleteRecipeInList()
-            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
-        } else if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
-            saveRecipeInList()
-            saveDetailedRecipe()
-            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
-        }
     }
     
     /// Configure and display the custom detailed view
@@ -94,18 +82,6 @@ extension FavoriteDetailViewController {
 // MARK: PERSISTENCE
 extension FavoriteDetailViewController {
     
-    /// Delete detailed recipe from persistence
-    private func deleteDetailedRecipe() {
-        guard let recipeID = detailedRecipe?.recipeID else { return }
-        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
-    }
-    
-    /// Delete recipe in list from persistence
-    private func deleteRecipeInList() {
-        guard let recipeID = recipeInList?.recipeID else { return }
-        RecipeData.removeRecipeData(recipeID: recipeID)
-    }
-    
     /// Save recipe presented in the list
     private func saveRecipeInList() {
         guard let recipeData = recipeInList else { return }
@@ -122,13 +98,17 @@ extension FavoriteDetailViewController {
 
 // MARK: ACTIONS DELEGATES
 extension FavoriteDetailViewController: ListeningGetDirectionsAction {
+    
     func listingAction() {
         getDirections(urlString: detailedRecipe?.sourceRecipeURL)
     }
+    
 }
 
 extension FavoriteDetailViewController: ListenToAlertMessage {
+    
     func alertMessage(alertTitle: String, message: String, actionTitle: String) {
         VCHelper.alertMessage(title: alertTitle, message: message, actionTitle: actionTitle, on: self)
     }
+    
 }

@@ -19,7 +19,7 @@ class FaforitesListViewController: UIViewController {
     // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!
     
-    // MARK: METHODS
+    // MARK: METHODS OVERRIDE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()

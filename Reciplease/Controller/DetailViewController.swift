@@ -26,10 +26,13 @@ class DetailViewController: UIViewController {
     // MARK: ACTIONS
     @IBAction func favoriteItem(_ sender: Any) {
         guard let favoriteButton = sender as? UIBarButtonItem else { return }
-        switchFavoriteButton(favoriteButton: favoriteButton)
+        Helper.switchFavoriteButton(favoriteButton: favoriteButton,
+                                    saveRecipe: saveRecipeInList(),
+                                    saveDetailedRecipe: saveDetailedRecipe(),
+                                    recipeID: recipeID)
     }
     
-    // MARK: METHODS
+    // MARK: METHODS OVERRIDE
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegates()
@@ -44,10 +47,12 @@ class DetailViewController: UIViewController {
         Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeViewDetail)
         setFavoriteButton()
     }
+    
 }
 
 // MARK: METHODS HELPER
 extension DetailViewController {
+    
     private func setUpDelegates() {
         recipeViewDetail.actionDelegate = self
         RecipeData.alertMessageDelegate = self
@@ -61,21 +66,6 @@ extension DetailViewController {
                                             recipeTitle: detailedRecipe.name,
                                             detailedRecipe: detailedRecipe.ingredientLines,
                                             recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
-    }
-    
-    /// Switch BarButtonItem when user tap on it from Favorite to FavoriteSelected buttons & vice versa
-    ///
-    /// - Parameter favoriteButton: BarButtonItem
-    private func switchFavoriteButton(favoriteButton: UIBarButtonItem) {
-        if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
-            saveRecipeInList()
-            saveDetailedRecipe()
-            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
-        } else if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
-            removeRecipeInList()
-            removeDetailedRecipe()
-            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
-        }
     }
     
     /// Set favorite button according if the recipe already stored in the persistence or not
@@ -104,6 +94,7 @@ extension DetailViewController {
 
 // MARK: PERSISTENCE
 extension DetailViewController {
+    
     /// Save recipe presented in the list
     private func saveRecipeInList() {
         guard let recipeInList = recipeInList else { return }
@@ -126,30 +117,23 @@ extension DetailViewController {
                                                             imageData: imageData,
                                                             preparationTime: preparationTime)
     }
-    
-    /// Remove recipe presented in the list
-    private func removeRecipeInList() {
-        guard let recipeID = recipeID else { return }
-        RecipeData.removeRecipeData(recipeID: recipeID)
-    }
-    
-    /// Remove detailed recipe
-    private func removeDetailedRecipe() {
-        guard let recipeID = recipeID else { return }
-        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
-    }
+
 }
 
 // MARK: ACTIONS DELEGATES
 extension DetailViewController: ListeningGetDirectionsAction {
+    
     func listingAction() {
         guard let detailedRecipe = detailedRecipe else { return }
         getDirections(urlString: detailedRecipe.source.sourceRecipeUrl)
     }
+    
 }
 
 extension DetailViewController: ListenToAlertMessage {
+    
     func alertMessage(alertTitle: String, message: String, actionTitle: String) {
         VCHelper.alertMessage(title: alertTitle, message: message, actionTitle: actionTitle, on: self)
     }
+    
 }

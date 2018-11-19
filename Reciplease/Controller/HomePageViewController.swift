@@ -46,7 +46,7 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    // MARK: METHODS
+    // MARK: METHODS OVERRIDE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
