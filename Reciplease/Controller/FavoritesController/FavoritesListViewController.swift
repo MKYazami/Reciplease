@@ -101,7 +101,7 @@ extension FavoritesListViewController {
             performSegue(withIdentifier: Constants.Segue.toFavoriteDetail, sender: self)
         } catch let error as NSError {
             print("Error to get detailed recipe from Core Data \(error) \n Error Description: \(error.userInfo)")
-            VCHelper.alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle,
+            Helper.alertMessage(title: Constants.AlertMessage.getDetailedRecipeErrorTitle,
                                   message: Constants.AlertMessage.getDetailedRecipeErrorDescription,
                                   actionTitle: Constants.AlertMessage.actionTitleOK,
                                   on: self)

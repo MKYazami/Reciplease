@@ -60,7 +60,7 @@ extension ResultsViewController {
                 self.detailedRecipe = detailedRecipe
                 self.performSegue(withIdentifier: Constants.Segue.toDetailedRecipe, sender: self)
             } else {
-                VCHelper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
+                Helper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
                                       message: Constants.AlertMessage.networkErrorDescription,
                                       actionTitle: Constants.AlertMessage.actionTitleOK,
                                       on: self)

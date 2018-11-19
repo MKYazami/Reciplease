@@ -56,25 +56,6 @@ struct Helper {
         }
     }
     
-}
-
-// MARK: PRIVATE HELPER METHODS
-private extension Helper {
-    
-    private static func deleteDetailedRecipe(recipeID: String?) {
-        guard let recipeID = recipeID else { return }
-        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
-    }
-    
-    private static func deleteRecipe(recipeID: String?) {
-        guard let recipeID = recipeID else { return }
-        RecipeData.removeRecipeData(recipeID: recipeID)
-    }
-}
-
-/// Contains some useful methods, used especially in view controllers
-class VCHelper: UIViewController {
-    
     /// Allows to display alert message with simple action title to remove alert message
     ///
     /// - Parameters:
@@ -89,4 +70,18 @@ class VCHelper: UIViewController {
         viewController.present(alert, animated: true)
     }
     
+}
+
+// MARK: PRIVATE HELPER METHODS
+private extension Helper {
+    
+    private static func deleteDetailedRecipe(recipeID: String?) {
+        guard let recipeID = recipeID else { return }
+        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
+    }
+    
+    private static func deleteRecipe(recipeID: String?) {
+        guard let recipeID = recipeID else { return }
+        RecipeData.removeRecipeData(recipeID: recipeID)
+    }
 }

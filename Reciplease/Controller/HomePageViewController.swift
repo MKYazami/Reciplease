@@ -40,7 +40,7 @@ class HomePageViewController: UIViewController {
             self.toogleActivityIndicator(shown: true)
             getRecipes()
         } else {
-            VCHelper.alertMessage(title: "No ingredients!",
+            Helper.alertMessage(title: "No ingredients!",
                                   message: "Thank you to enter at least one ingredient to get recipe",
                                   actionTitle: Constants.AlertMessage.actionTitleOK, on: self)
         }
@@ -81,7 +81,7 @@ extension HomePageViewController {
                 self.recipes = recipe
                 self.performSegue(withIdentifier: Constants.Segue.toRecipesResults, sender: self)
             } else {
-                VCHelper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
+                Helper.alertMessage(title: Constants.AlertMessage.networkErrorTitle,
                                       message: Constants.AlertMessage.networkErrorDescription,
                                       actionTitle: Constants.AlertMessage.actionTitleOK,
                                       on: self)

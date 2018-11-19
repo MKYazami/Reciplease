@@ -70,7 +70,7 @@ extension DetailViewController {
     
     private func getDirections(urlString: String) {
         guard let url = URL(string: urlString) else {
-            VCHelper.alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
+            Helper.alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
                                   message: Constants.AlertMessage.getDirectionsErrorDescription,
                                   actionTitle: Constants.AlertMessage.actionTitleOK,
                                   on: self)
@@ -123,7 +123,7 @@ extension DetailViewController: ListeningGetDirectionsAction {
 extension DetailViewController: ListenToAlertMessage {
     
     func alertMessage(alertTitle: String, message: String, actionTitle: String) {
-        VCHelper.alertMessage(title: alertTitle, message: message, actionTitle: actionTitle, on: self)
+        Helper.alertMessage(title: alertTitle, message: message, actionTitle: actionTitle, on: self)
     }
     
 }
