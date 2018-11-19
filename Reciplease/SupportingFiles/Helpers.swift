@@ -46,6 +46,16 @@ struct Helper {
         }
     }
     
+    /// Set favorite button according if the recipe already stored in the persistence or not
+    static func setFavoriteButton(recipeID: String?, favoriteButton: UIBarButtonItem) {
+        guard let recipeID = recipeID else { return }
+        if DetailedRecipeData.isRecipeExists(recipeID: recipeID) {
+            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
+        } else {
+            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
+        }
+    }
+    
 }
 
 // MARK: PRIVATE HELPER METHODS

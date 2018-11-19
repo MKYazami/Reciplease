@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         // Set text view scroll to the top
         Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeViewDetail)
-        setFavoriteButton()
+        Helper.setFavoriteButton(recipeID: recipeID, favoriteButton: favoriteButton)
     }
     
 }
@@ -68,16 +68,6 @@ extension DetailViewController {
                                             recipeURLStringImage: detailedRecipe.images[0].hostedLargeUrl)
     }
     
-    /// Set favorite button according if the recipe already stored in the persistence or not
-    private func setFavoriteButton() {
-        guard let recipeID = recipeID else { return }
-        if DetailedRecipeData.isRecipeExists(recipeID: recipeID) {
-            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
-        } else {
-            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
-        }
-    }
-        
     private func getDirections(urlString: String) {
         guard let url = URL(string: urlString) else {
             VCHelper.alertMessage(title: Constants.AlertMessage.getDirectionsErrorTitle,
