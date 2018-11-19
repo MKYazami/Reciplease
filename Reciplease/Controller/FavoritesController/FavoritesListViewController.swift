@@ -1,5 +1,5 @@
 //
-//  FaforitesListViewController.swift
+//  FavoritesListViewController.swift
 //  Reciplease
 //
 //  Created by Mehdi on 30/07/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FaforitesListViewController: UIViewController {
+class FavoritesListViewController: UIViewController {
     
     // MARK: PROPERTIES
     private var recipes: [RecipeData]?
@@ -48,7 +48,7 @@ class FaforitesListViewController: UIViewController {
 }
 
 // MARK: METHODS HELPER
-extension FaforitesListViewController {
+extension FavoritesListViewController {
     
     private func setupDelegates() {
         mainView.tableView.dataSource = self
@@ -88,7 +88,7 @@ extension FaforitesListViewController {
 }
 
 // MARK: PERSISTENCE
-extension FaforitesListViewController {
+extension FavoritesListViewController {
     
     private func getDetailedRecipeData(recipeID: String) {
         let fetchRequest = DetailedRecipeData.getDetailedRecipesFetchRequest(recipeID: recipeID)
@@ -113,7 +113,7 @@ extension FaforitesListViewController {
 }
 
 // MARK: TABLE VIEW
-extension FaforitesListViewController: UITableViewDataSource {
+extension FavoritesListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -149,7 +149,7 @@ extension FaforitesListViewController: UITableViewDataSource {
 }
 
 // MARK: LISTEN TO SELECTED CELL
-extension FaforitesListViewController: ListenToSelectedCell {
+extension FavoritesListViewController: ListenToSelectedCell {
     
     /// Listing when user select action from custom table view cell
     func listingSelection() {

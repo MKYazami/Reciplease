@@ -60,7 +60,7 @@
         <!--Favorites-->
         <scene sceneID="EUZ-2V-y9o">
             <objects>
-                <viewController title="Favorites" id="d4h-67-Sjd" customClass="FaforitesListViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Favorites" id="d4h-67-Sjd" customClass="FavoritesListViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V8r-sH-uCl" customClass="RecipeTableView" customModule="Reciplease" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

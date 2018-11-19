@@ -12,7 +12,7 @@
 		911EE23F215F7AF5005FC6DD /* URLStringTypeFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911EE23E215F7AF5005FC6DD /* URLStringTypeFake.swift */; };
 		913482CB210F512900C71BB2 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CA210F512900C71BB2 /* ResultsViewController.swift */; };
 		913482CD210F516400C71BB2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CC210F516400C71BB2 /* DetailViewController.swift */; };
-		913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */; };
+		913482CF210F9F0B00C71BB2 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482CE210F9F0B00C71BB2 /* FavoritesListViewController.swift */; };
 		913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */; };
 		913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913482D921103E3400C71BB2 /* RecipeDetailView.swift */; };
 		913482DC21103E5700C71BB2 /* RecipeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913482DB21103E5700C71BB2 /* RecipeDetailView.xib */; };
@@ -64,7 +64,7 @@
 		911EE23E215F7AF5005FC6DD /* URLStringTypeFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStringTypeFake.swift; sourceTree = "<group>"; };
 		913482CA210F512900C71BB2 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		913482CC210F516400C71BB2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaforitesListViewController.swift; sourceTree = "<group>"; };
+		913482CE210F9F0B00C71BB2 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
 		913482D921103E3400C71BB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		913482DB21103E5700C71BB2 /* RecipeDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailView.xib; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		913482D2210FA13600C71BB2 /* FavoritesController */ = {
 			isa = PBXGroup;
 			children = (
-				913482CE210F9F0B00C71BB2 /* FaforitesListViewController.swift */,
+				913482CE210F9F0B00C71BB2 /* FavoritesListViewController.swift */,
 				913482D0210F9F6500C71BB2 /* FavoriteDetailViewController.swift */,
 			);
 			path = FavoritesController;
@@ -500,7 +500,7 @@
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,
 				919ADC92214CED0100436AFE /* ImageNamesEnum.swift in Sources */,
 				91F681FD211217D80007D5B1 /* ListeningActionsProtocols.swift in Sources */,
-				913482CF210F9F0B00C71BB2 /* FaforitesListViewController.swift in Sources */,
+				913482CF210F9F0B00C71BB2 /* FavoritesListViewController.swift in Sources */,
 				913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */,
 				91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */,
 				914827F52124213500CB25B1 /* YummlyURLString.swift in Sources */,
