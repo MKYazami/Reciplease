@@ -254,12 +254,10 @@
 		91D372E4210E0357004BFECA /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				91D372E7210E0357004BFECA /* Info.plist */,
+				CC2B0B0521AC23F100995F47 /* RecipePersistenceTests */,
+				CC2B0B0321AC207300995F47 /* RecipeServiceTests */,
 				915D296621550A170077E4FA /* ReicpeTestCase.swift */,
-				911EE23C215F7594005FC6DD /* RecipeServiceTestCase.swift */,
-				915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */,
-				915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */,
-				911EE23E215F7AF5005FC6DD /* URLStringTypeFake.swift */,
+				CC2B0B0421AC20A600995F47 /* SupportingFiles */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -309,6 +307,32 @@
 				91D372DC210E0356004BFECA /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		CC2B0B0321AC207300995F47 /* RecipeServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				911EE23C215F7594005FC6DD /* RecipeServiceTestCase.swift */,
+				915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */,
+				915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */,
+				911EE23E215F7AF5005FC6DD /* URLStringTypeFake.swift */,
+			);
+			path = RecipeServiceTests;
+			sourceTree = "<group>";
+		};
+		CC2B0B0421AC20A600995F47 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				91D372E7210E0357004BFECA /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		CC2B0B0521AC23F100995F47 /* RecipePersistenceTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RecipePersistenceTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -722,7 +746,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GVF548G9W6;
-				INFOPLIST_FILE = RecipleaseTests/Info.plist;
+				INFOPLIST_FILE = RecipleaseTests/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -746,7 +770,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GVF548G9W6;
-				INFOPLIST_FILE = RecipleaseTests/Info.plist;
+				INFOPLIST_FILE = RecipleaseTests/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
