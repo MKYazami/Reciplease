@@ -125,9 +125,10 @@ extension RecipeManager {
     
 }
 
-// MARK: CHECK IF RECIPE EXISTS
+// MARK: CHECK IF FAVORITE RECIPES IS EMPTY
 extension RecipeManager {
     
+    /// Check if at least one recipe is in favorites
     var isFavoriteRecipeEmpty: Bool {
         let fetchRecipes: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
         
