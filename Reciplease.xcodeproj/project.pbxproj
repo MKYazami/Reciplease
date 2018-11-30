@@ -43,6 +43,7 @@
 		91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F7210E285F004BFECA /* HomePageViewController.swift */; };
 		91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */; };
 		91F681FD211217D80007D5B1 /* ListeningActionsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F681FC211217D80007D5B1 /* ListeningActionsProtocols.swift */; };
+		CCA10B2521B1309E006C3F77 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B2421B1309E006C3F77 /* CoreDataStack.swift */; };
 		CFE5D19D103CF3F8547B7067 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B17768C5C3AE975E58F62DB /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		91D372F9210EEB92004BFECA /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		91F681FC211217D80007D5B1 /* ListeningActionsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningActionsProtocols.swift; sourceTree = "<group>"; };
 		C46222CA63FDDFF2890481DB /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
+		CCA10B2421B1309E006C3F77 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		CEC653337184FDECDD1C9739 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		F2EE25028D632B80B73FBAE8 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,8 +203,9 @@
 		9162571B21675A18009F63B9 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */,
+				CCA10B2421B1309E006C3F77 /* CoreDataStack.swift */,
 				9162571C21675CC0009F63B9 /* RecipeData.swift */,
+				91D372D4210E0355004BFECA /* Reciplease.xcdatamodeld */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */,
 				9193E59521469F710047950D /* UIImageView.swift in Sources */,
 				913BC9CD2117531A001504E6 /* Constants.swift in Sources */,
+				CCA10B2521B1309E006C3F77 /* CoreDataStack.swift in Sources */,
 				91A60028215389DD004E78B8 /* Helpers.swift in Sources */,
 				9162571D21675CC0009F63B9 /* RecipeData.swift in Sources */,
 				91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */,
