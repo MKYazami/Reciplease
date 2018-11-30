@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-/// This protocol must be implemented in strcutures/classes that need to manage data in Core Data
+/// This protocol must be implemented in structures/classes that need to manage data in Core Data
 protocol CoreDataManager {
     var coreDataStack: CoreDataStack { get set }
     var managedContext: NSManagedObjectContext { get set }
