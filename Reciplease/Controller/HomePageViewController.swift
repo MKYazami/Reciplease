@@ -12,6 +12,7 @@ class HomePageViewController: UIViewController {
     
     // MARK: PROPERTIES
     private var recipes: Recipe!
+    var coreDataStack: CoreDataStack!
     
     /// String set to remove duplicated ingredients in text view.
     /// All ingredients are strored in this set untill the user decides to clear all ingredients.
@@ -62,6 +63,7 @@ class HomePageViewController: UIViewController {
         if segue.identifier == Constants.Segue.toRecipesResults {
             let resultesVC = segue.destination as! ResultsViewController
             resultesVC.recipes = recipes
+            resultesVC.coreDataStack = coreDataStack
         }
     }
     
@@ -151,7 +153,9 @@ extension HomePageViewController {
     
     /// Present confirmation message to delete the ingredients from text view with the possibility to cancel the deletation
     private func clearIngredientsConfirmation() {
-        let alertMessage = UIAlertController(title: "Delete all ingredients?", message: "If you erase the ingredients you will not be able to recover them!", preferredStyle: .alert)
+        let alertMessage = UIAlertController(title: "Delete all ingredients?",
+                                             message: "If you erase the ingredients you will not be able to recover them!",
+                                             preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (_) in
             self.view.endEditing(true)

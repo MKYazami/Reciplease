@@ -12,6 +12,7 @@ class ResultsViewController: UIViewController {
     
     // MARK: PROPERTIES
     var recipes: Recipe!
+    var coreDataStack: CoreDataStack!
     
     // This object contains the elements to be saved in Core Data in DetailViewController
     private var recipeInList: Match!
@@ -42,6 +43,7 @@ class ResultsViewController: UIViewController {
             let detailVC = segue.destination as! DetailViewController
             detailVC.detailedRecipe = detailedRecipe
             detailVC.recipeInList = recipeInList
+            detailVC.coreDataStack = coreDataStack
         }
     }
     

@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     
     // MARK: PROPERTIES
     var detailedRecipe: DetailedRecipe?
+    var coreDataStack: CoreDataStack!
     
     // Contains the recipe items in list in order to store them in Core Data
     var recipeInList: Match?

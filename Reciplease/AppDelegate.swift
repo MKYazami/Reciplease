@@ -13,9 +13,26 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    lazy var coreDataStack = CoreDataStack(modelName: "Reciplease")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Getting the view controllers
+        guard let tabBarController = window?.rootViewController as? UITabBarController,
+        let viewControllers = tabBarController.viewControllers,
+        let searchNavController = viewControllers[0].navigationController,
+        let favoriteNavController = viewControllers[1].navigationController else { return true }
+        
+        // Propagate the coreDataStack to Home Page VC
+        if let homePageVC = searchNavController.topViewController as? HomePageViewController {
+            homePageVC.coreDataStack = coreDataStack
+        }
+        
+        // Propagate the coreDataStack to Favorites List VC
+        if let favoritesListVC = favoriteNavController.topViewController as? FavoritesListViewController {
+            favoritesListVC.coreDataStack = coreDataStack
+        }
+        
         return true
     }
 
@@ -28,8 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        // TODO: Save context
-        
+        coreDataStack.saveContext()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -44,8 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         
-        // TODO: Save context
-        
+        coreDataStack.saveContext()
     }
 
 }

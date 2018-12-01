@@ -13,6 +13,7 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: PROPERTY
     var detailedRecipe: DetailedRecipeData?
     var recipeInList: RecipeData?
+    var coreDataStack: CoreDataStack!
     
     // MARK: OUTLET
     @IBOutlet var recipeDetailView: RecipeDetailView!

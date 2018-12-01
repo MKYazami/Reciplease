@@ -15,6 +15,7 @@ class FavoritesListViewController: UIViewController {
     // Property to transfert to FavoriteDetailViewController for Persistence manipulations
     private var recipeInList: RecipeData?
     private var detailedRecipe: DetailedRecipeData?
+    var coreDataStack: CoreDataStack!
     
     // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!
@@ -41,6 +42,7 @@ class FavoritesListViewController: UIViewController {
             let favoriteDetailedVC = segue.destination as! FavoriteDetailViewController
             favoriteDetailedVC.detailedRecipe = detailedRecipe
             favoriteDetailedVC.recipeInList = recipeInList
+            favoriteDetailedVC.coreDataStack = coreDataStack
         }
         
     }
