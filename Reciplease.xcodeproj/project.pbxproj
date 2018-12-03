@@ -28,7 +28,6 @@
 		915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D296621550A170077E4FA /* ReicpeTestCase.swift */; };
 		915D29692155265F0077E4FA /* YummlyURLStringTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */; };
 		915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */; };
-		9162571D21675CC0009F63B9 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162571C21675CC0009F63B9 /* RecipeData.swift */; };
 		9162571F21690107009F63B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9162571E21690107009F63B9 /* Assets.xcassets */; };
 		9193E59321416ED90047950D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59221416ED90047950D /* Array.swift */; };
 		9193E59521469F710047950D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59421469F710047950D /* UIImageView.swift */; };
@@ -90,7 +89,6 @@
 		915D296621550A170077E4FA /* ReicpeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReicpeTestCase.swift; sourceTree = "<group>"; };
 		915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyURLStringTestCase.swift; sourceTree = "<group>"; };
 		915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedURLStringTestCase.swift; sourceTree = "<group>"; };
-		9162571C21675CC0009F63B9 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		9162571E21690107009F63B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9193E59221416ED90047950D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9193E59421469F710047950D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -221,11 +219,10 @@
 		9162571B21675A18009F63B9 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				9162571C21675CC0009F63B9 /* RecipeData.swift */,
-				CCA10B2621B1434D006C3F77 /* Reciplease.xcdatamodeld */,
 				CCA10B2421B1309E006C3F77 /* CoreDataStack.swift */,
 				CCA10B3621B15265006C3F77 /* Managers */,
 				CCA10B3121B14CA1006C3F77 /* ManagedObjects */,
+				CCA10B2621B1434D006C3F77 /* Reciplease.xcdatamodeld */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -597,7 +594,6 @@
 				913BC9CD2117531A001504E6 /* Constants.swift in Sources */,
 				CCA10B2521B1309E006C3F77 /* CoreDataStack.swift in Sources */,
 				91A60028215389DD004E78B8 /* Helpers.swift in Sources */,
-				9162571D21675CC0009F63B9 /* RecipeData.swift in Sources */,
 				CCA10B3021B14C3B006C3F77 /* DetailedRecipeData+CoreDataProperties.swift in Sources */,
 				CCA10B3D21B532D4006C3F77 /* VCRecipePersisting.swift in Sources */,
 				CCA10B3F21B53415006C3F77 /* VCRecipePersistence.swift in Sources */,
