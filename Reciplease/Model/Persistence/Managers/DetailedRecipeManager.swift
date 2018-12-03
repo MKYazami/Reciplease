@@ -10,13 +10,18 @@ import Foundation
 import CoreData
 
 /// Manage detailed recipe data (add, get, delete, update) 
-struct DetailedRecipeManager:  CoreDataManager {
+struct DetailedRecipeManager: CoreDataManager {
     
     // MARK: PROPERTIES
     var alertMessageDelegate: ListenToAlertMessage?
     
     var coreDataStack: CoreDataStack
     var managedContext: NSManagedObjectContext
+    
+    init(coreDataStack: CoreDataStack, managedContext: NSManagedObjectContext) {
+        self.coreDataStack = coreDataStack
+        self.managedContext = managedContext
+    }
     
 }
 

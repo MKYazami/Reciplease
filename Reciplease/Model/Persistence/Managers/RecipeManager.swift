@@ -17,6 +17,11 @@ struct RecipeManager: CoreDataManager {
     
     var coreDataStack: CoreDataStack
     var managedContext: NSManagedObjectContext
+    
+    init(coreDataStack: CoreDataStack, managedContext: NSManagedObjectContext) {
+        self.coreDataStack = coreDataStack
+        self.managedContext = managedContext
+    }
 
 }
 
@@ -27,9 +32,17 @@ extension RecipeManager {
     var getRecipes: [RecipeData] {
         let request: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
         
-        guard let recipes = try? managedContext.fetch(request) else { return [] }
+        do {
+            let recipes = try managedContext.fetch(request)
+            return recipes
+        } catch let error as NSError {
+            print("Error to get recipes: \n \(error) \n User Info Error —> \(error.userInfo)")
+            alertMessageDelegate?.alertMessage(alertTitle: Constants.AlertMessage.getRecipesErrorTitle,
+                                               message: Constants.AlertMessage.getRecipesErrorDescription,
+                                               actionTitle: Constants.AlertMessage.actionTitleOK)
+            return []
+        }
         
-        return recipes
     }
 }
 

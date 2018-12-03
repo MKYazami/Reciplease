@@ -13,15 +13,15 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var coreDataStack = CoreDataStack(modelName: "Reciplease")
+    private lazy var coreDataStack = CoreDataStack(modelName: "Reciplease")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // Getting the view controllers
         guard let tabBarController = window?.rootViewController as? UITabBarController,
-        let viewControllers = tabBarController.viewControllers,
-        let searchNavController = viewControllers[0].navigationController,
-        let favoriteNavController = viewControllers[1].navigationController else { return true }
+        let tabViewControllers = tabBarController.viewControllers,
+        let searchNavController = tabViewControllers[0] as? UINavigationController,
+        let favoriteNavController = tabViewControllers[1] as? UINavigationController else { return true }
         
         // Propagate the coreDataStack to Home Page VC
         if let homePageVC = searchNavController.topViewController as? HomePageViewController {

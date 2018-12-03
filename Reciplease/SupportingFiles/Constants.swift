@@ -75,6 +75,14 @@ struct Constants {
             return "Try later or with another recipe"
         }
         
+        static var getRecipesErrorTitle: String {
+            return "Impossible to get recipes"
+        }
+        
+        static var getRecipesErrorDescription: String {
+            return "A problem has occurred and it is impossible to get the recipes"
+        }
+        
         static var getDetailedRecipeErrorTitle: String {
             return "Impossible to get detailed recipe"
         }

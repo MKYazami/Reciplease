@@ -11,11 +11,18 @@ import UIKit
 class FavoritesListViewController: UIViewController {
     
     // MARK: PROPERTIES
+    var coreDataStack: CoreDataStack!
+    private lazy var recipeManager = RecipeManager(coreDataStack: coreDataStack,
+                                                   managedContext: coreDataStack.mainContext)
+    private lazy var detailedRecipeManager = DetailedRecipeManager(coreDataStack: coreDataStack,
+                                                                   managedContext: coreDataStack.mainContext)
+    private lazy var vcRecipePersistence = VCRecipePersistence(recipeManager: recipeManager,
+                                                               detailedRecipeManager: detailedRecipeManager)
+    
     private var recipes: [RecipeData]?
     // Property to transfert to FavoriteDetailViewController for Persistence manipulations
     private var recipeInList: RecipeData?
     private var detailedRecipe: DetailedRecipeData?
-    var coreDataStack: CoreDataStack!
     
     // MARK: OUTLETS
     @IBOutlet var mainView: RecipeTableView!
@@ -30,7 +37,7 @@ class FavoritesListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         setUserInformationTextField()
-        recipes = RecipeData.getRecipes
+        recipes = recipeManager.getRecipes
         mainView.tableView.reloadData()
         toogleActivityIndicator(shown: false)
         toogleTableViewUserInteractions(enable: true)
@@ -54,6 +61,8 @@ extension FavoritesListViewController {
     
     private func setupDelegates() {
         mainView.tableView.dataSource = self
+        recipeManager.alertMessageDelegate = self
+        detailedRecipeManager.alertMessageDelegate = self
     }
     
     /// Load nib which contains cell
@@ -66,7 +75,7 @@ extension FavoritesListViewController {
     
     /// Allows to show or hide the user information text field according if there is almost one recipe or more in the favorite
     private func setUserInformationTextField() {
-        if RecipeData.isFavoriteRecipeEmpty {
+        if recipeManager.isFavoriteRecipeEmpty {
             mainView.userInformationTextField.isHidden = false
         } else {
             mainView.userInformationTextField.isHidden = true
@@ -93,10 +102,10 @@ extension FavoritesListViewController {
 extension FavoritesListViewController {
     
     private func getDetailedRecipeData(recipeID: String) {
-        let fetchRequest = DetailedRecipeData.getDetailedRecipesFetchRequest(recipeID: recipeID)
+        let fetchRequest = detailedRecipeManager.getDetailedRecipesFetchRequest(recipeID: recipeID)
         
         do {
-            let detailedRecipeData = try AppDelegate.viewContext.fetch(fetchRequest)
+            let detailedRecipeData = try coreDataStack.mainContext.fetch(fetchRequest)
             
             detailedRecipe = detailedRecipeData.first
             
@@ -131,7 +140,8 @@ extension FavoritesListViewController: UITableViewDataSource {
         let emptyCell = UITableViewCell()
         emptyCell.backgroundColor = UIColor(red: 228/255, green: 126/255, blue: 72/255, alpha: 0)
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.recipeCellId, for: indexPath) as? RecipeTableViewCell else { return emptyCell }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.recipeCellId,
+                                                       for: indexPath) as? RecipeTableViewCell else { return emptyCell }
         
         // Set cell delegate
         cell.cellSelectionDelegate = self
@@ -142,9 +152,11 @@ extension FavoritesListViewController: UITableViewDataSource {
         let preparationTime = Int(recipes[indexPath.row].totalTimeInSeconds)
         guard let recipeName = recipes[indexPath.row].recipeName else { return emptyCell }
         guard let recipeDescription = recipes[indexPath.row].ingredients as? [String] else { return emptyCell }
-        let imageData = recipes[indexPath.row].image
+        let imageData = recipes[indexPath.row].imageData as Data?
         
-        cell.cellConfigurator(rating: rating, preparationTime: preparationTime, recipeTitle: recipeName, recipeDescriptions: recipeDescription, recipeURLStringImage: nil, imageData: imageData)
+        cell.cellConfigurator(rating: rating, preparationTime: preparationTime,
+                              recipeTitle: recipeName, recipeDescriptions: recipeDescription,
+                              recipeURLStringImage: nil, imageData: imageData)
         
         return cell
     }
@@ -170,6 +182,14 @@ extension FavoritesListViewController: ListenToSelectedCell {
         let recipeID = recipe.recipeID else { return }
 
         getDetailedRecipeData(recipeID: recipeID)
+    }
+    
+}
+
+extension FavoritesListViewController: ListenToAlertMessage {
+    
+    func alertMessage(alertTitle: String, message: String, actionTitle: String) {
+        Helper.alertMessage(title: alertTitle, message: message, actionTitle: actionTitle, on: self)
     }
     
 }

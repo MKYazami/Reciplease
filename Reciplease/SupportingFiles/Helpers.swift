@@ -11,7 +11,7 @@ import Foundation
 /// Contains some useful methods, generally usable to the project
 struct Helper {
     
-    private init() { }
+    private init() {}
     
     /// Allows to open web URL in web browser
     ///
@@ -25,35 +25,6 @@ struct Helper {
     /// - Parameter recipeViewDetail: reciped detail view to set
     static func setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: RecipeDetailView) {
         recipeViewDetail.recipeTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
-    }
-    
-    /// Switch favorite button in detailed recipe pages, depending on recipe is saved or not in favorites
-    ///
-    /// - Parameters:
-    ///   - favoriteButton: favorite button
-    ///   - saveRecipe: method allows to save recipe in persistence
-    ///   - saveDetailedRecipe: method allows to save detailed recipe in persistence
-    ///   - recipeID: recipe ID
-    static func switchFavoriteButton(favoriteButton: UIBarButtonItem, saveRecipe: (), saveDetailedRecipe: (), recipeID: String?) {
-        if favoriteButton.image == UIImage(named: UIImageNames.FavoriteSelected.rawValue) {
-            deleteDetailedRecipe(recipeID: recipeID)
-            deleteRecipe(recipeID: recipeID)
-            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
-        } else if favoriteButton.image == UIImage(named: UIImageNames.Favorite.rawValue) {
-            saveRecipe
-            saveDetailedRecipe
-            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
-        }
-    }
-    
-    /// Set favorite button according if the recipe already stored in the persistence or not
-    static func setFavoriteButton(recipeID: String?, favoriteButton: UIBarButtonItem) {
-        guard let recipeID = recipeID else { return }
-        if DetailedRecipeData.isRecipeExists(recipeID: recipeID) {
-            favoriteButton.image = UIImage(named: UIImageNames.FavoriteSelected.rawValue)
-        } else {
-            favoriteButton.image = UIImage(named: UIImageNames.Favorite.rawValue)
-        }
     }
     
     /// Allows to display alert message with simple action title to remove alert message
@@ -70,18 +41,4 @@ struct Helper {
         viewController.present(alert, animated: true)
     }
     
-}
-
-// MARK: PRIVATE HELPER METHODS
-private extension Helper {
-    
-    private static func deleteDetailedRecipe(recipeID: String?) {
-        guard let recipeID = recipeID else { return }
-        DetailedRecipeData.removeDetailedRecipeData(recipeID: recipeID)
-    }
-    
-    private static func deleteRecipe(recipeID: String?) {
-        guard let recipeID = recipeID else { return }
-        RecipeData.removeRecipeData(recipeID: recipeID)
-    }
 }

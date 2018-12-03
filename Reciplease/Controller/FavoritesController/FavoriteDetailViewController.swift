@@ -11,9 +11,16 @@ import UIKit
 class FavoriteDetailViewController: UIViewController {
     
     // MARK: PROPERTY
+    var coreDataStack: CoreDataStack!
+    private lazy var recipeManager = RecipeManager(coreDataStack: coreDataStack,
+                                                   managedContext: coreDataStack.mainContext)
+    private lazy var detailedRecipeManager = DetailedRecipeManager(coreDataStack: coreDataStack,
+                                                                   managedContext: coreDataStack.mainContext)
+    private lazy var vcRecipePersistence = VCRecipePersistence(recipeManager: recipeManager,
+                                                               detailedRecipeManager: detailedRecipeManager)
+    
     var detailedRecipe: DetailedRecipeData?
     var recipeInList: RecipeData?
-    var coreDataStack: CoreDataStack!
     
     // MARK: OUTLET
     @IBOutlet var recipeDetailView: RecipeDetailView!
@@ -22,10 +29,11 @@ class FavoriteDetailViewController: UIViewController {
     // MARK: ACTIONS
     @IBAction func favoriteItem(_ sender: Any) {
         guard let favoriteButton = sender as? UIBarButtonItem else { return }
-        Helper.switchFavoriteButton(favoriteButton: favoriteButton,
+        guard let recipeID = detailedRecipe?.recipeID else { return }
+        vcRecipePersistence.switchFavoriteButton(favoriteButton: favoriteButton,
                                     saveRecipe: saveRecipeInList(),
                                     saveDetailedRecipe: saveDetailedRecipe(),
-                                    recipeID: detailedRecipe?.recipeID)
+                                    recipeID: recipeID)
     }
     
     // MARK: METHODS OVERRIDE
@@ -38,7 +46,8 @@ class FavoriteDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeDetailView)
-        Helper.setFavoriteButton(recipeID: detailedRecipe?.recipeID, favoriteButton: favoriteButton)
+        guard let recipeID = detailedRecipe?.recipeID else { return }
+        vcRecipePersistence.setFavoriteButton(recipeID: recipeID, favoriteButton: favoriteButton)
     }
     
 }
@@ -48,7 +57,8 @@ extension FavoriteDetailViewController {
     
     private func setUpDelegates() {
         recipeDetailView.actionDelegate = self
-        RecipeData.alertMessageDelegate = self
+        recipeManager.alertMessageDelegate = self
+        detailedRecipeManager.alertMessageDelegate = self
     }
     
     /// Configure and display the custom detailed view
@@ -58,12 +68,12 @@ extension FavoriteDetailViewController {
         let preparationTime = detailedRecipe.preparationTime
         let recipeName = detailedRecipe.recipeName ?? "Sorry Missing Recipe Name :("
         let ingredients = (detailedRecipe.ingredients as? [String]) ?? ["Ouupps Missing Ingredients!"]
-        let recipeImage = detailedRecipe.image
+        let imageData = detailedRecipe.imageData as Data?
         recipeDetailView.detailConfiguratorFromLocalPersistence(rating: rating,
                                                                 preparationTime: preparationTime,
                                                                 recipeName: recipeName,
                                                                 detailedRecipe: ingredients,
-                                                                recipeImage: recipeImage)
+                                                                recipeImage: imageData)
     }
     
     private func getDirections(urlString: String?) {
@@ -87,13 +97,13 @@ extension FavoriteDetailViewController {
     /// Save recipe presented in the list
     private func saveRecipeInList() {
         guard let recipeData = recipeInList else { return }
-        RecipeData.saveRecipeFromLocalData(recipeData: recipeData)
+        recipeManager.saveRecipeFromLocalData(recipeData: recipeData)
     }
     
     /// Save detailed recipe
     private func saveDetailedRecipe() {
         guard let detailedRecipeData = detailedRecipe else { return }
-        DetailedRecipeData.saveDetailedRecipeFromLocalData(detailedRecipe: detailedRecipeData)
+        detailedRecipeManager.saveDetailedRecipeFromLocalData(detailedRecipe: detailedRecipeData)
     }
     
 }

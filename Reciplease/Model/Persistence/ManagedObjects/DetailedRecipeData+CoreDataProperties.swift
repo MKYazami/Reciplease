@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension DetailedRecipeData {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DetailedRecipeData> {

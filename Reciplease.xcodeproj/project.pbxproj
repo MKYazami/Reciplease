@@ -51,6 +51,8 @@
 		CCA10B3521B14F04006C3F77 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B3421B14F04006C3F77 /* RecipeManager.swift */; };
 		CCA10B3821B154D8006C3F77 /* DetailedRecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B3721B154D8006C3F77 /* DetailedRecipeManager.swift */; };
 		CCA10B3A21B1550F006C3F77 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B3921B1550F006C3F77 /* CoreDataManager.swift */; };
+		CCA10B3D21B532D4006C3F77 /* VCRecipePersisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B3C21B532D4006C3F77 /* VCRecipePersisting.swift */; };
+		CCA10B3F21B53415006C3F77 /* VCRecipePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */; };
 		CFE5D19D103CF3F8547B7067 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B17768C5C3AE975E58F62DB /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +118,8 @@
 		CCA10B3421B14F04006C3F77 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		CCA10B3721B154D8006C3F77 /* DetailedRecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeManager.swift; sourceTree = "<group>"; };
 		CCA10B3921B1550F006C3F77 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CCA10B3C21B532D4006C3F77 /* VCRecipePersisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRecipePersisting.swift; sourceTree = "<group>"; };
+		CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRecipePersistence.swift; sourceTree = "<group>"; };
 		CEC653337184FDECDD1C9739 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		F2EE25028D632B80B73FBAE8 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,9 +222,10 @@
 			isa = PBXGroup;
 			children = (
 				9162571C21675CC0009F63B9 /* RecipeData.swift */,
+				CCA10B2621B1434D006C3F77 /* Reciplease.xcdatamodeld */,
 				CCA10B2421B1309E006C3F77 /* CoreDataStack.swift */,
 				CCA10B3621B15265006C3F77 /* Managers */,
-				CCA10B3121B14CA1006C3F77 /* DataModel */,
+				CCA10B3121B14CA1006C3F77 /* ManagedObjects */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				913482CA210F512900C71BB2 /* ResultsViewController.swift */,
 				913482CC210F516400C71BB2 /* DetailViewController.swift */,
 				913482D2210FA13600C71BB2 /* FavoritesController */,
+				CCA10B3B21B532A3006C3F77 /* VCPersistence */,
 				913BC9CE211CDDB2001504E6 /* TableViews */,
 			);
 			path = Controller;
@@ -353,16 +359,15 @@
 			path = RecipePersistenceTests;
 			sourceTree = "<group>";
 		};
-		CCA10B3121B14CA1006C3F77 /* DataModel */ = {
+		CCA10B3121B14CA1006C3F77 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
 				CCA10B2921B14C3B006C3F77 /* RecipeData+CoreDataClass.swift */,
 				CCA10B2A21B14C3B006C3F77 /* RecipeData+CoreDataProperties.swift */,
 				CCA10B2B21B14C3B006C3F77 /* DetailedRecipeData+CoreDataClass.swift */,
 				CCA10B2C21B14C3B006C3F77 /* DetailedRecipeData+CoreDataProperties.swift */,
-				CCA10B2621B1434D006C3F77 /* Reciplease.xcdatamodeld */,
 			);
-			path = DataModel;
+			path = ManagedObjects;
 			sourceTree = "<group>";
 		};
 		CCA10B3621B15265006C3F77 /* Managers */ = {
@@ -373,6 +378,15 @@
 				CCA10B3921B1550F006C3F77 /* CoreDataManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		CCA10B3B21B532A3006C3F77 /* VCPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				CCA10B3C21B532D4006C3F77 /* VCRecipePersisting.swift */,
+				CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */,
+			);
+			path = VCPersistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,6 +599,8 @@
 				91A60028215389DD004E78B8 /* Helpers.swift in Sources */,
 				9162571D21675CC0009F63B9 /* RecipeData.swift in Sources */,
 				CCA10B3021B14C3B006C3F77 /* DetailedRecipeData+CoreDataProperties.swift in Sources */,
+				CCA10B3D21B532D4006C3F77 /* VCRecipePersisting.swift in Sources */,
+				CCA10B3F21B53415006C3F77 /* VCRecipePersistence.swift in Sources */,
 				CCA10B2D21B14C3B006C3F77 /* RecipeData+CoreDataClass.swift in Sources */,
 				91D372FA210EEB92004BFECA /* RecipeTableViewCell.swift in Sources */,
 				913BC9C421173E4F001504E6 /* RecipeTableView.swift in Sources */,

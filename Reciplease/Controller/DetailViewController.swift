@@ -11,9 +11,15 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: PROPERTIES
-    var detailedRecipe: DetailedRecipe?
     var coreDataStack: CoreDataStack!
-    
+    private lazy var recipeManager = RecipeManager(coreDataStack: coreDataStack,
+                                                   managedContext: coreDataStack.mainContext)
+    private lazy var detailedRecipeManager = DetailedRecipeManager(coreDataStack: coreDataStack,
+                                                                   managedContext: coreDataStack.mainContext)
+    private lazy var vcRecipePersistence = VCRecipePersistence(recipeManager: recipeManager,
+                                                               detailedRecipeManager: detailedRecipeManager)
+        
+    var detailedRecipe: DetailedRecipe?
     // Contains the recipe items in list in order to store them in Core Data
     var recipeInList: Match?
     
@@ -27,7 +33,8 @@ class DetailViewController: UIViewController {
     // MARK: ACTIONS
     @IBAction func favoriteItem(_ sender: Any) {
         guard let favoriteButton = sender as? UIBarButtonItem else { return }
-        Helper.switchFavoriteButton(favoriteButton: favoriteButton,
+        guard let recipeID = recipeID else { return }
+        vcRecipePersistence.switchFavoriteButton(favoriteButton: favoriteButton,
                                     saveRecipe: saveRecipeInList(),
                                     saveDetailedRecipe: saveDetailedRecipe(),
                                     recipeID: recipeID)
@@ -46,7 +53,9 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         // Set text view scroll to the top
         Helper.setTextViewScrollRangeInRecipeViewDetail(recipeViewDetail: recipeViewDetail)
-        Helper.setFavoriteButton(recipeID: recipeID, favoriteButton: favoriteButton)
+        guard let recipeID = recipeID else { return }
+        vcRecipePersistence.setFavoriteButton(recipeID: recipeID,
+                                              favoriteButton: favoriteButton)
     }
     
 }
@@ -56,7 +65,8 @@ extension DetailViewController {
     
     private func setUpDelegates() {
         recipeViewDetail.actionDelegate = self
-        RecipeData.alertMessageDelegate = self
+        recipeManager.alertMessageDelegate = self
+        detailedRecipeManager.alertMessageDelegate = self
     }
     
     /// Allows to populate labels, text views, image views… in detailed recipe view
@@ -92,7 +102,7 @@ extension DetailViewController {
         let image = recipeViewDetail.recipeImageView.image
         let imageData = image?.jpegData(compressionQuality: 0.5)
         
-        RecipeData.saveRecipeFromYummlyData(recipe: recipeInList, imageData: imageData)
+        recipeManager.saveRecipeFromYummlyData(recipe: recipeInList, imageData: imageData)
     }
     
     /// Save detailed recipe
@@ -103,7 +113,7 @@ extension DetailViewController {
         let imageData = image?.jpegData(compressionQuality: 1.0)
         let preparationTime = recipeViewDetail.preparationTimeLabel.text
         
-        DetailedRecipeData.saveDetailedRecipeFromYummlyData(detailedRecipe: detailedRecipe,
+        detailedRecipeManager.saveDetailedRecipeFromYummlyData(detailedRecipe: detailedRecipe,
                                                             recipeID: recipeID,
                                                             imageData: imageData,
                                                             preparationTime: preparationTime)
