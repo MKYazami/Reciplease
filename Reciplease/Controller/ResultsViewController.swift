@@ -27,8 +27,6 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         setupDelegates()
         loadCellNib()
-        // Hidding the user information text field in this controller because we never need to display it
-        mainView.userInformationTextField.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

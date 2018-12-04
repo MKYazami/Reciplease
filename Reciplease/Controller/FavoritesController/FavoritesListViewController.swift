@@ -36,7 +36,6 @@ class FavoritesListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setUserInformationTextField()
         recipes = recipeManager.getRecipes
         mainView.tableView.reloadData()
         toogleActivityIndicator(shown: false)
@@ -61,6 +60,7 @@ extension FavoritesListViewController {
     
     private func setupDelegates() {
         mainView.tableView.dataSource = self
+        mainView.tableView.delegate = self
         recipeManager.alertMessageDelegate = self
         detailedRecipeManager.alertMessageDelegate = self
     }
@@ -71,15 +71,6 @@ extension FavoritesListViewController {
         TableViewCellConfigurator.loadCellNib(nibName: CellConstants.recipeTableViewCellNib,
                                               cellIdentifier: CellConstants.recipeCellId,
                                               tableView: mainView.tableView)
-    }
-    
-    /// Allows to show or hide the user information text field according if there is almost one recipe or more in the favorite
-    private func setUserInformationTextField() {
-        if recipeManager.isFavoriteRecipeEmpty {
-            mainView.userInformationTextField.isHidden = false
-        } else {
-            mainView.userInformationTextField.isHidden = true
-        }
     }
     
     /// Allows to enable OR desable the interactions between the user & the table view selection
@@ -123,7 +114,7 @@ extension FavoritesListViewController {
     
 }
 
-// MARK: TABLE VIEW
+// MARK: TABLE VIEW DATA SOURCE
 extension FavoritesListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -160,6 +151,41 @@ extension FavoritesListViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+// MARK: TABLE VIEW DELEGATE
+extension FavoritesListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let textView = UITextView()
+        
+        textView.isEditable = false
+        textView.isSelectable = false
+        
+        textView.backgroundColor = UIColor(red: 243/255, green: 120/255,
+                                           blue: 56/255, alpha: 0)
+
+        textView.text = """
+        No recipes in the favorites!
+
+        To add new recipes to favorites:
+        1.  Enter the ingredients in the search tab
+        2. Choose a recipe
+        3. Touch the star at the top right of the screen
+        """
+        
+        textView.font = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
+        textView.textColor = .white
+        
+        return textView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard recipeManager.isFavoriteRecipeEmpty else { return 0 }
+        
+        return 220
+    }
+    
 }
 
 // MARK: LISTEN TO SELECTED CELL
