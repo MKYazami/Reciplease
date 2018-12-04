@@ -277,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2B0B0521AC23F100995F47 /* RecipePersistenceTests */,
-				CC2B0B0321AC207300995F47 /* RecipeServiceTests */,
+				CC2B0B0321AC207300995F47 /* RecipeNetworkRequestTests */,
 				915D296621550A170077E4FA /* ReicpeTestCase.swift */,
 				CC2B0B0421AC20A600995F47 /* SupportingFiles */,
 			);
@@ -332,7 +332,7 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		CC2B0B0321AC207300995F47 /* RecipeServiceTests */ = {
+		CC2B0B0321AC207300995F47 /* RecipeNetworkRequestTests */ = {
 			isa = PBXGroup;
 			children = (
 				911EE23C215F7594005FC6DD /* RecipeServiceTestCase.swift */,
@@ -340,7 +340,7 @@
 				915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */,
 				911EE23E215F7AF5005FC6DD /* URLStringTypeFake.swift */,
 			);
-			path = RecipeServiceTests;
+			path = RecipeNetworkRequestTests;
 			sourceTree = "<group>";
 		};
 		CC2B0B0421AC20A600995F47 /* SupportingFiles */ = {
