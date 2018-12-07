@@ -55,6 +55,8 @@
 		CCFB086221B6B7290083801F /* CoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086121B6B7290083801F /* CoreDataStackTest.swift */; };
 		CCFB086621B914CE0083801F /* RecipesSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086521B914CE0083801F /* RecipesSampleTests.swift */; };
 		CCFB086821B917AC0083801F /* RecipeManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */; };
+		CCFB087121BAB46B0083801F /* DetailedRecipeManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB087021BAB46B0083801F /* DetailedRecipeManagerTestCase.swift */; };
+		CCFB087321BAB6560083801F /* DetailedRecipesSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB087221BAB6560083801F /* DetailedRecipesSampleTests.swift */; };
 		CFE5D19D103CF3F8547B7067 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B17768C5C3AE975E58F62DB /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,9 +123,11 @@
 		CCA10B3921B1550F006C3F77 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CCA10B3C21B532D4006C3F77 /* VCRecipePersisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRecipePersisting.swift; sourceTree = "<group>"; };
 		CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRecipePersistence.swift; sourceTree = "<group>"; };
-		CCFB086121B6B7290083801F /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStackTest.swift; path = Reciplease/Controller/VCPersistence/CoreDataStackTest.swift; sourceTree = SOURCE_ROOT; };
-		CCFB086521B914CE0083801F /* RecipesSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipesSampleTests.swift; path = Reciplease/Controller/VCPersistence/RecipesSampleTests.swift; sourceTree = SOURCE_ROOT; };
-		CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeManagerTestCase.swift; path = Reciplease/Controller/VCPersistence/RecipeManagerTestCase.swift; sourceTree = SOURCE_ROOT; };
+		CCFB086121B6B7290083801F /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStackTest.swift; path = RecipleaseTests/RecipePersistenceTest/CoreDataStackTest.swift; sourceTree = SOURCE_ROOT; };
+		CCFB086521B914CE0083801F /* RecipesSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipesSampleTests.swift; path = RecipleaseTests/RecipePersistenceTest/RecipesSampleTests.swift; sourceTree = SOURCE_ROOT; };
+		CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeManagerTestCase.swift; path = RecipleaseTests/RecipePersistenceTest/RecipeManagerTestCase.swift; sourceTree = SOURCE_ROOT; };
+		CCFB087021BAB46B0083801F /* DetailedRecipeManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeManagerTestCase.swift; sourceTree = "<group>"; };
+		CCFB087221BAB6560083801F /* DetailedRecipesSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipesSampleTests.swift; sourceTree = "<group>"; };
 		CEC653337184FDECDD1C9739 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		F2EE25028D632B80B73FBAE8 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,7 +284,7 @@
 		91D372E4210E0357004BFECA /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				CC2B0B0521AC23F100995F47 /* RecipePersistenceTests */,
+				CCFB086B21BAB0F30083801F /* RecipePersistenceTest */,
 				CC2B0B0321AC207300995F47 /* RecipeNetworkRequestTests */,
 				915D296621550A170077E4FA /* ReicpeTestCase.swift */,
 				CC2B0B0421AC20A600995F47 /* SupportingFiles */,
@@ -355,16 +359,6 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		CC2B0B0521AC23F100995F47 /* RecipePersistenceTests */ = {
-			isa = PBXGroup;
-			children = (
-				CCFB086121B6B7290083801F /* CoreDataStackTest.swift */,
-				CCFB086521B914CE0083801F /* RecipesSampleTests.swift */,
-				CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */,
-			);
-			path = RecipePersistenceTests;
-			sourceTree = "<group>";
-		};
 		CCA10B3121B14CA1006C3F77 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +387,18 @@
 				CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */,
 			);
 			path = VCPersistence;
+			sourceTree = "<group>";
+		};
+		CCFB086B21BAB0F30083801F /* RecipePersistenceTest */ = {
+			isa = PBXGroup;
+			children = (
+				CCFB086121B6B7290083801F /* CoreDataStackTest.swift */,
+				CCFB086521B914CE0083801F /* RecipesSampleTests.swift */,
+				CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */,
+				CCFB087221BAB6560083801F /* DetailedRecipesSampleTests.swift */,
+				CCFB087021BAB46B0083801F /* DetailedRecipeManagerTestCase.swift */,
+			);
+			path = RecipePersistenceTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,7 +623,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */,
+				CCFB087321BAB6560083801F /* DetailedRecipesSampleTests.swift in Sources */,
 				CCFB086821B917AC0083801F /* RecipeManagerTestCase.swift in Sources */,
+				CCFB087121BAB46B0083801F /* DetailedRecipeManagerTestCase.swift in Sources */,
 				911EE23D215F7594005FC6DD /* RecipeServiceTestCase.swift in Sources */,
 				915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */,
 				CCFB086621B914CE0083801F /* RecipesSampleTests.swift in Sources */,

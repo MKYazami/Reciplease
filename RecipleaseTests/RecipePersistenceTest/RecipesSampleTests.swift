@@ -18,7 +18,6 @@ struct RecipesSampleTests {
     /// Give recipe 1 for test purpose
     ///
     /// - Parameter context: the managed object context
-    /// - Returns: recipe
     /// - RECIPE ID IS rusty-chiken1
     static func saveRecipeTest1(with context: NSManagedObjectContext) {
         let recipe = RecipeData(context: context)
@@ -35,7 +34,6 @@ struct RecipesSampleTests {
     /// Give recipe 2 for test purpose
     ///
     /// - Parameter context: the managed object context
-    /// - Returns: recipe
     /// - RECIPE ID IS banana-cake1
     static func saveRecipeTest2(with context: NSManagedObjectContext) {
         let recipe = RecipeData(context: context)
@@ -52,7 +50,6 @@ struct RecipesSampleTests {
     /// Give recipe 3 for test purpose
     ///
     /// - Parameter context: the managed object context
-    /// - Returns: recipe
     /// - RECIPE ID IS butter-cookie1
     static func saveRecipeTest3(with context: NSManagedObjectContext) {
         let recipe = RecipeData(context: context)
