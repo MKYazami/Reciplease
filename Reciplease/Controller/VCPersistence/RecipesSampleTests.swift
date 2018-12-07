@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 @testable import Reciplease
 
-/// This structure contains some static methods to get recipes ready for tests
+/// This structure contains some static methods to save recipes for tests
 struct RecipesSampleTests {
     
     private static let imageDataTest = "ImageDataTest".data(using: .utf8) as NSData?
@@ -19,7 +19,8 @@ struct RecipesSampleTests {
     ///
     /// - Parameter context: the managed object context
     /// - Returns: recipe
-    static func getRecipeTest1(with context: NSManagedObjectContext) -> RecipeData {
+    /// - RECIPE ID IS rusty-chiken1
+    static func saveRecipeTest1(with context: NSManagedObjectContext) {
         let recipe = RecipeData(context: context)
         
         recipe.recipeName = "Rusty Chiken"
@@ -27,17 +28,16 @@ struct RecipesSampleTests {
         recipe.rating = 4
         recipe.recipeID = "rusty-chiken1"
         recipe.totalTimeInSeconds = 5400
-        
         recipe.imageData = imageDataTest
         
-        return recipe
     }
     
     /// Give recipe 2 for test purpose
     ///
     /// - Parameter context: the managed object context
     /// - Returns: recipe
-    static func getRecipeTest2(with context: NSManagedObjectContext) -> RecipeData {
+    /// - RECIPE ID IS banana-cake1
+    static func saveRecipeTest2(with context: NSManagedObjectContext) {
         let recipe = RecipeData(context: context)
         
         recipe.recipeName = "Banana Cake"
@@ -47,14 +47,14 @@ struct RecipesSampleTests {
         recipe.totalTimeInSeconds = 2400
         recipe.imageData = imageDataTest
         
-        return recipe
     }
     
     /// Give recipe 3 for test purpose
     ///
     /// - Parameter context: the managed object context
     /// - Returns: recipe
-    static func getRecipeTest3(with context: NSManagedObjectContext) -> RecipeData {
+    /// - RECIPE ID IS butter-cookie1
+    static func saveRecipeTest3(with context: NSManagedObjectContext) {
         let recipe = RecipeData(context: context)
         
         recipe.recipeName = "Butter Cookie"
@@ -64,7 +64,6 @@ struct RecipesSampleTests {
         recipe.totalTimeInSeconds = 2700
         recipe.imageData = imageDataTest
         
-        return recipe
     }
     
 }

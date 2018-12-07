@@ -54,6 +54,7 @@
 		CCA10B3F21B53415006C3F77 /* VCRecipePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */; };
 		CCFB086221B6B7290083801F /* CoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086121B6B7290083801F /* CoreDataStackTest.swift */; };
 		CCFB086621B914CE0083801F /* RecipesSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086521B914CE0083801F /* RecipesSampleTests.swift */; };
+		CCFB086821B917AC0083801F /* RecipeManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */; };
 		CFE5D19D103CF3F8547B7067 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B17768C5C3AE975E58F62DB /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,7 @@
 		CCA10B3E21B53415006C3F77 /* VCRecipePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRecipePersistence.swift; sourceTree = "<group>"; };
 		CCFB086121B6B7290083801F /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStackTest.swift; path = Reciplease/Controller/VCPersistence/CoreDataStackTest.swift; sourceTree = SOURCE_ROOT; };
 		CCFB086521B914CE0083801F /* RecipesSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipesSampleTests.swift; path = Reciplease/Controller/VCPersistence/RecipesSampleTests.swift; sourceTree = SOURCE_ROOT; };
+		CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeManagerTestCase.swift; path = Reciplease/Controller/VCPersistence/RecipeManagerTestCase.swift; sourceTree = SOURCE_ROOT; };
 		CEC653337184FDECDD1C9739 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		F2EE25028D632B80B73FBAE8 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,6 +360,7 @@
 			children = (
 				CCFB086121B6B7290083801F /* CoreDataStackTest.swift */,
 				CCFB086521B914CE0083801F /* RecipesSampleTests.swift */,
+				CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */,
 			);
 			path = RecipePersistenceTests;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */,
+				CCFB086821B917AC0083801F /* RecipeManagerTestCase.swift in Sources */,
 				911EE23D215F7594005FC6DD /* RecipeServiceTestCase.swift in Sources */,
 				915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */,
 				CCFB086621B914CE0083801F /* RecipesSampleTests.swift in Sources */,
