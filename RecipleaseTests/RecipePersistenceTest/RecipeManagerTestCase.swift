@@ -25,7 +25,6 @@ class RecipeManagerTestCase: XCTestCase {
     }
     
     override func tearDown() {
-        
         deleteAllRecipeDataTests()
         // Reset core data stack & recipe manager after each test
         coreDataStack = nil

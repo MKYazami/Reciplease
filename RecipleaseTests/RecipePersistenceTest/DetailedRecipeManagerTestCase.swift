@@ -25,10 +25,10 @@ class DetailedRecipeManagerTestCase: XCTestCase {
     }
     
     override func tearDown() {
-        super.tearDown()
         deleteAllDetailedRecipeDataTests()
         coreDataStack = nil
         detailedRecipeManager = nil
+        super.tearDown()
     }
     
     private func deleteAllDetailedRecipeDataTests() {
