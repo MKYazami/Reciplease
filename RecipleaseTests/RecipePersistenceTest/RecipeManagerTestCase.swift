@@ -157,8 +157,10 @@ class RecipeManagerTestCase: XCTestCase {
         let results = try? coreDataStack.mainContext.fetch(fetchRequest)
         let recipeID = results?.first?.recipeID
         
-        XCTAssertNil(recipeID)
-        XCTAssertEqual(recipes.count, 2)
+        XCTAssertNil(recipeID,
+                     "recipe ID should be nil, because it was deleted")
+        XCTAssertEqual(recipes.count, 2,
+                       "Total of recipes should be 2, because initially we have 3 recipes and we remove 1")
         
     }
     

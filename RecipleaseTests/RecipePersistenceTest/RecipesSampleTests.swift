@@ -29,6 +29,8 @@ struct RecipesSampleTests {
         recipe.totalTimeInSeconds = 5400
         recipe.imageData = imageDataTest
         
+        try? context.save()
+        
     }
     
     /// Give recipe 2 for test purpose
@@ -45,6 +47,8 @@ struct RecipesSampleTests {
         recipe.totalTimeInSeconds = 2400
         recipe.imageData = imageDataTest
         
+        try? context.save()
+        
     }
     
     /// Give recipe 3 for test purpose
@@ -60,6 +64,8 @@ struct RecipesSampleTests {
         recipe.recipeID = "butter-cookie1"
         recipe.totalTimeInSeconds = 2700
         recipe.imageData = imageDataTest
+        
+        try? context.save()
         
     }
     

@@ -15,6 +15,7 @@ class CoreDataStackTestCase: XCTestCase {
     // MARK: PROPERTY
     var coreDataStack: CoreDataStack!
     
+    // MARK: METHODS
     override func setUp() {
         super.setUp()
         coreDataStack = CoreDataStackTest()
@@ -23,6 +24,20 @@ class CoreDataStackTestCase: XCTestCase {
     override func tearDown() {
         coreDataStack = nil
         super.tearDown()
+    }
+    
+    private func unsavedContextRecipe(with context: NSManagedObjectContext) {
+        let recipe = RecipeData(context: context)
+        
+        recipe.recipeName = "Butter Cookie"
+        recipe.ingredients = ["butter", "almont", "milk"]
+        recipe.rating = 5
+        recipe.recipeID = "butter-cookie1"
+        recipe.totalTimeInSeconds = 2700
+        recipe.imageData = "ImageTestData".data(using: .utf8) as NSData?
+        
+        // WE DONT SAVE CONTEXT
+        
     }
     
     func testGivenContext_WhenContextHasNotChanged_ThenContextShouldNotSave() {
@@ -43,15 +58,18 @@ class CoreDataStackTestCase: XCTestCase {
         let context = coreDataStack.mainContext
         
         // When
-        RecipesSampleTests.saveRecipeTest1(with: context)
+        unsavedContextRecipe(with: context)
         let fetch: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
-        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), "rusty-chiken1")
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(RecipeData.recipeID), "butter-cookie1")
 
         // Then
         XCTAssertTrue(context.hasChanges == true,
-                      "Should returns true because context changed and will be saved")
+                      "Should returns true because context changed and should be saved")
 
         coreDataStack.saveContext()
+        
+        XCTAssertTrue(context.hasChanges == false,
+                      "Sould returns false because context is saved and not changed after")
     }
 
 }

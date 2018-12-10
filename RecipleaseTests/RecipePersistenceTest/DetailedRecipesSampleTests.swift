@@ -31,6 +31,8 @@ struct DetailedRecipesSampleTests {
         detailedRecipe.imageData = imageDataTest
         detailedRecipe.sourceRecipeURL = sourceRecipeULR
         
+        try? context.save()
+        
     }
     
     /// Give detailed recipe 2 for test purpose
@@ -48,6 +50,8 @@ struct DetailedRecipesSampleTests {
         detailedRecipe.imageData = imageDataTest
         detailedRecipe.sourceRecipeURL = sourceRecipeULR
         
+        try? context.save()
+        
     }
     
     /// Give detailed recipe 3 for test purpose
@@ -64,6 +68,8 @@ struct DetailedRecipesSampleTests {
         detailedRecipe.preparationTime = "20 m"
         detailedRecipe.imageData = imageDataTest
         detailedRecipe.sourceRecipeURL = sourceRecipeULR
+        
+        try? context.save()
         
     }
     

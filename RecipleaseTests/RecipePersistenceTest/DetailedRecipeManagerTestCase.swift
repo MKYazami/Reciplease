@@ -134,8 +134,10 @@ class DetailedRecipeManagerTestCase: XCTestCase {
         guard let results = try? coreDataStack.mainContext.fetch(fetchRequest) else { return }
         let recipeID = results.first?.recipeID
         
-        XCTAssertTrue(results.isEmpty)
-        XCTAssertNil(recipeID)
+        XCTAssertTrue(results.isEmpty,
+                      "The results should be empty, because we fetch detailed recipe that is removed")
+        XCTAssertNil(recipeID,
+                     "recipe ID is nil, because detailed recipe is removed")
         
     }
     
