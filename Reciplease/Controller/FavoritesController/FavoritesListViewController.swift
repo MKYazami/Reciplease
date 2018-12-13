@@ -19,8 +19,23 @@ class FavoritesListViewController: UIViewController {
     private lazy var vcRecipePersistence = VCRecipePersistence(recipeManager: recipeManager,
                                                                detailedRecipeManager: detailedRecipeManager)
     
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.tintColor = .white
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        return searchController
+    }()
+    
+    /// Recipes that coming from filtered recipes by user
+    private var filteredRecipes = [RecipeData]()
+    
     private var recipes: [RecipeData]?
-    // Property to transfert to FavoriteDetailViewController for Persistence manipulations
+    
+    /// Property to transfert to FavoriteDetailViewController for Persistence manipulations
     private var recipeInList: RecipeData?
     private var detailedRecipe: DetailedRecipeData?
     
@@ -32,6 +47,7 @@ class FavoritesListViewController: UIViewController {
         super.viewDidLoad()
         setupDelegates()
         loadCellNib()
+        assignSearchControllerToNavItemSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +56,7 @@ class FavoritesListViewController: UIViewController {
         mainView.tableView.reloadData()
         toogleActivityIndicator(shown: false)
         toogleTableViewUserInteractions(enable: true)
+        setSearchBarPlaceHolder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,6 +139,9 @@ extension FavoritesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recipes = recipes else { return 0 }
+        
+        if isSearchBarFiltering { return filteredRecipes.count }
+        
         return recipes.count
     }
     
@@ -137,13 +157,21 @@ extension FavoritesListViewController: UITableViewDataSource {
         // Set cell delegate
         cell.cellSelectionDelegate = self
         
-        // Get elements from recipes to send to custom cell
         guard let recipes = recipes else { return emptyCell }
-        let rating = Int(recipes[indexPath.row].rating)
-        let preparationTime = Int(recipes[indexPath.row].totalTimeInSeconds)
-        guard let recipeName = recipes[indexPath.row].recipeName else { return emptyCell }
-        guard let recipeDescription = recipes[indexPath.row].ingredients as? [String] else { return emptyCell }
-        let imageData = recipes[indexPath.row].imageData as Data?
+        var recipe: RecipeData
+        
+        if isSearchBarFiltering {
+            recipe = filteredRecipes[indexPath.row]
+        } else {
+            recipe = recipes[indexPath.row]
+        }
+        
+        // Get elements from recipes to send to custom cell
+        let rating = Int(recipe.rating)
+        let preparationTime = Int(recipe.totalTimeInSeconds)
+        guard let recipeName = recipe.recipeName else { return emptyCell }
+        guard let recipeDescription = recipe.ingredients as? [String] else { return emptyCell }
+        let imageData = recipe.imageData as Data?
         
         cell.cellConfigurator(rating: rating, preparationTime: preparationTime,
                               recipeTitle: recipeName, recipeDescriptions: recipeDescription,
@@ -188,6 +216,50 @@ extension FavoritesListViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UISEARCHRESULTS UPDATING — SEARCH BAR
+extension FavoritesListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterRecipesFromSearchBar(searchBarText: searchController.searchBar.text)
+    }
+    
+    /// Allows to assign the searchController to the searchController in the navigation item
+    private func assignSearchControllerToNavItemSearchController() {
+        navigationItem.searchController = searchController
+    }
+    
+    /// Filter recipes names from search bar text to filteredRecipes to know what is tapping from user
+    ///
+    /// - Parameter searchBarText: text tapped from search bar
+    private func filterRecipesFromSearchBar(searchBarText: String?) {
+        
+        guard let recipes = recipes else { return }
+        filteredRecipes = recipes.filter({ (recipe) -> Bool in
+            guard let recipeName = recipe.recipeName else { return false }
+            guard let searchBarText = searchBarText else { return false }
+            return recipeName.lowercased().contains(searchBarText.lowercased())
+        })
+        
+        mainView.tableView.reloadData()
+        
+    }
+    
+    private var isSearchBarFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    /// Check if search bar is empty
+    /// - return true if text is empty or is nil
+    private var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func setSearchBarPlaceHolder() {
+        searchController.searchBar.placeholder = recipeManager.isFavoriteRecipeEmpty ?
+            "No recipe to search!" : "Search Recipe"
+    }
+}
+
 // MARK: LISTEN TO SELECTED CELL
 extension FavoritesListViewController: ListenToSelectedCell {
     
@@ -200,12 +272,23 @@ extension FavoritesListViewController: ListenToSelectedCell {
         // Get cell index selected by user to get detailed recipe
         guard let cellIndex = mainView.tableView.indexPathForSelectedRow?.row else { return }
         
-        // Get recipeInList selected by user
-        recipeInList = recipes?[cellIndex]
+        guard let recipes = recipes else { return }
+        
+        // This variable allows to get the correct recipeID
+        // If is from standard table view results OR filtering table view results
+        var recipeFromList: RecipeData
+        
+        // Get recipe selected by user
+        if isSearchBarFiltering {
+            recipeInList = filteredRecipes[cellIndex]
+            recipeFromList = filteredRecipes[cellIndex]
+        } else {
+            recipeInList = recipes[cellIndex]
+            recipeFromList = recipes[cellIndex]
+        }
         
         // Get recipe ID
-        guard let recipe = recipes?[cellIndex],
-        let recipeID = recipe.recipeID else { return }
+        guard let recipeID = recipeFromList.recipeID else { return }
 
         getDetailedRecipeData(recipeID: recipeID)
     }
