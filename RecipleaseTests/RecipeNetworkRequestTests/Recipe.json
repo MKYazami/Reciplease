@@ -1,0 +1,351 @@
+{
+    "criteria": {
+        "q": "apple orange",
+        "allowedIngredient": null,
+        "excludedIngredient": null
+    },
+    "matches": [
+        {
+            "imageUrlsBySize": {
+                "90": "http://lh5.ggpht.com/m4vtm9E3mTJZGNhs1K-modZQMaf58sPQGDEDAmdEgSJXEQquGJ8dGq6JdA0ticLVzglK0b-QDyR6kDKL7TZMRg=s90-c"
+            },
+            "sourceDisplayName": "Zoku",
+            "ingredients": [
+                "apple juice",
+                "pear juice",
+                "fresh orange juice"
+            ],
+            "id": "Apple_-Pear_-and-Orange-Quick-Pops-608966",
+            "smallImageUrls": [
+                "http://lh4.ggpht.com/1a1qbTboJQCeSYdCHI0oG-U1ZW-V2TTNNj5-3wYfdoXNZYLh5E20980WupZ7MdfIr4yL9r0HZXhDZzYGsrYAV4E=s90"
+            ],
+            "recipeName": "Apple, Pear, and Orange Quick Pops",
+            "totalTimeInSeconds": 2100,
+            "attributes": {
+                "course": [
+                    "Desserts"
+                ]
+            },
+            "flavors": {
+                "sweet": 0.5,
+                "piquant": 0,
+                "sour": 0.8333333333333334,
+                "salty": 0,
+                "meaty": 0,
+                "bitter": 0
+            },
+            "rating": 3
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/iE2RaH3AeszeYeFFk3I-xv1a9qvQr9ioqTwwg1PAcGZu-MIxHWRzSVdcJtCtM-vjj3vf548zQ7VpktgETf8Y=s90-c"
+            },
+            "sourceDisplayName": "Cook's Hideout",
+            "ingredients": [
+                "apple",
+                "oranges",
+                "water",
+                "ice cubes",
+                "ginger",
+                "honey"
+            ],
+            "id": "Apple-Orange-Mocktail-1801339",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/dCOJagjgzDjp1uwVg1fF5sduCPSA1GfgjTnODAFr3yL4wkMn95kotSdp5TI2Nun5LoOBoLxAzMLad_aNoFYzYQ=s90"
+            ],
+            "recipeName": "Apple-Orange Mocktail",
+            "totalTimeInSeconds": 1200,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ],
+                "cuisine": [
+                    "Kid-Friendly"
+                ]
+            },
+            "flavors": null,
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "http://lh3.googleusercontent.com/qdmuXCjLl8E35UIkx20jQ-gFDmr6fGXZV5HMWHDldFPL4dIAwJmPAfCx2o1Neg2X-SBnheGS77U5rOon8tkg=s90-c"
+            },
+            "sourceDisplayName": "Your Homebased Mom",
+            "ingredients": [
+                "pineapple juice",
+                "apple cider vinegar",
+                "soy sauce",
+                "pork tenderloin",
+                "orange marmalade"
+            ],
+            "id": "Grilled-Pork-Tenderloin-With-Orange-Marmalade-2602900",
+            "smallImageUrls": [
+                "http://lh3.googleusercontent.com/A9uC_QyYJjcGKIKFSbPVZ09a9o84y8Kv897X6P5BqbSDT2hUszfJOUjbr-6XUpbKOa-Z9zYx596NIuO-j_UAnw=s90"
+            ],
+            "recipeName": "Grilled Pork Tenderloin With Orange Marmalade",
+            "totalTimeInSeconds": 3000,
+            "attributes": {
+                "course": [
+                    "Main Dishes"
+                ],
+                "cuisine": [
+                    "Barbecue"
+                ]
+            },
+            "flavors": {
+                "piquant": 0,
+                "meaty": 1,
+                "bitter": 1,
+                "sweet": 1,
+                "sour": 1,
+                "salty": 1
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "http://lh3.googleusercontent.com/W-NgpuOJnXAO4yA9Q5qDsps2AXP3QZics8rw2huyesuItBdNflQiIR3gmGt0bIfGoIpj_qenKGFUK1jqj1uprQ=s90-c"
+            },
+            "sourceDisplayName": "The Kitchen is My Playground",
+            "ingredients": [
+                "dry red wine",
+                "brandy",
+                "sugar",
+                "oranges",
+                "lemon",
+                "green apple",
+                "seltzer"
+            ],
+            "id": "Sangria-with-Oranges_-Lemons_-_-Apples-1059345",
+            "smallImageUrls": [
+                "http://lh3.googleusercontent.com/STd1HP2SC8tmXN8M18jAbM4FEW1d4RP763Plwu1MW17B1pXRVQ17HQlNV7wT8czjOYv54WubOVCdiUdeRKkuw5c=s90"
+            ],
+            "recipeName": "Sangria with Oranges, Lemons, & Apples",
+            "totalTimeInSeconds": 3000,
+            "attributes": {
+                "course": [
+                    "Cocktails",
+                    "Beverages"
+                ]
+            },
+            "flavors": {
+                "piquant": 0,
+                "meaty": 0,
+                "bitter": 0.16666666666666666,
+                "sweet": 0.3333333333333333,
+                "sour": 0.8333333333333334,
+                "salty": 0
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "http://lh3.googleusercontent.com/9eRjdVgWu8MwmZFp_Ulijkxj9MrtuoH221wDTYEX-kOaIh3gKhkYISAm2AOPuHB-qZxBSefDEWkjnhT_P9b-=s90-c"
+            },
+            "sourceDisplayName": "Cooking LSL",
+            "ingredients": [
+                "gala apples",
+                "sugar",
+                "light corn syrup",
+                "water",
+                "orange food coloring"
+            ],
+            "id": "Orange-Candy-Apples-1309075",
+            "smallImageUrls": [
+                "http://lh3.googleusercontent.com/UQkzxI0W7D94G5ov1rllu20lb119L4fKihcM4LGSqpqo0kGQLaQDffp_FPOQ_kk6Y-HIbM48Q-uM8waPd59s=s90"
+            ],
+            "recipeName": "Orange Candy Apples",
+            "totalTimeInSeconds": 1500,
+            "attributes": {
+                "course": [
+                    "Desserts"
+                ],
+                "holiday": [
+                    "Halloween"
+                ]
+            },
+            "flavors": null,
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/ncNDTEjvYY_04TnBQNp_5kXK2Hf9V7vbL8z1iaKAywrFsFsYbuSoOr6PgXG1ewUWPlmKMroODJQNFvVV9XI1kqY=s90-c"
+            },
+            "sourceDisplayName": "Free Restaurant Recipes.Com",
+            "ingredients": [
+                "banana",
+                "Orange",
+                "apple",
+                "fresh lemon juice",
+                "water"
+            ],
+            "id": "Banana-Drink-for-Extreme-Rapid-Weight-Loss-1352743",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/PrDkKfAC2whY4C_CJRFAbHkIKTHvsoWNxIz-zYY4cMPrqMYlivDcZGvoIFz15XwW5un88hNFtB4o883U3hI1iQ=s90"
+            ],
+            "recipeName": "Banana Drink for Extreme Rapid Weight Loss",
+            "totalTimeInSeconds": 900,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ]
+            },
+            "flavors": {
+                "sweet": 0.3333333333333333,
+                "piquant": 0,
+                "sour": 0.8333333333333334,
+                "salty": 0,
+                "meaty": 0,
+                "bitter": 0.16666666666666666
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "http://lh6.ggpht.com/HWfhRryZ95wM15PcMm5hIbgkJ17mnZ-lJhdSsHLMnRV8RcwnX1mxPUBkiealcV92G03qQxU2RZqlqnihCmIdZA=s90-c"
+            },
+            "sourceDisplayName": "Jo Cooks",
+            "ingredients": [
+                "red wine vinegar",
+                "orange juice",
+                "olive oil",
+                "raisins",
+                "pecans",
+                "orange",
+                "apples",
+                "salt",
+                "pepper"
+            ],
+            "id": "Apple-and-Orange-Salad-Jo-Cooks-46076",
+            "smallImageUrls": [
+                "http://lh6.ggpht.com/Qut-F4BQsC8I_5fBWLcpVax_4SBqOIZ5ZeSaPR8ckHSIiRNhtOx_7owtvfEbc07VvWUAkkZ-UdMTdQD5LK0d=s90"
+            ],
+            "recipeName": "Apple and Orange Salad",
+            "totalTimeInSeconds": 900,
+            "attributes": {
+                "course": [
+                    "Salads"
+                ]
+            },
+            "flavors": {
+                "piquant": 0,
+                "meaty": 0.16666666666666666,
+                "bitter": 0.16666666666666666,
+                "sweet": 0.5,
+                "sour": 0.8333333333333334,
+                "salty": 0.16666666666666666
+            },
+            "rating": 5
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/NnzeWhtxG-HWabJE1fYdYPapRKwe5hqF-1u6gNPBG66sfvhxmKZhmmU6XZkmc3JutqWrkBKaXscAHbcUMT6qgXA=s90-c"
+            },
+            "sourceDisplayName": "FitLife.tv",
+            "ingredients": [
+                "green apple",
+                "cucumber",
+                "lemon",
+                "lime",
+                "mandarins",
+                "romaine lettuce",
+                "ginger"
+            ],
+            "id": "Green-Juice-For-Flat-Belly-2360889",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/dx0Bu7c77FpEyDeBYoCtU94bySwam-cws2YFCHtDD2KpNdJzRDwQHzK2rhsmWEGl726wgM9pmRF_AdloRCqk=s90"
+            ],
+            "recipeName": "Green Juice For Flat Belly",
+            "totalTimeInSeconds": 600,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ]
+            },
+            "flavors": null,
+            "rating": 3
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/N9TRm98zYwY38Kn-OAxN4y-f_BBpimNGoUNLMjNiwgLrcR0ODk7VCghXbpUBtY7EyeOkBPliEkuoFI78aDd0=s90-c"
+            },
+            "sourceDisplayName": "Mom On Timeout",
+            "ingredients": [
+                "unsalted butter",
+                "granulated sugar",
+                "eggs",
+                "fresh orange juice",
+                "vanilla extract",
+                "all purpose flour",
+                "salt",
+                "baking powder",
+                "baking soda",
+                "cinnamon",
+                "ground cloves",
+                "ground nutmeg",
+                "shredded carrots",
+                "shredded zucchini",
+                "peeled apple",
+                "pecans",
+                "cream cheese",
+                "butter",
+                "powdered sugar",
+                "orange juice"
+            ],
+            "id": "Carrot-Apple-Zucchini-Bread-2533350",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/f_hiWaLMaKNRLVFk-ui7LjxELTvPLxLQtcE-m2Cl80St8106ThaGpyg-j_sF8vnEskDaJluWccNyv5zYc8D9=s90"
+            ],
+            "recipeName": "Carrot Apple Zucchini Bread",
+            "totalTimeInSeconds": 5100,
+            "attributes": {
+                "course": [
+                    "Breads"
+                ]
+            },
+            "flavors": {
+                "piquant": 0,
+                "meaty": 0.3333333333333333,
+                "bitter": 0.16666666666666666,
+                "sweet": 0.8333333333333334,
+                "sour": 0.16666666666666666,
+                "salty": 0.3333333333333333
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/Xv9PqVu_43YQ2tgfTjcdtBNbFqA2TuSr59FWkRwi17L7QZdGTV7_QMTffdOMmZdZXq95rXATFNQelm7G2QxJKg=s90-c"
+            },
+            "sourceDisplayName": "Nourish Nutrition Blog",
+            "ingredients": [
+                "apple cider",
+                "Orange",
+                "lime",
+                "grapefruit",
+                "rosemary"
+            ],
+            "id": "Easy-Sparkling-Apple-Cider-Mocktail-2608727",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/XUSS8tQvIHvoO6oON9183j6WAgnV6sWTDaokCNub6GS90F6Saei7TTRkT2q65gy4bFqUpbZ8Iwt1UFN2tqAbpw=s90"
+            ],
+            "recipeName": "Easy Sparkling Apple Cider Mocktail",
+            "totalTimeInSeconds": 900,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ]
+            },
+            "flavors": null,
+            "rating": 4
+        }
+    ],
+    "facetCounts": {},
+    "totalMatchCount": 7557,
+    "attribution": {
+        "html": "Recipe search powered by <a href='http://www.yummly.co/recipes'><img alt='Yummly' src='https://static.yummly.co/api-logo.png'/></a>",
+        "url": "http://www.yummly.co/recipes/",
+        "text": "Recipe search powered by Yummly",
+        "logo": "https://static.yummly.co/api-logo.png"
+    }
+}
