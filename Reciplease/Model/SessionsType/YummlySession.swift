@@ -1,5 +1,5 @@
 //
-//  YummlyURLString.swift
+//  YummlySession.swift
 //  Reciplease
 //
 //  Created by Mehdi on 15/08/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct YummlyURLString: URLStringType {
+class YummlySession: SessionType {
     
     private var ingredients: [String]
     

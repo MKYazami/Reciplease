@@ -15,7 +15,7 @@ class YummlyURLStringTestCase: XCTestCase {
     func testGivenKiwiLemon_WhenInitYummlyURLString_ThenQueryParameterShouldBe_kiwi_lemon() {
         let ingredients = ["kiwi", "lemon"]
         
-        let yummlyURLString = YummlyURLString(ingredients: ingredients)
+        let yummlyURLString = YummlySession(ingredients: ingredients)
         
         XCTAssertEqual(yummlyURLString.urlString, Constants.YummlyAPI.urlString + "kiwi+lemon")
     }

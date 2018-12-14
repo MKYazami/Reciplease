@@ -1,5 +1,5 @@
 //
-//  YummlyDetailedURLString.swift
+//  YummlyDetailedSession.swift
 //  Reciplease
 //
 //  Created by Mehdi on 15/09/2018.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Allows to define URL String for detailed recipes in Yummly API
-struct YummlyDetailedURLString: URLStringType {
+class YummlyDetailedSession: SessionType {
     private let recipeID: String
     
     init(recipeID: String) {

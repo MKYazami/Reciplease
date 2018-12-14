@@ -55,7 +55,7 @@ extension ResultsViewController {
     /// - Parameter recipeID: recipe id that allows to get detailed recipe
     private func getDetailedRecipe(recipeID: String) {
         
-        RecipeService(urlStringType: YummlyDetailedURLString(recipeID: recipeID)).downloadDetailedRecipe { (success, detailedRecipe) in
+        RecipeService(urlStringType: YummlyDetailedSession(recipeID: recipeID)).downloadDetailedRecipe { (success, detailedRecipe) in
             if success, let detailedRecipe = detailedRecipe {
                 self.detailedRecipe = detailedRecipe
                 self.performSegue(withIdentifier: Constants.Segue.toDetailedRecipe, sender: self)

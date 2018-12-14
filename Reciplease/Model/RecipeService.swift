@@ -11,71 +11,72 @@ import Alamofire
 
 class RecipeService {
     
-    private let urlStringType: URLStringType
-    private var alamoSessionManager: SessionManager
+    private let urlStringType: SessionType
     
-    /// Init the recipe service with urlStringType and alamoSessionManager which by default is ".default" if we need a specific session we set it in the init in recipeSession
+    /// Init the recipe service with SessionType, if we need a specific session we set it in the init in recipeSession
     ///
     /// - Parameters:
     ///   - urlStringType: URL String Type
-    ///   - alamoSessionManager: Session manager of Alamofire
-    init(urlStringType: URLStringType, alamoSessionManager: SessionManager = SessionManager.default) {
+    init(urlStringType: SessionType) {
         self.urlStringType = urlStringType
-        self.alamoSessionManager = alamoSessionManager
     }
     
     /// Download recipes from remote API
     ///
     /// - Parameter callback: Contains 2 parameters 1 Bool for to set success and the second Recipe to get recipes
     func downloadRecipe(callback: @escaping (Bool, Recipe?) -> Void) {
+        
         let urlString = urlStringType.urlString
-        alamoSessionManager.request(urlString).response { (response) in
-            
+        guard let url = URL(string: urlString) else { return }
+        
+        urlStringType.alamofireRequest(url: url) { (responseData) in
             // Check if data ≠ nil & no error
-            guard let data = response.data, response.error == nil else {
+            guard let data = responseData.data, responseData.error == nil else {
                 callback(false, nil)
                 return
             }
             
             // Check correct response
-            guard let response = response.response, response.statusCode == 200 else {
+            guard let response = responseData.response, response.statusCode == 200 else {
                 callback(false, nil)
                 return
             }
             
             // Decode JSON data
-            guard let recipe = try? JSONDecoder().decode(Recipe.self, from: data) else {
+            guard let recipes = try? JSONDecoder().decode(Recipe.self, from: data) else {
                 callback(false, nil)
                 return
             }
             
             // The purpose of this check is to verify that Recipe's array matches is not empty due to a wrong response from the API when the user enters certain couple of ingredients
-            guard recipe.matches.count > 0 else {
+            guard recipes.matches.count > 0 else {
                 callback(false, nil)
                 return
             }
             
             // If all verifications success return callback true & recipe
-            callback(true, recipe)
-            
+            callback(true, recipes)
         }
+        
     }
     
-    /// Download detailed recipes from remote API
+    /// Download detailed recipe from remote API
     ///
     /// - Parameter callback: Contains 2 parameters 1 Bool for set success and the second DetailedRecipe to get the detail of recipes
     func downloadDetailedRecipe(callback: @escaping (Bool, DetailedRecipe?) -> Void) {
-        let urlString = urlStringType.urlString
         
-        alamoSessionManager.request(urlString).response { (response) in
+        let urlString = urlStringType.urlString
+        guard let url = URL(string: urlString) else { return }
+        
+        urlStringType.alamofireRequest(url: url) { (responseData) in
             // Check if data ≠ nil & no error
-            guard let data = response.data, response.error == nil else {
+            guard let data = responseData.data, responseData.error == nil else {
                 callback(false, nil)
                 return
             }
             
             // Check correct response
-            guard let response = response.response, response.statusCode == 200 else {
+            guard let response = responseData.response, response.statusCode == 200 else {
                 callback(false, nil)
                 return
             }
@@ -89,6 +90,7 @@ class RecipeService {
             // If all verifications success return callback true & detailedRecipe
             callback(true, detailedRecipe)
         }
+        
     }
     
 }

@@ -15,7 +15,7 @@ class YummlyDetailedURLStringTestCase: XCTestCase {
     func testGivenRecipeIDIsKiwi_Capiroska_1564214_WhenInitYummlyDetailedURLString_ThenRecipeIDParameterShouldBe_Kiwi_Capiroska_1564214() {
         let recipeID = "Kiwi-Capiroska-1564214"
         
-        let yummlyDetailedURLString = YummlyDetailedURLString(recipeID: recipeID)
+        let yummlyDetailedURLString = YummlyDetailedSession(recipeID: recipeID)
         
         typealias YummlyDetailed = Constants.YummlyDetailedAPI
         XCTAssertEqual(yummlyDetailedURLString.urlString, YummlyDetailed.baseURLString + recipeID + YummlyDetailed.appId + YummlyDetailed.appIdValue + YummlyDetailed.appKey + YummlyDetailed.appKeyValue)

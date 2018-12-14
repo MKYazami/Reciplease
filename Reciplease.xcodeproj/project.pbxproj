@@ -23,8 +23,8 @@
 		913BC9CD2117531A001504E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BC9CC2117531A001504E6 /* Constants.swift */; };
 		914827EF212419F100CB25B1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827EE212419F100CB25B1 /* Recipe.swift */; };
 		914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F021241B6D00CB25B1 /* RecipeService.swift */; };
-		914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F2212420CC00CB25B1 /* URLStringType.swift */; };
-		914827F52124213500CB25B1 /* YummlyURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F42124213500CB25B1 /* YummlyURLString.swift */; };
+		914827F3212420CC00CB25B1 /* SessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F2212420CC00CB25B1 /* SessionType.swift */; };
+		914827F52124213500CB25B1 /* YummlySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914827F42124213500CB25B1 /* YummlySession.swift */; };
 		915D296721550A170077E4FA /* ReicpeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D296621550A170077E4FA /* ReicpeTestCase.swift */; };
 		915D29692155265F0077E4FA /* YummlyURLStringTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */; };
 		915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */; };
@@ -32,7 +32,7 @@
 		9193E59321416ED90047950D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59221416ED90047950D /* Array.swift */; };
 		9193E59521469F710047950D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193E59421469F710047950D /* UIImageView.swift */; };
 		919ADC92214CED0100436AFE /* ImageNamesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC91214CED0100436AFE /* ImageNamesEnum.swift */; };
-		919ADC94214D60B800436AFE /* YummlyDetailedURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC93214D60B800436AFE /* YummlyDetailedURLString.swift */; };
+		919ADC94214D60B800436AFE /* YummlyDetailedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ADC93214D60B800436AFE /* YummlyDetailedSession.swift */; };
 		91A60028215389DD004E78B8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A60027215389DD004E78B8 /* Helpers.swift */; };
 		91C5DD422129C38F002D255F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5DD412129C38F002D255F /* String.swift */; };
 		91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D372CD210E0355004BFECA /* AppDelegate.swift */; };
@@ -90,8 +90,8 @@
 		913BC9CC2117531A001504E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		914827EE212419F100CB25B1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		914827F021241B6D00CB25B1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
-		914827F2212420CC00CB25B1 /* URLStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStringType.swift; sourceTree = "<group>"; };
-		914827F42124213500CB25B1 /* YummlyURLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyURLString.swift; sourceTree = "<group>"; };
+		914827F2212420CC00CB25B1 /* SessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionType.swift; sourceTree = "<group>"; };
+		914827F42124213500CB25B1 /* YummlySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlySession.swift; sourceTree = "<group>"; };
 		915D296621550A170077E4FA /* ReicpeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReicpeTestCase.swift; sourceTree = "<group>"; };
 		915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyURLStringTestCase.swift; sourceTree = "<group>"; };
 		915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedURLStringTestCase.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		9193E59221416ED90047950D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9193E59421469F710047950D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		919ADC91214CED0100436AFE /* ImageNamesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNamesEnum.swift; sourceTree = "<group>"; };
-		919ADC93214D60B800436AFE /* YummlyDetailedURLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedURLString.swift; sourceTree = "<group>"; };
+		919ADC93214D60B800436AFE /* YummlyDetailedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedSession.swift; sourceTree = "<group>"; };
 		91A60027215389DD004E78B8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		91C5DD412129C38F002D255F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		91D372CA210E0355004BFECA /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,14 +218,14 @@
 			path = TableViews;
 			sourceTree = "<group>";
 		};
-		914827F621242E9800CB25B1 /* URLStringTypes */ = {
+		914827F621242E9800CB25B1 /* SessionsType */ = {
 			isa = PBXGroup;
 			children = (
-				914827F42124213500CB25B1 /* YummlyURLString.swift */,
-				919ADC93214D60B800436AFE /* YummlyDetailedURLString.swift */,
-				914827F2212420CC00CB25B1 /* URLStringType.swift */,
+				914827F2212420CC00CB25B1 /* SessionType.swift */,
+				914827F42124213500CB25B1 /* YummlySession.swift */,
+				919ADC93214D60B800436AFE /* YummlyDetailedSession.swift */,
 			);
-			path = URLStringTypes;
+			path = SessionsType;
 			sourceTree = "<group>";
 		};
 		9162571B21675A18009F63B9 /* Persistence */ = {
@@ -298,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				9162571B21675A18009F63B9 /* Persistence */,
-				914827F621242E9800CB25B1 /* URLStringTypes */,
+				914827F621242E9800CB25B1 /* SessionsType */,
 				914827EE212419F100CB25B1 /* Recipe.swift */,
 				914827F021241B6D00CB25B1 /* RecipeService.swift */,
 			);
@@ -587,7 +587,7 @@
 			files = (
 				91C5DD422129C38F002D255F /* String.swift in Sources */,
 				9193E59321416ED90047950D /* Array.swift in Sources */,
-				919ADC94214D60B800436AFE /* YummlyDetailedURLString.swift in Sources */,
+				919ADC94214D60B800436AFE /* YummlyDetailedSession.swift in Sources */,
 				913482DA21103E3400C71BB2 /* RecipeDetailView.swift in Sources */,
 				CCA10B3821B154D8006C3F77 /* DetailedRecipeManager.swift in Sources */,
 				91D372CE210E0355004BFECA /* AppDelegate.swift in Sources */,
@@ -598,14 +598,14 @@
 				913482D1210F9F6500C71BB2 /* FavoriteDetailViewController.swift in Sources */,
 				91D372F8210E285F004BFECA /* HomePageViewController.swift in Sources */,
 				CCA10B2E21B14C3B006C3F77 /* RecipeData+CoreDataProperties.swift in Sources */,
-				914827F52124213500CB25B1 /* YummlyURLString.swift in Sources */,
+				914827F52124213500CB25B1 /* YummlySession.swift in Sources */,
 				CCA10B3A21B1550F006C3F77 /* CoreDataManager.swift in Sources */,
 				914827F121241B6D00CB25B1 /* RecipeService.swift in Sources */,
 				913482CD210F516400C71BB2 /* DetailViewController.swift in Sources */,
 				913BC9C9211746B1001504E6 /* TableViewConfigurator.swift in Sources */,
 				914827EF212419F100CB25B1 /* Recipe.swift in Sources */,
 				913482CB210F512900C71BB2 /* ResultsViewController.swift in Sources */,
-				914827F3212420CC00CB25B1 /* URLStringType.swift in Sources */,
+				914827F3212420CC00CB25B1 /* SessionType.swift in Sources */,
 				CCA10B2F21B14C3B006C3F77 /* DetailedRecipeData+CoreDataClass.swift in Sources */,
 				9193E59521469F710047950D /* UIImageView.swift in Sources */,
 				CCA10B3521B14F04006C3F77 /* RecipeManager.swift in Sources */,

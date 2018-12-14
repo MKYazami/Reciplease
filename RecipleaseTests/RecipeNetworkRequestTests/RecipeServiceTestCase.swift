@@ -23,7 +23,7 @@ class RecipeServiceTestCase: XCTestCase {
     func testDownloadRecipeShouldSuccessIfNoErrorAndCorrectData() {
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: YummlyURLString(ingredients: ["orange"]))
+        let alamoSession = RecipeService(urlStringType: YummlySession(ingredients: ["orange"]))
         
         alamoSession.downloadRecipe { ( success, recipe) in
             
@@ -109,7 +109,7 @@ class RecipeServiceTestCase: XCTestCase {
     func testDownloadDetailedRecipeShouldSuccessIfNoErrorAndCorrectData() {
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: YummlyDetailedURLString(recipeID: "Kiwi-Capiroska-1564214"))
+        let alamoSession = RecipeService(urlStringType: YummlyDetailedSession(recipeID: "Kiwi-Capiroska-1564214"))
         
         alamoSession.downloadDetailedRecipe { (success, detailedRecipe) in
             
