@@ -46,7 +46,8 @@ class StringExtensionTestCase: XCTestCase {
         let stringSet = words.convertStringToStringSet(separators: [",", "-", "_"])
         
         // Then
-        XCTAssertEqual(stringSet.count, 4, "6 words when removing 2 duplicated it remains 4")
+        XCTAssertEqual(stringSet.count, 4,
+                       "6 items minus 2 duplicated items should equals 4")
         
     }
     
@@ -58,7 +59,8 @@ class StringExtensionTestCase: XCTestCase {
         let stringSet = words.convertStringToStringSet(separators: [" "])
         
         // Then
-        XCTAssertEqual(stringSet.count, 4, "6 words when removing 2 duplicated it remains 4")
+        XCTAssertEqual(stringSet.count, 4,
+                       "6 items minus 2 duplicated items should equals 4")
         
     }
 

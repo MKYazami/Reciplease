@@ -65,6 +65,7 @@
 		CCFB087121BAB46B0083801F /* DetailedRecipeManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB087021BAB46B0083801F /* DetailedRecipeManagerTestCase.swift */; };
 		CCFB087321BAB6560083801F /* DetailedRecipesSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB087221BAB6560083801F /* DetailedRecipesSampleTests.swift */; };
 		CCFE78F121C588CD00A16862 /* StringExtensionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE78F021C588CD00A16862 /* StringExtensionTestCase.swift */; };
+		CCFE78F321C5A57400A16862 /* ArrayExtensionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE78F221C5A57400A16862 /* ArrayExtensionTestCase.swift */; };
 		CFE5D19D103CF3F8547B7067 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B17768C5C3AE975E58F62DB /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		CCFB087021BAB46B0083801F /* DetailedRecipeManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeManagerTestCase.swift; sourceTree = "<group>"; };
 		CCFB087221BAB6560083801F /* DetailedRecipesSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipesSampleTests.swift; sourceTree = "<group>"; };
 		CCFE78F021C588CD00A16862 /* StringExtensionTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTestCase.swift; sourceTree = "<group>"; };
+		CCFE78F221C5A57400A16862 /* ArrayExtensionTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTestCase.swift; sourceTree = "<group>"; };
 		CEC653337184FDECDD1C9739 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		F2EE25028D632B80B73FBAE8 /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				CCFE78F021C588CD00A16862 /* StringExtensionTestCase.swift */,
+				CCFE78F221C5A57400A16862 /* ArrayExtensionTestCase.swift */,
 			);
 			path = ExtensionsTests;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				CCFB086221B6B7290083801F /* CoreDataStackTest.swift in Sources */,
 				CCFE78F121C588CD00A16862 /* StringExtensionTestCase.swift in Sources */,
 				CC8831C221BBC186004F2AB2 /* CoreDataStackTestCase.swift in Sources */,
+				CCFE78F321C5A57400A16862 /* ArrayExtensionTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
