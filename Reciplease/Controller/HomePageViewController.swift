@@ -74,7 +74,7 @@ extension HomePageViewController {
     
     private func getRecipes() {
         guard let ingredients = ingredientsTextView.text else { return }
-        let ingredientsInArray = ingredients.convertStringToStringArray(separator: ["\n"])
+        let ingredientsInArray = ingredients.convertStringToStringArray(separators: ["\n"])
         
         guard ingredientsInArray.count > 0 else { return }
         
@@ -113,7 +113,7 @@ extension HomePageViewController {
             let trimmedIngredients = ingredients.trimmingCharacters(in: .whitespaces)
             
             // Transforming the ingredients in string separated by space to ingredients in array
-            let ingredientsInArray = trimmedIngredients.convertStringToStringArray(separator: [" "])
+            let ingredientsInArray = trimmedIngredients.convertStringToStringArray(separators: [" "])
             
             addIngredientsToTextView(ingredients: ingredientsInArray)
         }

@@ -14,15 +14,19 @@ extension String {
     ///
     /// - Parameters:
     ///   - separator: separator caracterset in the form of string array as ["," , " ", "-"]
-    /// - Returns: String array
-    func convertStringToStringArray(separator: CharacterSet) -> [String] {
-        let convertedArray = self.components(separatedBy: separator)
+    /// - Returns: string array
+    func convertStringToStringArray(separators: CharacterSet) -> [String] {
+        let convertedArray = self.components(separatedBy: separators)
         
         return convertedArray
     }
     
-    func convertStringToStringSet(separator: CharacterSet) -> Set<String> {
-        let convertedArray = self.components(separatedBy: separator)
+    /// Allows to remove deplicated string to unique string array (Set)
+    ///
+    /// - Parameter separator: separator caracterset in the form of string array as ["," , " ", "-"]
+    /// - Returns: string set
+    func convertStringToStringSet(separators: CharacterSet) -> Set<String> {
+        let convertedArray = self.components(separatedBy: separators)
         let convertedSet = Set(convertedArray)
         
         return convertedSet
