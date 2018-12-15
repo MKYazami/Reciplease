@@ -25,17 +25,8 @@ class YummlyDetailedSessionFake: YummlyDetailedSession {
         super.init(recipeID: "Apple_-Pear_-and-Orange-Quick-Pops-608966")
     }
     
-    func alamofireRequest(url: URL, callback: @escaping (DataResponse<Any>) -> Void) {
-        let httpResponse = fakeResponse.response
-        let data = fakeResponse.data
-        let error = fakeResponse.error
-        
-        let result = Request.serializeResponseJSON(options: .allowFragments,
-                                                   response: httpResponse,
-                                                   data: data,
-                                                   error: error)
-        
-        callback(DataResponse(request: urlRequest, response: httpResponse, data: data, result: result))
+    override func request(url: URL, callback: @escaping (DataResponse<Any>) -> Void) {
+        fakeResponse.fakeRequest(fakeResponse: fakeResponse, urlString: urlString, callback: callback)
     }
     
 }

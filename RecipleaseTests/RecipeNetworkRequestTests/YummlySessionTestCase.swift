@@ -1,5 +1,5 @@
 //
-//  YummlyURLStringTestCase.swift
+//  YummlySessionTestCase.swift
 //  RecipleaseTests
 //
 //  Created by Mehdi on 21/09/2018.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Reciplease
 
-class YummlyURLStringTestCase: XCTestCase {
+class YummlySessionTestCase: XCTestCase {
     
     // Query (q=kiwi+lemon) should be kiwi+lemon, the rest of the URL are constants
     func testGivenKiwiLemon_WhenInitYummlyURLString_ThenQueryParameterShouldBe_kiwi_lemon() {

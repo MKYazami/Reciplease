@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class YummlySession: SessionType {
     
@@ -21,6 +22,10 @@ class YummlySession: SessionType {
     /// - Parameter ingredients: Ingredient in String Array
     init(ingredients: [String]) {
         self.ingredients = ingredients
+    }
+    
+    func request(url: URL, callback: @escaping (DataResponse<Any>) -> Void) {
+        alamofireRequest(url: url, callback: callback)
     }
     
     /// Allows to extract an ingredients array to formated ingredients string to send them in url parameter
@@ -43,4 +48,5 @@ class YummlySession: SessionType {
         
         return ingredientsStr
     }
+    
 }

@@ -29,6 +29,13 @@ struct FakeResponseData {
         return data
     }
     
+    static var recipe0MatchData: Data {
+        let bundle = Bundle(for: NetworkError.self)
+        let url = bundle.url(forResource: "Recipe0Match", withExtension: "json")
+        let data = try! Data(contentsOf: url!)
+        return data
+    }
+    
     static var detailedRecipeData: Data {
         let bundle = Bundle(for: NetworkError.self)
         let url = bundle.url(forResource: "DetailedRecipe", withExtension: "json")

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Allows to define URL String for detailed recipes in Yummly API
 class YummlyDetailedSession: SessionType {
@@ -20,5 +21,9 @@ class YummlyDetailedSession: SessionType {
         typealias YummlyDetailed = Constants.YummlyDetailedAPI
         
         return YummlyDetailed.baseURLString + recipeID + YummlyDetailed.appId + YummlyDetailed.appIdValue + YummlyDetailed.appKey + YummlyDetailed.appKeyValue
+    }
+    
+    func request(url: URL, callback: @escaping (DataResponse<Any>) -> Void) {
+        alamofireRequest(url: url, callback: callback)
     }
 }

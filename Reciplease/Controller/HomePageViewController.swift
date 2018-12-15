@@ -78,7 +78,7 @@ extension HomePageViewController {
         
         guard ingredientsInArray.count > 0 else { return }
         
-        RecipeService(urlStringType: YummlySession(ingredients: ingredientsInArray)).downloadRecipe { (success, recipe) in
+        RecipeService(sessionType: YummlySession(ingredients: ingredientsInArray)).downloadRecipe { (success, recipe) in
             if success, let recipe = recipe {
                 self.recipes = recipe
                 self.performSegue(withIdentifier: Constants.Segue.toRecipesResults, sender: self)

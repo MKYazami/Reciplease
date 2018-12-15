@@ -1,5 +1,5 @@
 //
-//  YummlyDetailedURLStringTestCase.swift
+//  YummlyDetailedSessionTestCase.swift
 //  RecipleaseTests
 //
 //  Created by Mehdi on 22/09/2018.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Reciplease
 
-class YummlyDetailedURLStringTestCase: XCTestCase {
+class YummlyDetailedSessionTestCase: XCTestCase {
     
     // The recipe ID is Kiwi-Capiroska-1564214
     func testGivenRecipeIDIsKiwi_Capiroska_1564214_WhenInitYummlyDetailedURLString_ThenRecipeIDParameterShouldBe_Kiwi_Capiroska_1564214() {

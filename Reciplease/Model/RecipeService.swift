@@ -11,14 +11,14 @@ import Alamofire
 
 class RecipeService {
     
-    private let urlStringType: SessionType
+    private let sessionType: SessionType
     
     /// Init the recipe service with SessionType, if we need a specific session we set it in the init in recipeSession
     ///
     /// - Parameters:
     ///   - urlStringType: URL String Type
-    init(urlStringType: SessionType) {
-        self.urlStringType = urlStringType
+    init(sessionType: SessionType) {
+        self.sessionType = sessionType
     }
     
     /// Download recipes from remote API
@@ -26,10 +26,10 @@ class RecipeService {
     /// - Parameter callback: Contains 2 parameters 1 Bool for to set success and the second Recipe to get recipes
     func downloadRecipe(callback: @escaping (Bool, Recipe?) -> Void) {
         
-        let urlString = urlStringType.urlString
+        let urlString = sessionType.urlString
         guard let url = URL(string: urlString) else { return }
         
-        urlStringType.alamofireRequest(url: url) { (responseData) in
+        sessionType.request(url: url) { (responseData) in
             // Check if data ≠ nil & no error
             guard let data = responseData.data, responseData.error == nil else {
                 callback(false, nil)
@@ -65,10 +65,10 @@ class RecipeService {
     /// - Parameter callback: Contains 2 parameters 1 Bool for set success and the second DetailedRecipe to get the detail of recipes
     func downloadDetailedRecipe(callback: @escaping (Bool, DetailedRecipe?) -> Void) {
         
-        let urlString = urlStringType.urlString
+        let urlString = sessionType.urlString
         guard let url = URL(string: urlString) else { return }
         
-        urlStringType.alamofireRequest(url: url) { (responseData) in
+        sessionType.request(url: url) { (responseData) in
             // Check if data ≠ nil & no error
             guard let data = responseData.data, responseData.error == nil else {
                 callback(false, nil)

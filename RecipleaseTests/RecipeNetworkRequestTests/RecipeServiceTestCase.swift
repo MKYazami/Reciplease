@@ -13,19 +13,128 @@ import Alamofire
 class RecipeServiceTestCase: XCTestCase {
     
     /// Contains the time interval for waiting expectation
-    private var httpRequestExpectationTimeOut: TimeInterval {
-        // Set the expectations time out in seconds for HTTP requests
-        return 5
+    private var expectationTimeOut: TimeInterval {
+        // Set the expectations time out in seconds
+        return 0.1
     }
     
     // MARK: downloadRecipe Tests
     
+    func testDownloadRecipeShouldFailedIfNoResponse() {
+        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
+        
+        let fakeResponse = FakeResponse(response: nil,
+                                        data: FakeResponseData.recipeData,
+                                        error: nil)
+        
+        let recipeService = RecipeService(sessionType: YummlySessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadRecipe { ( success, recipe) in
+            
+            XCTAssertFalse(success)
+            XCTAssertNil(recipe)
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
+    }
+    
+    func testDownloadRecipeShouldFailedIfError() {
+        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
+        
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.recipeData,
+                                        error: FakeResponseData.networkError)
+        
+        let recipeService = RecipeService(sessionType: YummlySessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadRecipe { ( success, recipe) in
+            
+            XCTAssertFalse(success)
+            XCTAssertNil(recipe)
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
+    }
+
+    func testDownloadRecipeShouldFailedIfIncorrectResponse() {
+        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
+        
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseKO,
+                                        data: FakeResponseData.recipeData,
+                                        error: nil)
+        
+        let recipeService = RecipeService(sessionType: YummlySessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadRecipe { ( success, recipe) in
+            
+            XCTAssertFalse(success)
+            XCTAssertNil(recipe)
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: expectationTimeOut)
+
+    }
+    
+    func testDownloadRecipeShouldFailedIfOtherDataThanExpected() {
+        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
+        
+        // Using detailedRecipeData to test JSON decoder because expected recipeData
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.detailedRecipeData,
+                                        error: nil)
+        
+        let recipeService = RecipeService(sessionType: YummlySessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadRecipe { ( success, recipe) in
+            
+            XCTAssertFalse(success)
+            XCTAssertNil(recipe)
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: expectationTimeOut)
+    }
+    
+    func testDownloadRecipeShouldFailedIfEmptyMatchesResponse() {
+        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
+        
+        // matches is key that contains all recipes in json file
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.recipe0MatchData,
+                                        error: nil)
+        
+        let recipeService = RecipeService(sessionType: YummlySessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadRecipe { ( success, recipe) in
+            
+            XCTAssertFalse(success)
+            XCTAssertNil(recipe)
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: expectationTimeOut)
+    }
+    
     func testDownloadRecipeShouldSuccessIfNoErrorAndCorrectData() {
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: YummlySession(ingredients: ["orange"]))
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.recipeData,
+                                        error: nil)
         
-        alamoSession.downloadRecipe { ( success, recipe) in
+        let recipeService = RecipeService(sessionType: YummlySessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadRecipe { ( success, recipe) in
             
             XCTAssertTrue(success)
             XCTAssertNotNil(recipe)
@@ -33,16 +142,22 @@ class RecipeServiceTestCase: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
+        wait(for: [expectation], timeout: expectationTimeOut)
     }
     
-    // Test for status code response is different of 200
-    func testDownloadRecipeShouldFailedIfBadResponse() {
+    // MARK: downloadDetailedRecipe Tests Detailed
+    
+    func testDownloadDetailedRecipeShouldFailedIfNoResponse() {
+        
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWith500StatusCode())
+        let fakeResponse = FakeResponse(response: nil,
+                                        data: FakeResponseData.detailedRecipeData,
+                                        error: nil)
         
-        alamoSession.downloadRecipe { ( success, recipe) in
+        let recipeService = RecipeService(sessionType: YummlyDetailedSessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadDetailedRecipe { ( success, recipe) in
             
             XCTAssertFalse(success)
             XCTAssertNil(recipe)
@@ -50,16 +165,21 @@ class RecipeServiceTestCase: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
     }
     
-    // Test of an inexistent & fake URL
-    func testDownloadRecipeShouldFailedIfFakeURL() {
+    func testDownloadDetailedRecipeShouldFailedIfError() {
+        
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWithFakeURL())
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.detailedRecipeData,
+                                        error: FakeResponseData.networkError)
         
-        alamoSession.downloadRecipe { ( success, recipe) in
+        let recipeService = RecipeService(sessionType: YummlyDetailedSessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadDetailedRecipe { ( success, recipe) in
             
             XCTAssertFalse(success)
             XCTAssertNil(recipe)
@@ -67,16 +187,21 @@ class RecipeServiceTestCase: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
     }
     
-    // Test if JSON decoding failed in case of a different JSON response than expected
-    func testDownloadRecipeShouldFailedIfFakeJSONResponse() {
+    func testDownloadDetailedRecipeShouldFailedIfIncorrectResponse() {
+        
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWithFakeJSONResponse())
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseKO,
+                                        data: FakeResponseData.detailedRecipeData,
+                                        error: nil)
         
-        alamoSession.downloadRecipe { ( success, recipe) in
+        let recipeService = RecipeService(sessionType: YummlyDetailedSessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadDetailedRecipe { ( success, recipe) in
             
             XCTAssertFalse(success)
             XCTAssertNil(recipe)
@@ -84,16 +209,22 @@ class RecipeServiceTestCase: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
     }
     
-    // Test if `matches` array, which contains the recipes results is empty
-    func testDownloadRecipeShouldFailedIfEmptyMatchesResponse() {
+    func testDownloadDetailedRecipeShouldFailedIfOtherDataThanExpected() {
+        
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWithEmptyMatchesArray())
+        // Using recipeData to test JSON decoder because expected detailedRecipeData
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.recipeData,
+                                        error: nil)
         
-        alamoSession.downloadRecipe { ( success, recipe) in
+        let recipeService = RecipeService(sessionType: YummlyDetailedSessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadDetailedRecipe { ( success, recipe) in
             
             XCTAssertFalse(success)
             XCTAssertNil(recipe)
@@ -101,75 +232,31 @@ class RecipeServiceTestCase: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
     }
-    
-    // MARK: downloadDetailedRecipe Tests
     
     func testDownloadDetailedRecipeShouldSuccessIfNoErrorAndCorrectData() {
+        
         let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
         
-        let alamoSession = RecipeService(urlStringType: YummlyDetailedSession(recipeID: "Kiwi-Capiroska-1564214"))
+        // Using recipeData to test JSON decoder because expected detailedRecipeData
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK,
+                                        data: FakeResponseData.detailedRecipeData,
+                                        error: nil)
         
-        alamoSession.downloadDetailedRecipe { (success, detailedRecipe) in
+        let recipeService = RecipeService(sessionType: YummlyDetailedSessionFake(fakeResponse: fakeResponse))
+        
+        recipeService.downloadDetailedRecipe { ( success, recipe) in
             
             XCTAssertTrue(success)
-            XCTAssertNotNil(detailedRecipe)
+            XCTAssertNotNil(recipe)
             
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
+        wait(for: [expectation], timeout: expectationTimeOut)
+        
     }
     
-    // Test of an inexistent & fake URL
-    func testDownloadDetailedRecipeShouldFailedIfFakeURL() {
-        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
-        
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWithFakeURL())
-        
-        alamoSession.downloadDetailedRecipe { (success, detailedRecipe) in
-            
-            XCTAssertFalse(success)
-            XCTAssertNil(detailedRecipe)
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
-    }
-    
-    // Test for status code response is different of 200
-    func testDownloadDetailedRecipeShouldFailedIfBadResponse() {
-        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
-        
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWith500StatusCode())
-        
-        alamoSession.downloadDetailedRecipe { (success, detailedRecipe) in
-            
-            XCTAssertFalse(success)
-            XCTAssertNil(detailedRecipe)
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
-    }
-    
-    // Test if JSON decoding failed in case of a different JSON response than expected
-    func testDownloadDetailedRecipeShouldFailedIfFakeJSONResponse() {
-        let expectation = XCTestExpectation(description: "Wait for queue change in Alamofire")
-        
-        let alamoSession = RecipeService(urlStringType: URLStringTypeWithFakeJSONResponse())
-        
-        alamoSession.downloadDetailedRecipe { (success, detailedRecipe) in
-            
-            XCTAssertFalse(success)
-            XCTAssertNil(detailedRecipe)
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: httpRequestExpectationTimeOut)
-    }
 }
