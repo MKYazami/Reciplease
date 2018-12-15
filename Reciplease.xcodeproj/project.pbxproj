@@ -57,6 +57,8 @@
 		CCF42BDE21C3D1D000500894 /* FakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF42BDD21C3D1D000500894 /* FakeResponse.swift */; };
 		CCF42BE021C3D24200500894 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF42BDF21C3D24200500894 /* FakeResponseData.swift */; };
 		CCF42BE221C3D6C300500894 /* DetailedRecipe.json in Resources */ = {isa = PBXBuildFile; fileRef = CCF42BE121C3D6C300500894 /* DetailedRecipe.json */; };
+		CCF42BE421C5006900500894 /* YummlySessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF42BE321C5006900500894 /* YummlySessionFake.swift */; };
+		CCF42BE621C508F300500894 /* YummlyDetailedSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF42BE521C508F300500894 /* YummlyDetailedSessionFake.swift */; };
 		CCFB086221B6B7290083801F /* CoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086121B6B7290083801F /* CoreDataStackTest.swift */; };
 		CCFB086621B914CE0083801F /* RecipesSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086521B914CE0083801F /* RecipesSampleTests.swift */; };
 		CCFB086821B917AC0083801F /* RecipeManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */; };
@@ -133,6 +135,8 @@
 		CCF42BDD21C3D1D000500894 /* FakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponse.swift; sourceTree = "<group>"; };
 		CCF42BDF21C3D24200500894 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		CCF42BE121C3D6C300500894 /* DetailedRecipe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DetailedRecipe.json; sourceTree = "<group>"; };
+		CCF42BE321C5006900500894 /* YummlySessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlySessionFake.swift; sourceTree = "<group>"; };
+		CCF42BE521C508F300500894 /* YummlyDetailedSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyDetailedSessionFake.swift; sourceTree = "<group>"; };
 		CCFB086121B6B7290083801F /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStackTest.swift; path = RecipleaseTests/RecipePersistenceTest/CoreDataStackTest.swift; sourceTree = SOURCE_ROOT; };
 		CCFB086521B914CE0083801F /* RecipesSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipesSampleTests.swift; path = RecipleaseTests/RecipePersistenceTest/RecipesSampleTests.swift; sourceTree = SOURCE_ROOT; };
 		CCFB086721B917AC0083801F /* RecipeManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeManagerTestCase.swift; path = RecipleaseTests/RecipePersistenceTest/RecipeManagerTestCase.swift; sourceTree = SOURCE_ROOT; };
@@ -357,6 +361,8 @@
 				915D29682155265F0077E4FA /* YummlyURLStringTestCase.swift */,
 				915D296A21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift */,
 				911EE23E215F7AF5005FC6DD /* URLStringTypeFake.swift */,
+				CCF42BE321C5006900500894 /* YummlySessionFake.swift */,
+				CCF42BE521C508F300500894 /* YummlyDetailedSessionFake.swift */,
 				CCF42BDD21C3D1D000500894 /* FakeResponse.swift */,
 				CCF42BDF21C3D24200500894 /* FakeResponseData.swift */,
 				CCF42BDB21C3CB6400500894 /* Recipe.json */,
@@ -639,10 +645,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF42BE421C5006900500894 /* YummlySessionFake.swift in Sources */,
 				915D296B21560B330077E4FA /* YummlyDetailedURLStringTestCase.swift in Sources */,
 				CCFB087321BAB6560083801F /* DetailedRecipesSampleTests.swift in Sources */,
 				CCFB086821B917AC0083801F /* RecipeManagerTestCase.swift in Sources */,
 				CCF42BDE21C3D1D000500894 /* FakeResponse.swift in Sources */,
+				CCF42BE621C508F300500894 /* YummlyDetailedSessionFake.swift in Sources */,
 				CCF42BE021C3D24200500894 /* FakeResponseData.swift in Sources */,
 				CCFB087121BAB46B0083801F /* DetailedRecipeManagerTestCase.swift in Sources */,
 				911EE23D215F7594005FC6DD /* RecipeServiceTestCase.swift in Sources */,
