@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIImageView {
+    
     /// Load an image from url in remote API or web site.
     /// In case url string is nil or it can not be converted to a URL a default image will be affected.
     ///
@@ -20,7 +21,7 @@ extension UIImageView {
         }
         
         // We change the the image size in url to get greater image
-        let urlImageStringWithGreaterSize = urlImageString.replacingOccurrences(of: "=s90", with: "=s1000")
+        let urlImageStringWithGreaterSize = urlImageString.replacingOccurrences(of: "=s90", with: "=s300")
         guard let urlImage = URL(string: urlImageStringWithGreaterSize) else {
             self.image = UIImage(imageLiteralResourceName: UIImageNames.defaultImage.rawValue)
             return
